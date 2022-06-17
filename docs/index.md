@@ -21,7 +21,7 @@ yet.
 
 5. Local adaptation. (Arielle Fogel declined. Cancel this module?)
 
-6. Admixtools. Robert Meier
+6. Admixtools. Robert Maier
 
 7. Legofit. Alan Rogers
 
