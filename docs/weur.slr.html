@@ -1,0 +1,68 @@
+<html>
+<pre><code>
+#!/bin/bash
+#SBATCH -J weur
+#SBATCH --account=rogersa-np
+#SBATCH --partition=rogersa-np
+#SBATCH --time=36:00:00
+#SBATCH --nodes 1
+#SBATCH --ntasks 1
+#SBATCH -o weur.out # stdout
+#SBATCH -e weur.err # stderr
+
+# Build raf file for western europeans
+
+module --latest load bcftools
+
+# Determine lexical sort order.
+export LC_ALL=C
+
+# Output name
+target=weur
+
+# Reference genome
+ref=$HOME/grp1/rogers/data/hg19/hg19-sort.fa.gz
+
+# Comma-separated list of autosomes
+autosomes=$(seq 1 22 | xargs echo | tr " "  ",")
+
+# Base dir name
+base=$HOME/grp1/rogers/data/simons/WestEurasia
+
+# An array of names of input files
+infiles=($(ls ${base}/english/*.vcf.gz ${base}/french/*.vcf.gz))
+
+# Write input files to stderr. The sed command puts them on
+# separate lines, indented.
+echo "input:" ${infiles[@]} | sed 's/ /\n  /g' >&2
+
+# Merge inputs into a single vcf.
+bcftools merge ${infiles[@]} --regions $autosomes -Ou |
+
+# Combine records of different types into a single line. Use reference
+# genome to normalize indels.
+bcftools norm --multiallelics +any --fasta-ref $ref -Ou | 
+
+# Limit the data to SNPs and fixed sites. This will remove sites that
+# contain indels. The --SnpGap bit also removes sites within 7 bases
+# of an indel.
+bcftools filter --include 'TYPE="snp" || TYPE="ref"' --SnpGap 7 -Ou |
+
+# Set low-quality genotypes to "."
+bcftools filter --set-GTs . --exclude 'FMT/FL = "0" | FMT/FL = "N"' -Ou | 
+
+# No more than 2 alleles (but retain sites with 1 allele)
+bcftools view --max-alleles 2 -Ou |
+
+# Output the columns that are required by raf
+bcftools query -f '%CHROM\t%POS\t%REF\t%ALT[\t%GT]\n' |
+
+# Sort chromosomes lexically. -s retains sort of POS w/i chromosomes.
+# Sort order is governed by LC_ALL, which is set at the top of this
+# file.
+sort -s -k1,1 |
+
+# Make raf.gz file
+raf | gzip > ${target}.raf.gz    
+</code></pre>
+</html>
