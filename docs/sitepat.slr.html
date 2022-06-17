@@ -1,0 +1,38 @@
+<html>
+<pre><code>
+#!/bin/bash
+#SBATCH -J sitepat
+#SBATCH --account=rogersa-kp
+#SBATCH --partition=rogersa-kp
+#SBATCH --time=36:00:00
+#SBATCH --nodes 1
+#SBATCH --ntasks 1
+#SBATCH -o data.opf # output file
+#SBATCH -e sitepat.err # stderr
+
+# Abbreviations for data directories
+base=$HOME/grp1/rogers/data
+simons=${base}/simons/raf
+altai=${base}/altai/orig2
+vindija=${base}/vindija/orig
+denisova=${base}/denisova/orig2
+ape=${base}/ape
+
+# Unless it already exists, make a directory to hold bootstrap replicates
+mkdir -p boot
+
+# Create observed pattern frequency (.opf) file and bootstrap replicates.
+# This will not run until you have created the .raf.gz files that you
+# need. 
+time sitepat -1 --bootfile boot/boot --bootreps 50 \
+     x=${simons}/yoruba.raf.gz \
+     y=${simons}/weur.raf.gz \
+     v=${vindija}/vindija.raf.gz \
+     a=${altai}/altai.raf.gz \
+     d=${denisova}/denisova.raf.gz \
+     outgroup=${ape}/chigor.raf.gz
+
+echo "finished sitepat" 1>&2
+
+</code></pre>
+</html>
