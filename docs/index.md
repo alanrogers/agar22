@@ -25,4 +25,6 @@ yet.
 
 7. Legofit. Alan Rogers
 
-# [Legofit](legofit.pdf)
+# Legofit
+
+* [Legofit tutorial](legotut.pdf)

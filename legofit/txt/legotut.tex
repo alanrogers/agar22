@@ -1,0 +1,256 @@
+\documentclass[11pt]{article}
+\usepackage{hyperref}
+\usepackage[backend=biber,
+  natbib=true,
+  style=numeric,
+  sorting=nyt]{biblatex}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{verbatim,moreverb}
+\usepackage{graphicx}
+\addbibresource{defs.bib}
+\addbibresource{arrpubs.bib}
+\begin{document}
+\title{Using Legofit to Estimate Population History}
+\author{Alan R. Rogers}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+This is a tutorial on Legofit, a package that uses genetic data to
+estimate the history of population size, subdivision, and admixture
+\citep{Rogers:BMC-20-526, Rogers:PCJ-2-e32}. The full documentation is
+available
+\href{http://alanrogers.github.io/legofit/html/index.html}{online}.
+
+\section{Installing and Using Legofit}
+
+\subsection{Install git if necessary}
+
+You may have git already. To find out whether you do, type:
+\begin{verbatim}
+    type git
+\end{verbatim}
+On Mac or Linux, this will print the location of the executable git
+file. If there is no such file, you'll get an error message saying
+\texttt{type: git: not found}. In that case, install git:
+\begin{verbatim}
+    brew install git
+\end{verbatim}
+
+\subsection{Clone legofit}
+Use git to clone Legofit onto your machine. This step will create a
+subdirectory called ``legofit,'' which will contain the source
+code. Before executing the command below, use the \texttt{cd} command
+to move into the directory where you keep source code that other
+people have written. I keep such code in a directory called
+\texttt{distrib}, which I originally created by typing \texttt{mkdir
+  distrib}. Having created such a directory, move into it by typing
+\begin{verbatim}
+    cd distrib
+\end{verbatim}
+Then clone legofit by typing:
+\begin{verbatim}
+    git clone git@github.com:alanrogers/legofit.git legofit
+\end{verbatim}
+This will create a directory called legofit. Use \texttt{cd} to move into it.
+
+\subsection{Install a C compiler if necessary}
+To see whether you have a C compiler already, type \texttt{type cc},
+or \texttt{type gcc}, or \texttt{type clang}. You should get output like
+\begin{verbatim}
+    cc is /usr/bin/cc
+\end{verbatim}
+If you need to install a C compiler, there are several
+alternatives. On a Mac, you can install Xcode from the App Store. Or
+you can use Homebrew to install clang or gcc:
+\begin{verbatim}
+    brew install clang
+\end{verbatim}
+or
+\begin{verbatim}
+    brew install gcc
+\end{verbatim}
+On Linux, the command would be
+\begin{verbatim}
+    sudo apt-get install clang
+\end{verbatim}
+or
+\begin{verbatim}
+    sudo apt-get install gcc
+\end{verbatim}
+
+\subsection{Install ``make'' if necessary}
+You will also need the program ``make,'' so type ``type make.'' If you
+need to install, then
+\begin{verbatim}
+    brew install make
+\end{verbatim}
+
+\subsection{Set up a ``bin'' directory to hold executable files.}
+On Unix-like operating systems (MacOS and Linux) it is conventional
+for each user to maintain a directory named "bin", just below the home
+directory, which contains executable files. This directory must also
+be added to the system's PATH variable, which is used for finding
+executable files.
+
+First create a ``bin'' directory, if you don't already have one. To do
+so, first type the command
+\begin{verbatim}
+    cd
+\end{verbatim}
+at the shell prompt. This moves you into your home directory. Then
+type
+\begin{verbatim}
+    mkdir bin
+\end{verbatim}
+This creates a new directory called ``bin.''
+
+You now need to add this to your shell's PATH variable. I'll assume
+you're using the bash shell. In your home directory, look for a file
+called either ``\verb|.bash_profile|'' or
+``\texttt{.profile}''. Because the name begins with ``.'', it will not
+show up if you type \texttt{ls}. However, it will appear if you type
+\verb|ls .bash_profile| or \verb|ls .profile|. If only one of these
+files exists, open it with a text editor (not a word processor). If
+they both exist, edit ``\verb|.bash_profile|''. If neither exists, use
+the editor to create a new file called ``\verb|.bash_profile|''.
+
+Within this file, you may find existing definitions of the PATH
+variable. Add the following after the last line that changes this
+variable:
+\begin{verbatim}
+    export PATH=$HOME/bin:$PATH
+\end{verbatim}
+Save this change and exit the editor.
+
+The contents of this file are executed by the shell each time you log
+into your computer. Since you have just created the file, your PATH
+has not yet been reset. Log out and then log back in again, and your
+PATH should be set. To check it, type
+\begin{verbatim}
+    echo $PATH
+\end{verbatim}
+This will print your PATH.
+
+\subsection{Compile and install legofit}
+The details are in the
+\href{http://alanrogers.github.io/legofit/html/index.html}{Legofit
+  documentation}. 
+
+\subsection{Soft links to group storage}
+In the sections that follow, I will introduce you to several
+directories and files on the CHPC servers. Each one is described by
+its ``path name'' relative to your own ``home directory,'' which is
+represented by the symbol \verb|~|. Before these path names will work,
+you'll need to define two ``soft links'' within your own home directory,
+which point to group storage devices owned by the Rogers lab. After
+you define these soft links, \verb|~/grp1| will refer to one of these
+group storage devices and \verb|~/grp2| to the other. As I explained in
+class, you can establish these links by typing
+\begin{verbatim}
+    ln -s /uufs/chpc.utah.edu/common/home/rogersa-group1 ~/grp1
+    ln -s /uufs/chpc.utah.edu/common/home/rogersa-group2 ~/grp2
+\end{verbatim}
+If everyone in the lab defines these soft links in the same way, then
+we can all use path names of the form
+\verb|~/grp1/rogers/data/whatever|.
+
+\subsection{Making a file in .raf format}
+Legofit uses data in ``.raf'' format. The following data sets are
+already available on the server at Utah's CHPC.
+\begin{description}
+\item[Altai Neanderthal]
+\verb|~/grp1/rogers/data/altai/orig2/altai.raf.gz|
+
+\item[Vindija Neanderthal]
+\verb|~/grp1/rogers/data/vindija/orig/vindija.raf.gz|
+
+\item[Denisovan]
+\verb|~/grp1/rogers/data/denisova/orig2/denisova.raf.gz|
+
+\item[Western Europeans (SGDP)]
+\verb|~/grp1/rogers/data/simons/raf/weur.raf.gz|
+\end{description}
+You can use any or all of these in your projects. But you'll also need
+to make at least one more. To do so, copy the following
+\href{weur.slr.html}{script} into a directory of your own:
+\begin{verbatim}
+    ~/grp1/rogers/data/simons/raf/weur.slr
+\end{verbatim}
+Change its name (because ``weur'' stands for ``western European'') and
+edit it to reflect the population or populations that you want to
+study. It's set up to run on the ``notchpeak'' cluster, where I have
+only one node.
+
+If that node is free, you can run it there by using ``cd'' to move to
+the directory that contains the script and then typing
+\begin{verbatim}
+    sbatch <your script name>
+\end{verbatim}
+where \verb|<your script name>| is the name of your version of the
+script. This script will take many hours to complete. You can check on
+its status at any time by typing
+\begin{verbatim}
+    squeue -u <your user id>
+\end{verbatim}
+where \verb|<your user id>| is the id you use to log onto the CHPC cluster.
+As a shorthand, I often type this as
+\begin{verbatim}
+    squeue -u `whoami`
+\end{verbatim}
+which uses Linux's ``whoami'' command to fill in your user id.
+
+If the notchpeak node is busy, try kingspeak instead. I have six nodes
+there, so your odds are better. Before doing so, edit your slurm
+script. The lines that read
+\begin{verbatim}
+    #SBATCH --account=rogersa-np
+    #SBATCH --partition=rogersa-np
+\end{verbatim}
+work on notchpeak but not on kingspeak. For kingspeak, they should read
+\begin{verbatim}
+    #SBATCH --account=rogersa-kp
+    #SBATCH --partition=rogersa-kp
+\end{verbatim}
+
+\subsection{Working with Legofit}
+\subsubsection{Organizing the top-level directory for a Legofit project}
+
+For each project, I create a directory tree with the same format.  The
+top-level directory contains the following files:
+\begin{description}
+\item[README.md]
+Describes how all the other files in the directory were made.
+
+\item[data.opf]
+Observed site-pattern frequencies, as generated by Legofit's
+``sitepat'' program, under the control of ``sitepat.slr.''
+
+\item[boot]
+A subdirectory containing bootstrap replicates, which have names
+like ``boot0.opf,'' ``boot1.opf,'' and so on. These files are also
+generated by ``sitepat,'' under the control of ``sitepat.slr.''
+
+\href{sitepat.slr.html}{sitepat.slr}
+A slurm script that runs ``sitepat'' and creates ``data.opf'' and all
+the .opf files within subdirectory ``boot.''
+\end{description}
+Eventually, the top-level directory will contain other files, with
+names like ``all.bootci'' and ``all.bma,'' which contain the results
+of analyses.
+
+Within the top-level directory, there should be a directory for each
+model that is fit to the data in ``data.opf'' and ``boot/boot*.opf.''
+Name these as you wish, but it's a good idea to keep the names
+short. Mine tend to have names like ``a,'' ``b,'' ``ab,'' etc. The
+``a'' directory contains a model in which there is only one episode of
+admixture, labeled $\alpha$. The ``ab'' directory is for a model that
+has episodes $\alpha$ and $\beta$.
+
+\subsubsection{Organizing the subdirectory for each model}
+
+To be continued.
+
+\printbibliography
+
+\end{document}
