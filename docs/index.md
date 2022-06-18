@@ -28,3 +28,7 @@ yet.
 # Legofit
 
 * [Legofit tutorial](legotut.pdf)
+
+# Msprime
+
+* [Msprime tutorial](msptut.pdf)
