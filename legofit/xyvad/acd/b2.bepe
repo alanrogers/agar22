@@ -7,7 +7,7 @@
 # Program was run: Fri Apr 23 16:31:19 2021
 
 #          bepe        DataFile     LegofitFile
-4.004569005e-07       xyvad.opf      b2.legofit
+4.004569005e-07       data.opf      b2.legofit
 4.757238822e-07       boot0.opf b2boot0.legofit
 4.751308196e-07       boot1.opf b2boot1.legofit
 4.190246575e-07      boot10.opf b2boot10.legofit

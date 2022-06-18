@@ -8,7 +8,7 @@
 #SBATCH -o b1.legofit # stdout
 #SBATCH -e b1.err # stderr
 
-ifile=../xyvad.opf
+ifile=../data.opf
 stateout=b1.state
 lgofile=b.lgo
 

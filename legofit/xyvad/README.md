@@ -14,7 +14,7 @@ Populations: X, Yoruba; Y, Europe (France and England); V, Vindija; A,
 Altai; D, Denisova. Outgroup=chigor (merged chimp and gorilla
 reference sequences).
 
-sitepat.slr : slurm script to generate xyvad.opf and boot/*.opf
+sitepat.slr : slurm script to generate data.opf and boot/*.opf
 
 data.opf : observed site-pattern frequencies and confidence intervals
 

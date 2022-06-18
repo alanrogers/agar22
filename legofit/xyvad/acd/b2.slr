@@ -8,7 +8,7 @@
 #SBATCH -o b2.legofit # stdout
 #SBATCH -e b2.err # stderr
 
-ifile=../xyvad.opf
+ifile=../data.opf
 lgofile=b.lgo
 
 time legofit -1 -d 0 --tol 3e-6 -S 5000 $lgofile $ifile \
