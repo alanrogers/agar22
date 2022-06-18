@@ -1,0 +1,61 @@
+################################################
+# bepe: bootstrap estimate of predictive error #
+#           version 2.3.2-3-gd31699a           #
+################################################
+
+# Program was compiled: Apr  1 2021 16:33:41
+# Program was run: Fri Apr 23 16:31:19 2021
+
+#          bepe        DataFile     LegofitFile
+4.004569005e-07       xyvad.opf      b2.legofit
+4.757238822e-07       boot0.opf b2boot0.legofit
+4.751308196e-07       boot1.opf b2boot1.legofit
+4.190246575e-07      boot10.opf b2boot10.legofit
+4.579193396e-07      boot11.opf b2boot11.legofit
+3.799284263e-07      boot12.opf b2boot12.legofit
+4.642523062e-07      boot13.opf b2boot13.legofit
+3.690925037e-07      boot14.opf b2boot14.legofit
+5.011570944e-07      boot15.opf b2boot15.legofit
+4.042151657e-07      boot16.opf b2boot16.legofit
+4.762251307e-07      boot17.opf b2boot17.legofit
+5.335722681e-07      boot18.opf b2boot18.legofit
+5.100850571e-07      boot19.opf b2boot19.legofit
+4.502916627e-07       boot2.opf b2boot2.legofit
+4.316681815e-07      boot20.opf b2boot20.legofit
+5.683131602e-07      boot21.opf b2boot21.legofit
+4.620368279e-07      boot22.opf b2boot22.legofit
+4.651258133e-07      boot23.opf b2boot23.legofit
+3.970550089e-07      boot24.opf b2boot24.legofit
+4.452743125e-07      boot25.opf b2boot25.legofit
+4.422263395e-07      boot26.opf b2boot26.legofit
+4.758756798e-07      boot27.opf b2boot27.legofit
+4.655006773e-07      boot28.opf b2boot28.legofit
+4.818822923e-07      boot29.opf b2boot29.legofit
+4.097916598e-07       boot3.opf b2boot3.legofit
+4.204941903e-07      boot30.opf b2boot30.legofit
+3.929342554e-07      boot31.opf b2boot31.legofit
+4.378680867e-07      boot32.opf b2boot32.legofit
+4.891308668e-07      boot33.opf b2boot33.legofit
+3.844313346e-07      boot34.opf b2boot34.legofit
+ 3.95931109e-07      boot35.opf b2boot35.legofit
+5.469007931e-07      boot36.opf b2boot36.legofit
+4.435828683e-07      boot37.opf b2boot37.legofit
+5.198395298e-07      boot38.opf b2boot38.legofit
+4.334824594e-07      boot39.opf b2boot39.legofit
+4.770275878e-07       boot4.opf b2boot4.legofit
+4.812145543e-07      boot40.opf b2boot40.legofit
+ 4.23946471e-07      boot41.opf b2boot41.legofit
+4.421024649e-07      boot42.opf b2boot42.legofit
+4.707099749e-07      boot43.opf b2boot43.legofit
+ 4.54297854e-07      boot44.opf b2boot44.legofit
+4.306275973e-07      boot45.opf b2boot45.legofit
+4.381372729e-07      boot46.opf b2boot46.legofit
+4.733807375e-07      boot47.opf b2boot47.legofit
+4.231782292e-07      boot48.opf b2boot48.legofit
+4.293039399e-07      boot49.opf b2boot49.legofit
+4.366398235e-07       boot5.opf b2boot5.legofit
+4.266345889e-07       boot6.opf b2boot6.legofit
+4.347877562e-07       boot7.opf b2boot7.legofit
+5.053089047e-07       boot8.opf b2boot8.legofit
+4.528269117e-07       boot9.opf b2boot9.legofit
+

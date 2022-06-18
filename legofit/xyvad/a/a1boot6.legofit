@@ -1,0 +1,91 @@
+########################################
+# legofit: estimate population history #
+#       version 2.3.2-3-gd31699a       #
+########################################
+
+# Program was compiled: Apr  1 2021 16:34:18
+# Program was run: Mon Apr 19 13:27:35 2021
+
+# cmd: legofit -1 -d 0 --stateOut a1boot6.state --tol 3e-6 -S 5000 a.lgo ../boot/boot6.opf
+# Stage nOptItr nSimReps
+#     0    5000        0
+# algorithm          : deterministic
+# ignoring probs <=  : 0
+# Branch length floor: 0
+# DE strategy        : 2
+#    F               : 0.3
+#    CR              : 0.8
+#    tolerance       : 3e-06
+# nthreads           : 64
+# lgo input file     : a.lgo
+# site pat input file: ../boot/boot6.opf
+# free parameters    : 12
+# points in DE swarm : 120
+# output state file  : a1boot6.state
+# Including singleton site patterns.
+# cost function      : KL
+Initial parameter values
+Fixed:
+      zero = 0
+       one = 1
+       TmN = 1
+     Txynd = 25920
+Free:
+       Tnd = 24000
+       Tav = 14000
+       Txy = 10000
+        Td = 2500
+        Ta = 4000
+        Tv = 1000
+    twoNav = 2000
+     twoNn = 2000
+    twoNnd = 2000
+    twoNxy = 20000
+  twoNxynd = 20000
+        mN = 0.01
+DiffEv reached_goal. cost=3.79580e-04 spread=2.82386e-06
+Fitted parameter values
+Free:
+       Tnd = 25617.2
+       Tav = 11594.5
+       Txy = 7923.34
+        Td = 2784.93
+        Ta = 5864.42
+        Tv = 3143.95
+    twoNav = 17678.1
+     twoNn = 5815.22
+    twoNnd = 821.483
+    twoNxy = 34002
+  twoNxynd = 42496.6
+        mN = 0.0222747
+#       SitePat  BranchLen
+              x 35924.4145952
+              y 34841.4964168
+              v 11664.9083919
+              a 9034.4258929
+              d 38803.0451753
+            x:y 21866.2308176
+            x:v 266.8496559
+            x:a 273.7355189
+            x:d 2800.1882193
+            y:v 401.3016466
+            y:a 311.3213551
+            y:d 2614.9222458
+            v:a 27073.3233625
+            v:d 1029.9923633
+            a:d 1040.5185790
+          x:y:v 560.5264607
+          x:y:a 553.6405977
+          x:y:d 6171.0423369
+          x:v:a 2566.2366700
+          x:v:d 221.1856357
+          x:a:d 228.0714987
+          y:v:a 3184.1975830
+          y:v:d 234.7930916
+          y:a:d 224.2668760
+          v:a:d 16088.9275446
+        x:y:v:a 6404.9938862
+        x:y:v:d 606.1904810
+        x:y:a:d 599.3046179
+        x:v:a:d 5126.8493557
+        y:v:a:d 5595.2319345

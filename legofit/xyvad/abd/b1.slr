@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH -J ABDb1
+#SBATCH --account=rogersa-kp
+#SBATCH --partition=rogersa-kp
+#SBATCH --time=36:00:00
+#SBATCH --nodes 1
+#SBATCH --ntasks 1
+#SBATCH -o b1.legofit # stdout
+#SBATCH -e b1.err # stderr
+
+ifile=../data.opf
+stateout=b1.state
+lgofile=b.lgo
+
+time legofit -1 -d 0 --stateOut $stateout --tol 3e-6 -S 5000 $lgofile $ifile

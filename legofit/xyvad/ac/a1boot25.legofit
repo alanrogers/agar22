@@ -1,0 +1,97 @@
+########################################
+# legofit: estimate population history #
+#       version 2.3.2-3-gd31699a       #
+########################################
+
+# Program was compiled: Apr  1 2021 16:34:18
+# Program was run: Wed Apr 21 09:18:33 2021
+
+# cmd: legofit -1 -d 0 --stateOut a1boot25.state --tol 3e-6 -S 5000 a.lgo ../boot/boot25.opf
+# Stage nOptItr nSimReps
+#     0    5000        0
+# algorithm          : deterministic
+# ignoring probs <=  : 0
+# Branch length floor: 0
+# DE strategy        : 2
+#    F               : 0.3
+#    CR              : 0.8
+#    tolerance       : 3e-06
+# nthreads           : 64
+# lgo input file     : a.lgo
+# site pat input file: ../boot/boot25.opf
+# free parameters    : 13
+# points in DE swarm : 130
+# output state file  : a1boot25.state
+# Including singleton site patterns.
+# cost function      : KL
+Initial parameter values
+Fixed:
+      zero = 0
+       one = 1
+       TmN = 1
+     Txynd = 25920
+Free:
+       Tnd = 24000
+       Tav = 14000
+       Txy = 10000
+        Td = 2500
+        Ta = 4000
+        Tv = 1000
+    twoNav = 2000
+     twoNn = 2000
+    twoNnd = 2000
+    twoNxy = 20000
+  twoNxynd = 20000
+        mN = 0.01
+       mXY = 0.01
+Constrained:
+      TmXY = 12000
+DiffEv reached_goal. cost=2.48554e-04 spread=2.57033e-06
+Fitted parameter values
+Free:
+       Tnd = 25571.6
+       Tav = 16177.7
+       Txy = 8298.65
+        Td = 3265.54
+        Ta = 5204.27
+        Tv = 2433.99
+    twoNav = 23048
+     twoNn = 6998.73
+    twoNnd = 853.683
+    twoNxy = 32774.8
+  twoNxynd = 41846
+        mN = 0.020283
+       mXY = 0.0414213
+Constrained:
+      TmXY = 12238.2
+#       SitePat  BranchLen
+              x 35430.2113603
+              y 34458.4282713
+              v 11574.4259510
+              a 8875.0846082
+              d 37997.0472181
+            x:y 21441.8003392
+            x:v 308.7639406
+            x:a 314.9162570
+            x:d 2666.5209337
+            y:v 419.6579324
+            y:a 348.7160930
+            y:d 2507.6424213
+            v:a 26750.1283498
+            v:d 997.3586496
+            a:d 1005.4721391
+          x:y:v 619.1835372
+          x:y:a 613.0312208
+          x:y:d 5831.1549222
+          x:v:a 2567.5714096
+          x:v:d 215.0488444
+          x:a:d 220.1766100
+          y:v:a 3120.8216023
+          y:v:d 226.3905258
+          y:a:d 218.2770363
+          v:a:d 16056.2765817
+        x:y:v:a 6470.5244691
+        x:y:v:d 558.3667108
+        x:y:a:d 553.2389451
+        x:v:a:d 5068.7261400
+        y:v:a:d 5492.0016133

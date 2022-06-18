@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH -J ABCa1boot
+#SBATCH --account=rogersa
+#SBATCH --partition=notchpeak
+#SBATCH --time=36:00:00
+#SBATCH --nodes 1
+#SBATCH --ntasks 1
+#SBATCH -o a1boot%a.legofit # stdout
+#SBATCH -e a1boot%a.err # stderr
+
+i=${SLURM_ARRAY_TASK_ID}
+ifile=$(printf "../boot/boot%d.opf" $i)    # input file
+stateout=$(printf "a1boot%d.state" $i)
+lgofile=a.lgo
+
+time legofit -1 -d 0 --stateOut $stateout --tol 3e-6 -S 5000 $lgofile $ifile

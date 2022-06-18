@@ -1,0 +1,104 @@
+########################################
+# legofit: estimate population history #
+#       version 2.3.2-3-gd31699a       #
+########################################
+
+# Program was compiled: Apr  1 2021 16:34:18
+# Program was run: Wed Apr 21 11:53:59 2021
+
+# cmd: legofit -1 -d 0 --stateOut a1boot28.state --tol 3e-6 -S 5000 a.lgo ../boot/boot28.opf
+# Stage nOptItr nSimReps
+#     0    5000        0
+# algorithm          : deterministic
+# ignoring probs <=  : 0
+# Branch length floor: 0
+# DE strategy        : 2
+#    F               : 0.3
+#    CR              : 0.8
+#    tolerance       : 3e-06
+# nthreads           : 32
+# lgo input file     : a.lgo
+# site pat input file: ../boot/boot28.opf
+# free parameters    : 15
+# points in DE swarm : 150
+# output state file  : a1boot28.state
+# Including singleton site patterns.
+# cost function      : KL
+Initial parameter values
+Fixed:
+      zero = 0
+       one = 1
+       TmN = 1
+     Txynd = 25920
+     twoNs = 2000
+Free:
+    Txynds = 60000
+       Tnd = 24000
+       Tav = 14000
+       Txy = 10000
+        Td = 2500
+        Ta = 4000
+        Tv = 1000
+    twoNav = 2000
+     twoNn = 2000
+    twoNnd = 2000
+    twoNxy = 20000
+  twoNxynd = 20000
+        mN = 0.01
+      mSND = 0.01
+       mXY = 0.01
+Constrained:
+      TmXY = 12000
+     TmSND = 24960
+DiffEv reached_goal. cost=1.32528e-04 spread=2.96164e-06
+Fitted parameter values
+Free:
+    Txynds = 103369
+       Tnd = 25539.1
+       Tav = 21193.2
+       Txy = 3538.24
+        Td = 3061.22
+        Ta = 5103.9
+        Tv = 2415.37
+    twoNav = 47730.1
+     twoNn = 7577.15
+    twoNnd = 747.016
+    twoNxy = 48010
+  twoNxynd = 39678.2
+        mN = 0.0209274
+      mSND = 0.0266888
+       mXY = 0.0672018
+Constrained:
+      TmXY = 12365.7
+     TmSND = 25729.5
+#       SitePat  BranchLen
+              x 35506.0867762
+              y 34513.3194332
+              v 11615.3566611
+              a 8994.1775614
+              d 38306.4780320
+            x:y 21139.4894109
+            x:v 314.5342537
+            x:a 320.2170809
+            x:d 2544.7427774
+            y:v 424.3633749
+            y:a 357.0096927
+            y:d 2382.4485106
+            v:a 26500.2197705
+            v:d 939.9095679
+            a:d 947.1396998
+          x:y:v 594.5657065
+          x:y:a 588.8828793
+          x:y:d 5874.3271794
+          x:v:a 2477.0338401
+          x:v:d 206.4076263
+          x:a:d 211.2796665
+          y:v:a 3039.4043902
+          y:v:d 216.7176641
+          y:a:d 209.4875322
+          v:a:d 15995.9861406
+        x:y:v:a 6724.3897019
+        x:y:v:d 572.9881690
+        x:y:a:d 568.1161288
+        x:v:a:d 5168.2613106
+        y:v:a:d 5605.8127338

@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH -J Ab1boot
+#SBATCH --account=rogersa
+#SBATCH --partition=kingspeak
+#SBATCH --time=36:00:00
+#SBATCH --nodes 1
+#SBATCH --ntasks 1
+#SBATCH -o b1boot%a.legofit # stdout
+#SBATCH -e b1boot%a.err # stderr
+
+i=${SLURM_ARRAY_TASK_ID}
+ifile=$(printf "../boot/boot%d.opf" $i)    # input file
+stateout=$(printf "b1boot%d.state" $i)
+lgofile=b.lgo
+
+time legofit -1 -d 0 --stateOut ${stateout} --tol 3e-6 \
+     -S 5000 ${lgofile} ${ifile}

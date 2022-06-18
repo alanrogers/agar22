@@ -1,0 +1,100 @@
+########################################
+# legofit: estimate population history #
+#       version 2.3.2-3-gd31699a       #
+########################################
+
+# Program was compiled: Apr  1 2021 16:34:18
+# Program was run: Wed Apr 21 12:05:21 2021
+
+# cmd: legofit -1 -d 0 --stateOut a1boot13.state --tol 3e-6 -S 5000 a.lgo ../boot/boot13.opf
+# Stage nOptItr nSimReps
+#     0    5000        0
+# algorithm          : deterministic
+# ignoring probs <=  : 0
+# Branch length floor: 0
+# DE strategy        : 2
+#    F               : 0.3
+#    CR              : 0.8
+#    tolerance       : 3e-06
+# nthreads           : 32
+# lgo input file     : a.lgo
+# site pat input file: ../boot/boot13.opf
+# free parameters    : 14
+# points in DE swarm : 140
+# output state file  : a1boot13.state
+# Including singleton site patterns.
+# cost function      : KL
+Initial parameter values
+Fixed:
+      zero = 0
+       one = 1
+       TmN = 1
+     Txynd = 25920
+     twoNs = 2000
+Free:
+    Txynds = 60000
+       Tnd = 24000
+       Tav = 14000
+       Txy = 10000
+        Td = 2500
+        Ta = 4000
+        Tv = 1000
+    twoNav = 2000
+     twoNn = 2000
+    twoNnd = 2000
+    twoNxy = 20000
+  twoNxynd = 20000
+        mN = 0.01
+      mSND = 0.01
+Constrained:
+     TmSND = 24960
+DiffEv reached_goal. cost=3.19315e-04 spread=2.52178e-06
+Fitted parameter values
+Free:
+    Txynds = 100010
+       Tnd = 25049.9
+       Tav = 14764.3
+       Txy = 1404.4
+        Td = 2816.63
+        Ta = 5937.47
+        Tv = 3161.14
+    twoNav = 25177.4
+     twoNn = 6519.06
+    twoNnd = 1966.95
+    twoNxy = 54067.7
+  twoNxynd = 39998
+        mN = 0.0232116
+      mSND = 0.0248189
+Constrained:
+     TmSND = 25485
+#       SitePat  BranchLen
+              x 35734.3170771
+              y 34622.6737951
+              v 11572.0366632
+              a 8881.6036355
+              d 38405.3614517
+            x:y 21575.1141304
+            x:v 256.1299934
+            x:a 262.4266758
+            x:d 2675.0066693
+            y:v 388.5275749
+            y:a 302.6300194
+            y:d 2487.0640767
+            v:a 26756.6594677
+            v:d 1017.2969194
+            a:d 1027.3437337
+          x:y:v 526.0761312
+          x:y:a 519.7794488
+          x:y:d 6113.7560115
+          x:v:a 2444.5938174
+          x:v:d 217.8589911
+          x:a:d 224.9142427
+          y:v:a 3078.7627543
+          y:v:d 230.7697967
+          y:a:d 220.7229824
+          v:a:d 15858.5867831
+        x:y:v:a 6438.4022205
+        x:y:v:d 658.5804906
+        x:y:a:d 651.5252390
+        x:v:a:d 5208.9679697
+        y:v:a:d 5693.0644372

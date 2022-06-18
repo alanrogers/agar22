@@ -1,0 +1,97 @@
+########################################
+# legofit: estimate population history #
+#       version 2.3.2-3-gd31699a       #
+########################################
+
+# Program was compiled: Apr  1 2021 16:34:18
+# Program was run: Wed Apr 21 09:19:05 2021
+
+# cmd: legofit -1 -d 0 --stateOut a1boot47.state --tol 3e-6 -S 5000 a.lgo ../boot/boot47.opf
+# Stage nOptItr nSimReps
+#     0    5000        0
+# algorithm          : deterministic
+# ignoring probs <=  : 0
+# Branch length floor: 0
+# DE strategy        : 2
+#    F               : 0.3
+#    CR              : 0.8
+#    tolerance       : 3e-06
+# nthreads           : 36
+# lgo input file     : a.lgo
+# site pat input file: ../boot/boot47.opf
+# free parameters    : 13
+# points in DE swarm : 130
+# output state file  : a1boot47.state
+# Including singleton site patterns.
+# cost function      : KL
+Initial parameter values
+Fixed:
+      zero = 0
+       one = 1
+       TmN = 1
+     Txynd = 25920
+Free:
+       Tnd = 24000
+       Tav = 14000
+       Txy = 10000
+        Td = 2500
+        Ta = 4000
+        Tv = 1000
+    twoNav = 2000
+     twoNn = 2000
+    twoNnd = 2000
+    twoNxy = 20000
+  twoNxynd = 20000
+        mN = 0.01
+       mXY = 0.01
+Constrained:
+      TmXY = 12000
+DiffEv reached_goal. cost=2.24427e-04 spread=2.89784e-06
+Fitted parameter values
+Free:
+       Tnd = 25792.9
+       Tav = 18462.7
+       Txy = 9139.24
+        Td = 3062.7
+        Ta = 4887.81
+        Tv = 2221.22
+    twoNav = 35180.4
+     twoNn = 7319.07
+    twoNnd = 291.12
+    twoNxy = 30399.7
+  twoNxynd = 41868.8
+        mN = 0.0179466
+       mXY = 0.0672066
+Constrained:
+      TmXY = 13801
+#       SitePat  BranchLen
+              x 35264.5849792
+              y 34404.5817324
+              v 11431.9677649
+              a 8823.3411767
+              d 38216.8755208
+            x:y 21489.6571021
+            x:v 304.4637723
+            x:a 309.5256432
+            x:d 2588.2543889
+            y:v 398.0940189
+            y:a 340.1307390
+            y:d 2450.9309798
+            v:a 26722.3543448
+            v:d 963.8512557
+            a:d 970.3062512
+          x:y:v 619.2622253
+          x:y:a 614.2003545
+          x:y:d 5721.0459235
+          x:v:a 2579.4849137
+          x:v:d 204.7620245
+          x:a:d 208.7820618
+          y:v:a 3066.9183264
+          y:v:d 214.1019783
+          y:a:d 207.6469828
+          v:a:d 16272.6991085
+        x:y:v:a 6607.5961997
+        x:y:v:d 528.8428018
+        x:y:a:d 524.8227646
+        x:v:a:d 5052.2090390
+        y:v:a:d 5429.6620650

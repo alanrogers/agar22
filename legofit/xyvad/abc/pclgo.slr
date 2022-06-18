@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH -J ABCpclgo
+#SBATCH --account=rogersa
+#SBATCH --partition=kingspeak
+#SBATCH --time=00:10:00
+#SBATCH --nodes 1
+#SBATCH --ntasks 1
+#SBATCH -o pclgo.out # stdout
+#SBATCH -e pclgo.err # stderr
+
+cmd="(grep ^# a.lgo;"
+cmd+=" pclgo a.lgo a2.legofit a2boot*.legofit;"
+cmd+=" grep -v ^# a.lgo | egrep -v \"\<free\>\")"
+echo "# "$cmd > b.lgo
+eval $cmd >> b.lgo

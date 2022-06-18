@@ -1,0 +1,49 @@
+# Gene flow: N->Y, XY->N
+# S = superarchaic; XY = early modern; Y = Europe; N=Neanderthal; D=Denisovan
+# Altai and Vindija on same branch
+# TmN < Tv < Ta
+# Neanderthal population size allowed to change
+time fixed  zero = 0
+twoN fixed  one = 1
+time fixed  TmN = 1        # no coalesc. events can happen b/t 0 and Tv
+time fixed  Txynd = 25920  # \citet[table~S12.2, p.~90]{Li:N-505-43-S88}
+time free   Tnd = 24000
+time free   Tav = 14000
+time free   Txy = 10000
+time free   Td  = 2500
+time free   Ta  = 4000
+time free   Tv  = 1000
+twoN free   twoNav = 2000
+twoN free   twoNn = 2000
+twoN free   twoNnd = 2000
+twoN free   twoNxy = 20000
+twoN free   twoNxynd = 20000
+mixFrac free   mN = 0.01
+mixFrac free   mXY = 0.01
+time constrained TmXY = 0.5*(Txy + Tav)
+segment x    t=zero   twoN=one     samples=1
+segment y    t=zero   twoN=one     samples=1
+segment v    t=Tv     twoN=twoNn   samples=1
+segment a    t=Ta     twoN=twoNn   samples=1
+segment a2   t=TmXY   twoN=twoNn
+segment d    t=Td     twoN=one     samples=1
+segment y2   t=TmN    twoN=one
+segment n    t=TmN    twoN=twoNn
+segment av   t=Tav    twoN=twoNav
+segment nd   t=Tnd    twoN=twoNnd
+segment xy   t=Txy    twoN=twoNxy
+segment xy2  t=TmXY   twoN=twoNxy
+segment xynd t=Txynd  twoN=twoNxynd
+mix    y from y2 + mN * n
+mix    a from a2 + mXY * xy2
+derive n from v
+derive v from a
+derive a2 from av
+derive av from nd
+derive d  from nd
+derive x  from xy
+derive y2 from xy
+derive xy from xy2
+derive xy2 from xynd
+derive nd from xynd
+

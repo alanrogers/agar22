@@ -1,0 +1,97 @@
+########################################
+# legofit: estimate population history #
+#       version 2.3.2-3-gd31699a       #
+########################################
+
+# Program was compiled: Apr  1 2021 16:34:18
+# Program was run: Wed Apr 21 09:18:21 2021
+
+# cmd: legofit -1 -d 0 --stateOut a1boot0.state --tol 3e-6 -S 5000 a.lgo ../boot/boot0.opf
+# Stage nOptItr nSimReps
+#     0    5000        0
+# algorithm          : deterministic
+# ignoring probs <=  : 0
+# Branch length floor: 0
+# DE strategy        : 2
+#    F               : 0.3
+#    CR              : 0.8
+#    tolerance       : 3e-06
+# nthreads           : 36
+# lgo input file     : a.lgo
+# site pat input file: ../boot/boot0.opf
+# free parameters    : 13
+# points in DE swarm : 130
+# output state file  : a1boot0.state
+# Including singleton site patterns.
+# cost function      : KL
+Initial parameter values
+Fixed:
+      zero = 0
+       one = 1
+       TmN = 1
+     Txynd = 25920
+Free:
+       Tnd = 24000
+       Tav = 14000
+       Txy = 10000
+        Td = 2500
+        Ta = 4000
+        Tv = 1000
+    twoNav = 2000
+     twoNn = 2000
+    twoNnd = 2000
+    twoNxy = 20000
+  twoNxynd = 20000
+        mN = 0.01
+       mXY = 0.01
+Constrained:
+      TmXY = 12000
+DiffEv reached_goal. cost=2.89883e-04 spread=2.92841e-06
+Fitted parameter values
+Free:
+       Tnd = 22339.9
+       Tav = 18680.4
+       Txy = 6834.77
+        Td = 2895.99
+        Ta = 5100.97
+        Tv = 2453.01
+    twoNav = 19326.1
+     twoNn = 7385.76
+    twoNnd = 8695.99
+    twoNxy = 35892.3
+  twoNxynd = 40464.8
+        mN = 0.0188076
+       mXY = 0.0541401
+Constrained:
+      TmXY = 12757.6
+#       SitePat  BranchLen
+              x 34696.2171773
+              y 33818.9714757
+              v 11352.4518310
+              a 8764.0655404
+              d 37311.7087065
+            x:y 21021.8109477
+            x:v 310.0508255
+            x:a 315.2613057
+            x:d 2590.5133700
+            y:v 406.6681538
+            y:a 347.0890536
+            y:d 2449.0719455
+            v:a 25877.2760349
+            v:d 1021.1732801
+            a:d 1028.2144158
+          x:y:v 609.4564032
+          x:y:a 604.2459229
+          x:y:d 5617.5902689
+          x:v:a 2526.9251373
+          x:v:d 210.9584737
+          x:a:d 215.2113708
+          y:v:a 3021.3182016
+          y:v:d 221.3945546
+          y:a:d 214.3534189
+          v:a:d 15928.3653353
+        x:y:v:a 6300.8047327
+        x:y:v:d 539.5615253
+        x:y:a:d 535.3086282
+        x:v:a:d 4928.2340607
+        y:v:a:d 5314.5049173

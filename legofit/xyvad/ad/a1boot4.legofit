@@ -1,0 +1,100 @@
+########################################
+# legofit: estimate population history #
+#       version 2.3.2-3-gd31699a       #
+########################################
+
+# Program was compiled: Apr  1 2021 16:34:18
+# Program was run: Wed Apr 21 10:44:00 2021
+
+# cmd: legofit -1 -d 0 --stateOut a1boot4.state --tol 3e-6 -S 5000 a.lgo ../boot/boot4.opf
+# Stage nOptItr nSimReps
+#     0    5000        0
+# algorithm          : deterministic
+# ignoring probs <=  : 0
+# Branch length floor: 0
+# DE strategy        : 2
+#    F               : 0.3
+#    CR              : 0.8
+#    tolerance       : 3e-06
+# nthreads           : 32
+# lgo input file     : a.lgo
+# site pat input file: ../boot/boot4.opf
+# free parameters    : 14
+# points in DE swarm : 140
+# output state file  : a1boot4.state
+# Including singleton site patterns.
+# cost function      : KL
+Initial parameter values
+Fixed:
+      zero = 0
+       one = 1
+       TmN = 1
+     Txynd = 25920
+     twoNs = 2000
+Free:
+    Txynds = 60000
+       Tnd = 24000
+       Tav = 14000
+       Txy = 10000
+        Td = 2500
+        Ta = 4000
+        Tv = 1000
+    twoNav = 2000
+     twoNn = 2000
+    twoNnd = 2000
+    twoNxy = 20000
+  twoNxynd = 20000
+        mN = 0.01
+      mSND = 0.01
+Constrained:
+     TmSND = 24960
+DiffEv reached_goal. cost=3.86432e-04 spread=2.74023e-06
+Fitted parameter values
+Free:
+    Txynds = 92866.1
+       Tnd = 24248.6
+       Tav = 12064.4
+       Txy = 412.095
+        Td = 2684.89
+        Ta = 5941.22
+        Tv = 3153.58
+    twoNav = 15532.4
+     twoNn = 6199.5
+    twoNnd = 3838.77
+    twoNxy = 57561.7
+  twoNxynd = 39640
+        mN = 0.023546
+      mSND = 0.0299372
+Constrained:
+     TmSND = 25084.3
+#       SitePat  BranchLen
+              x 35664.3157296
+              y 34540.3426450
+              v 11701.2148006
+              a 9005.7326184
+              d 38548.5229024
+            x:y 21399.2221447
+            x:v 256.4852765
+            x:a 263.1181671
+            x:d 2706.1119278
+            y:v 395.9334182
+            y:a 303.7758213
+            y:d 2513.7114099
+            v:a 26637.5203055
+            v:d 1022.0366017
+            a:d 1032.7213270
+          x:y:v 521.3619375
+          x:y:a 514.7290470
+          x:y:d 6141.9392063
+          x:v:a 2470.3792863
+          x:v:d 217.4066296
+          x:a:d 224.8658287
+          y:v:a 3111.8862648
+          y:v:d 230.9742513
+          y:a:d 220.2895260
+          v:a:d 15663.4535451
+        x:y:v:a 6474.5740684
+        x:y:v:d 657.3428050
+        x:y:a:d 649.8836060
+        x:v:a:d 5161.8211799
+        y:v:a:d 5647.5906888

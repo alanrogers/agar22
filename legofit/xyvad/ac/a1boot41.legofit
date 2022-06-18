@@ -1,0 +1,97 @@
+########################################
+# legofit: estimate population history #
+#       version 2.3.2-3-gd31699a       #
+########################################
+
+# Program was compiled: Apr  1 2021 16:34:18
+# Program was run: Wed Apr 21 09:18:51 2021
+
+# cmd: legofit -1 -d 0 --stateOut a1boot41.state --tol 3e-6 -S 5000 a.lgo ../boot/boot41.opf
+# Stage nOptItr nSimReps
+#     0    5000        0
+# algorithm          : deterministic
+# ignoring probs <=  : 0
+# Branch length floor: 0
+# DE strategy        : 2
+#    F               : 0.3
+#    CR              : 0.8
+#    tolerance       : 3e-06
+# nthreads           : 32
+# lgo input file     : a.lgo
+# site pat input file: ../boot/boot41.opf
+# free parameters    : 13
+# points in DE swarm : 130
+# output state file  : a1boot41.state
+# Including singleton site patterns.
+# cost function      : KL
+Initial parameter values
+Fixed:
+      zero = 0
+       one = 1
+       TmN = 1
+     Txynd = 25920
+Free:
+       Tnd = 24000
+       Tav = 14000
+       Txy = 10000
+        Td = 2500
+        Ta = 4000
+        Tv = 1000
+    twoNav = 2000
+     twoNn = 2000
+    twoNnd = 2000
+    twoNxy = 20000
+  twoNxynd = 20000
+        mN = 0.01
+       mXY = 0.01
+Constrained:
+      TmXY = 12000
+DiffEv reached_goal. cost=3.00338e-04 spread=2.95697e-06
+Fitted parameter values
+Free:
+       Tnd = 25899.2
+       Tav = 16153.7
+       Txy = 9632.7
+        Td = 2904.64
+        Ta = 5170.8
+        Tv = 2366.26
+    twoNav = 24322.6
+     twoNn = 6971.87
+    twoNnd = 51.0539
+    twoNxy = 29877.8
+  twoNxynd = 41984.8
+        mN = 0.0189578
+       mXY = 0.0407714
+Constrained:
+      TmXY = 12893.2
+#       SitePat  BranchLen
+              x 35617.0964290
+              y 34704.1757177
+              v 11560.0844264
+              a 8822.4222515
+              d 38524.3292466
+            x:y 21382.9572081
+            x:v 294.8783028
+            x:a 300.5087378
+            x:d 2656.7372379
+            y:v 398.7765286
+            y:a 331.9056545
+            y:d 2506.9455510
+            v:a 27000.6827471
+            v:d 971.9134409
+            a:d 979.3875826
+          x:y:v 601.8668896
+          x:y:a 596.2364546
+          x:y:d 5889.8740824
+          x:v:a 2572.7915002
+          x:v:d 208.1403439
+          x:a:d 212.8862304
+          y:v:a 3094.9408941
+          y:v:d 218.4742618
+          y:a:d 211.0001201
+          v:a:d 16132.7504456
+        x:y:v:a 6538.4986188
+        x:y:v:d 547.7250375
+        x:y:a:d 542.9791509
+        x:v:a:d 5058.5685292
+        y:v:a:d 5455.3885834

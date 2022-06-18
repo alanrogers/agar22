@@ -1,0 +1,104 @@
+########################################
+# legofit: estimate population history #
+#       version 2.3.2-3-gd31699a       #
+########################################
+
+# Program was compiled: Apr  1 2021 16:34:18
+# Program was run: Wed Apr 21 12:46:30 2021
+
+# cmd: legofit -1 -d 0 --stateOut a1boot39.state --tol 3e-6 -S 5000 a.lgo ../boot/boot39.opf
+# Stage nOptItr nSimReps
+#     0    5000        0
+# algorithm          : deterministic
+# ignoring probs <=  : 0
+# Branch length floor: 0
+# DE strategy        : 2
+#    F               : 0.3
+#    CR              : 0.8
+#    tolerance       : 3e-06
+# nthreads           : 32
+# lgo input file     : a.lgo
+# site pat input file: ../boot/boot39.opf
+# free parameters    : 15
+# points in DE swarm : 150
+# output state file  : a1boot39.state
+# Including singleton site patterns.
+# cost function      : KL
+Initial parameter values
+Fixed:
+      zero = 0
+       one = 1
+       TmN = 1
+     Txynd = 25920
+     twoNs = 2000
+Free:
+    Txynds = 60000
+       Tnd = 24000
+       Tav = 14000
+       Txy = 10000
+        Td = 2500
+        Ta = 4000
+        Tv = 1000
+    twoNav = 2000
+     twoNn = 2000
+    twoNnd = 2000
+    twoNxy = 20000
+  twoNxynd = 20000
+        mN = 0.01
+      mSND = 0.01
+       mXY = 0.01
+Constrained:
+      TmXY = 12000
+     TmSND = 24960
+DiffEv reached_goal. cost=1.36750e-04 spread=2.71779e-06
+Fitted parameter values
+Free:
+    Txynds = 100872
+       Tnd = 25119.5
+       Tav = 20975.9
+       Txy = 3698.92
+        Td = 3000.26
+        Ta = 4912.97
+        Tv = 2226.62
+    twoNav = 67590.8
+     twoNn = 7458.61
+    twoNnd = 1572.57
+    twoNxy = 47255.7
+  twoNxynd = 39746
+        mN = 0.01964
+      mSND = 0.0278547
+       mXY = 0.0689809
+Constrained:
+      TmXY = 12337.4
+     TmSND = 25519.8
+#       SitePat  BranchLen
+              x 35440.3149490
+              y 34502.7293937
+              v 11533.1498155
+              a 8910.2750069
+              d 38386.7373636
+            x:y 21235.7759606
+            x:v 312.3048065
+            x:a 317.6877436
+            x:d 2539.6222528
+            y:v 415.1669947
+            y:a 351.6952386
+            y:d 2386.7283214
+            v:a 26781.8977106
+            v:d 944.0756282
+            a:d 950.9553503
+          x:y:v 593.9234678
+          x:y:a 588.5405307
+          x:y:d 5905.7864231
+          x:v:a 2489.9846066
+          x:v:d 204.3660815
+          x:a:d 208.9666720
+          y:v:a 3023.5584721
+          y:v:d 214.1393974
+          y:a:d 207.2596754
+          v:a:d 16099.3574612
+        x:y:v:a 6775.2634963
+        x:y:v:d 570.1525616
+        x:y:a:d 565.5519711
+        x:v:a:d 5152.3078195
+        y:v:a:d 5564.2774383
