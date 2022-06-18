@@ -25,10 +25,8 @@ yet.
 
 7. Legofit. Alan Rogers
 
-# Legofit
+# Tutorials
 
-* [Legofit tutorial](msprime/legotut.pdf)
+* [Legofit](msprime/legotut.pdf)
 
-# Msprime
-
-* [Msprime tutorial](legofit/msptut.pdf)
+* [Msprime](legofit/msptut.pdf)
