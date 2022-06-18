@@ -1,0 +1,9 @@
+*~
+*.bbl
+*.bcf
+*.blg
+*.log
+*.run.xml
+*.aux
+legotut.out
+msptut.out
