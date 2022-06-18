@@ -1,11 +1,14 @@
 # Five-dimensional data set
 
-The files here mirror those used by Rogers, Harris, and
-Achenbach (2020, doi:10.1126/sciadv.aay5483). All analyses are the
-same, except that (a) I used the "-d 0" option of legofit to invoke
-the deterministic algorithm, and (b) I didn't use the "--tol 0.001"
-option of pclgo. The 2nd change implies that there is no reduction of
-dimension when I re-express variables in terms of principal components.
+The files here mirror those used by
+[Rogers (2022)](https://doi.org/10.24072/pcjournal.132).  This
+analysis differed from that of
+[Rogers, Harris, and Achenbach (2020)](https://doi.org/10.1126/sciadv.aay5483)
+only in that (a) I used the "-d 0" option of legofit to invoke the
+deterministic algorithm, and (b) I didn't use the "--tol 0.001" option
+of pclgo. The 2nd change implies that there is no reduction of
+dimension when I re-express variables in terms of principal
+components.
 
 Populations: X, Yoruba; Y, Europe (France and England); V, Vindija; A,
 Altai; D, Denisova. Outgroup=chigor (merged chimp and gorilla
