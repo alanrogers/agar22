@@ -41,7 +41,9 @@ sets, which will focus on populations from different parts of the
 world. Students will do steps 2 and 3 during the workshop.
 
 Before the workshop starts, please try to install legofit on your own
-computer. Instructions can be found
-[here](https://alanrogers.github.io/legofit/html/index.html). We'll
-spend some time during the workshop sorting out installation issues,
-so don't worry if you run into problems.
+computer. Instructions can be found in the tutorial. We'll spend some
+time during the workshop sorting out installation issues, so don't
+worry if you run into problems.
+
+The Legofit documentation is available
+[here](https://alanrogers.github.io/legofit/html/index.html). 
