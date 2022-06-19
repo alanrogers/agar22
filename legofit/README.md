@@ -39,3 +39,9 @@ In the workshop, we won't have time for a full analysis. I'll do step
 1 before the workshop starts. Students can choose from several data
 sets, which will focus on populations from different parts of the
 world. Students will do steps 2 and 3 during the workshop.
+
+Before the workshop starts, please try to install legofit on your own
+computer. Instructions can be found
+[here](https://alanrogers.github.io/legofit/html/index.html). We'll
+spend some time during the workshop sorting out installation issues,
+so don't worry if you run into problems.
