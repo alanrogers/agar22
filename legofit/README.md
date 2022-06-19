@@ -14,12 +14,11 @@ The complete analysis involves several steps, which are detailed in
 the tutorial. Here's a brief synopsis.
 
 1. Quality control and tabulation. This step reads data in .vcf
-   format, removes sites of low quality, calls ancestral alleles,
+   format, removes sites of low quality, calls ancestral alleles, and
    tabulates the frequencies of nucleotide site patterns. It works
    with large data files and is best done on a compute cluster. We end
    up with 51 small files, 1 describing site pattern frequencies in
-   the full data set, and 50 describing those in bootstrap
-   replicates.
+   the full data set, and 50 describing those in bootstrap replicates.
 
 2. Write a file in .lgo format, which describes the model of history
    whose parameters you wish to estimate.
