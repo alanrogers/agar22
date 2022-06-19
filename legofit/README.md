@@ -1,11 +1,9 @@
 # Legofit
 
 Legofit is a program that uses genetic data to infer the history of
-population size, subdivision, and admixture. This directory contains
-the following:
-
-* txt/legotut.pdf: a [Legofit tutorial](txt/legotut.pdf). This
-  tutorial describes a complete analysis, from beginning to end.
+population size, subdivision, and admixture. Click
+[here](https://alanrogers.github.io/agar22) for the Legofit tutorial.
+This current directory contains:
 
 * xyvdf: directory containing the code and data for the analysis
   described in the tutorial.
