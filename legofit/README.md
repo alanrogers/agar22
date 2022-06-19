@@ -35,4 +35,9 @@ fits the data.
 If you have the time, however, it's possible to improve the fit by
 doing additional legofit runs and by re-expressing the free variable
 in terms of (uncorrelated) principal components. The tutorial has
-details. 
+details.
+
+In the workshop, we won't have time for a full analysis. I'll do step
+1 before the workshop starts. Students can choose from several data
+sets, which will focus on populations from different parts of the
+world. Students will do steps 2 and 3 during the workshop.
