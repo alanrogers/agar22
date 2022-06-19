@@ -32,7 +32,7 @@ involves making graphs of the results and calculating bepe (the
 fits the data. 
 
 It's also possible to improve the fit by doing additional legofit runs
-and by re-expressing the free variable in terms of (uncorrelated)
+and by re-expressing the free variables in terms of (uncorrelated)
 principal components. The tutorial has details.
 
 In the workshop, we won't have time for a full analysis. I'll do step
