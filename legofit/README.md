@@ -31,10 +31,9 @@ involves making graphs of the results and calculating bepe (the
 "bootstrap estimate of predictive error") to see how well the model
 fits the data. 
 
-If you have the time, however, it's possible to improve the fit by
-doing additional legofit runs and by re-expressing the free variable
-in terms of (uncorrelated) principal components. The tutorial has
-details.
+It's also possible to improve the fit by doing additional legofit runs
+and by re-expressing the free variable in terms of (uncorrelated)
+principal components. The tutorial has details.
 
 In the workshop, we won't have time for a full analysis. I'll do step
 1 before the workshop starts. Students can choose from several data
