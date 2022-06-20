@@ -7,23 +7,23 @@ virtual, with lectures via Zoom and materials made available on
 
 # Modules
 
-1. Working with genomic data (types of genomic data, pros/cons, etc.)
-Speakers: some combination of Joanna Malukiewicz, Maria Nieves-Colon,
-and Ainash Childebayeva. All expressed interest, but haven't confirmed
-yet.
+1. Working with genomic data (types of genomic data, pros/cons, etc.).
+Speaker invitations pending. Tim Webster is fall-back speaker.
+<!--Invitations: Joanna Malukiewicz, Maria Nieves-Colon,
+and Ainash Childebayeva.-->
 
 2. Reproducible bioinformatic pipelines and working on the command
    line. Tim Webster
 
-3. Simulation (msprime and maybe SLIM). Colin Brand (not confirmed).
+3. Simulation with msprime. Speaker invitation pending. Alan Rogers is
+fall-back speaker.
+<!--Invitation: Colin Brand-->
 
 4. Introgression: background and theory. Shayamalika Gopalan.
 
-5. Local adaptation. (Arielle Fogel declined. Cancel this module?)
+5. Admixtools. Robert Maier
 
-6. Admixtools. Robert Maier
-
-7. Legofit. Alan Rogers
+6. Legofit. Alan Rogers
 
 # Tutorials
 
