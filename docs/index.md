@@ -14,6 +14,8 @@ The workshop is open to anyone interested in using genetic data to
 study population history. If space runs short, we will prioritize those
 most likely to benefit from the workshop.
 
+To apply, [please fill out this form](https://forms.gle/MoyVS7JsWc94SsSj9).
+
 # Modules
 
 1. Working with genomic data (types of genomic data, pros/cons, etc.).
@@ -28,7 +30,7 @@ and Ainash Childebayeva.-->
 <!--Invitation: Colin Brand-->
 
 4. Introgression: background and
-   theory. [Shyamalika Gopalan](https://www.goldberglab.org/people). 
+   theory. [Shyamalika Gopalan](https://www.goldberglab.org/people).
 
 5. Admixtools. Robert Maier
 
