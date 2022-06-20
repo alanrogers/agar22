@@ -9,6 +9,14 @@ virtual, with lectures via Zoom and materials made available on
 
 Send email to rogers@anthro.utah.edu with subject heading "agar".
 
+The workshop is free, but attendees must apply. Applications are due
+*July 15, 2022*.
+
+The workshop is open to all. If space is short, 
+
+We will prioritize those who are likely
+to benefit from this workshop.
+
 # Modules
 
 1. Working with genomic data (types of genomic data, pros/cons, etc.).
