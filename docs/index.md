@@ -34,6 +34,12 @@ and Ainash Childebayeva.-->
 
 6. Legofit. [Alan Rogers](https://anthro.utah.edu/profile.php?unid=u0028949)
 
+# Background reading
+
+* [Just enough probability](http://content.csbs.utah.edu/~rogers/pubs/Rogers-JEP.pdf")
+
+* Chs. 4-5 of [Lecture notes on gene genealogies](ggeneal.pdf)
+
 # Tutorials
 
 * [Legofit](legofit/legotut.pdf)
