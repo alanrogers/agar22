@@ -13,17 +13,18 @@ Speaker invitations pending. Tim Webster is fall-back speaker.
 and Ainash Childebayeva.-->
 
 2. Reproducible bioinformatic pipelines and working on the command
-   line. Tim Webster
+   line. [Tim Webster](https://www.websterlab.org/)
 
 3. Simulation with msprime. Speaker invitation pending. Alan Rogers is
 fall-back speaker.
 <!--Invitation: Colin Brand-->
 
-4. Introgression: background and theory. Shayamalika Gopalan.
+4. Introgression: background and
+   theory. [Shyamalika Gopalan](https://www.goldberglab.org/people). 
 
 5. Admixtools. Robert Maier
 
-6. Legofit. Alan Rogers
+6. Legofit. [Alan Rogers](https://anthro.utah.edu/profile.php?unid=u0028949)
 
 # Tutorials
 
