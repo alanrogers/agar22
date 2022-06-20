@@ -38,7 +38,7 @@ and Ainash Childebayeva.-->
 
 # Background reading
 
-* [Just enough probability](http://content.csbs.utah.edu/~rogers/pubs/Rogers-JEP.pdf")
+* [Just enough probability](http://content.csbs.utah.edu/~rogers/pubs/Rogers-JEP.pdf)
 
 * Chs. 4-5 of [Lecture notes on gene genealogies](ggeneal.pdf)
 
