@@ -7,20 +7,19 @@ virtual, with lectures via Zoom and materials made available on
 
 # How to apply
 
-Send email to rogers@anthro.utah.edu with subject heading "agar application".
+Send email to rogers@anthro.utah.edu with subject heading "agar".
 
 # Modules
 
 1. Working with genomic data (types of genomic data, pros/cons, etc.).
-Speaker invitations pending. Tim Webster is fall-back speaker.
+Speaker to be announced.
 <!--Invitations: Joanna Malukiewicz, Maria Nieves-Colon,
 and Ainash Childebayeva.-->
 
 2. Reproducible bioinformatic pipelines and working on the command
    line. [Tim Webster](https://www.websterlab.org/)
 
-3. Simulation with msprime. Speaker invitation pending. Alan Rogers is
-fall-back speaker.
+3. Simulation with msprime. Speaker to be announced.
 <!--Invitation: Colin Brand-->
 
 4. Introgression: background and
