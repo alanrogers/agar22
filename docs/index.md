@@ -51,8 +51,9 @@ Speaker to be announced.
 
 * Shyamalika Gopalan is a postdoc in the
   [Goldberg lab](https://www.goldberglab.org/people) at Duke
-  University. She has [extensive experience][gopalan:scholar] using
-  genetic data to infer population history.
+  University. She has
+  [extensive experience](https://scholar.google.com/citations?user=mZhqPRMAAAAJ&hl=en)
+  using genetic data to infer population history.
 
 * [Robert Maier](https://heb.fas.harvard.edu/people/robert-maier) is a
   Research Fellow at the Broad Institute, Harvard University. He is
@@ -75,6 +76,3 @@ Speaker to be announced.
   aspects of behavioral ecology and social organization, and (3) sex
   chromosome evolution.
 
-
-[gopalan:scholar]:
-(https://scholar.google.com/citations?user=mZhqPRMAAAAJ&hl=en)
