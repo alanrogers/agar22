@@ -15,6 +15,8 @@ The workshop is open to anyone interested in using genetic data to
 study population history. If space runs short, we will prioritize those
 most likely to benefit from the workshop.
 
+To apply, [please fill out this form](https://forms.gle/MoyVS7JsWc94SsSj9).
+
 # Modules
 
 1. Working with genomic data (types of genomic data, pros/cons, etc.).
@@ -27,8 +29,7 @@ Speaker to be announced.
 3. Simulation with msprime. Speaker to be announced.
 <!--Invitation: Colin Brand-->
 
-4. Introgression: background and
-   theory. Shyamalika Gopalan.
+4. Introgression: background and theory. Shyamalika Gopalan.
 
 5. Admixtools. Robert Maier
 
