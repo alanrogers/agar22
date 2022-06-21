@@ -142,11 +142,11 @@ In the sections that follow, I will introduce you to several
 directories and files on the CHPC servers. Each one is described by
 its ``path name'' relative to your own ``home directory,'' which is
 represented by the symbol \verb|~|. Before these path names will work,
-you'll need to define two ``soft links'' within your own home directory,
-which point to group storage devices owned by the Rogers lab. After
-you define these soft links, \verb|~/grp1| will refer to one of these
-group storage devices and \verb|~/grp2| to the other. As I explained in
-class, you can establish these links by typing
+you'll need to define two ``soft links'' within your own home
+directory, which point to group storage devices owned by the Rogers
+lab. After you define these soft links, \verb|~/grp1| will refer to
+one of these group storage devices and \verb|~/grp2| to the other. You
+can establish these links by typing
 \begin{verbatim}
     ln -s /uufs/chpc.utah.edu/common/home/rogersa-group1 ~/grp1
     ln -s /uufs/chpc.utah.edu/common/home/rogersa-group2 ~/grp2
@@ -173,7 +173,8 @@ already available on the server at Utah's CHPC.
 \end{description}
 You can use any or all of these in your projects. But you'll also need
 to make at least one more. To do so, copy the following
-\href{weur.slr.html}{script} into a directory of your own:
+\href{https://alanrogers.github.io/agar22/legofit/weur.slr.html}{script}
+into a directory of your own:
 \begin{verbatim}
     ~/grp1/rogers/data/simons/raf/weur.slr
 \end{verbatim}
@@ -215,8 +216,9 @@ work on notchpeak but not on kingspeak. For kingspeak, they should read
 
 \subsection{Working with Legofit}
 \subsubsection{Organizing the top-level directory for a Legofit project}
+For each project, I create a directory tree with the same format.
 
-For each project, I create a directory tree with the same format.  The
+The
 top-level directory contains the following files:
 \begin{description}
 \item[README.md]

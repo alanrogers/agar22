@@ -5,8 +5,9 @@ population size, subdivision, and admixture. Click
 [here](https://alanrogers.github.io/agar22) for the Legofit tutorial.
 This current directory contains:
 
-* xyvdf: directory containing the code and data for the analysis
-  described in the tutorial.
+* europe: directory containing the code and data for the analysis
+  described in the tutorial. The data set studied there includes
+  samples from Europe, Africa, Neanderthals, and a Denisovan.
 
 The complete analysis involves several steps, which are detailed in
 the tutorial. Here's a brief synopsis.
