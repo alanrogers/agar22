@@ -1,7 +1,8 @@
 # AGAR Workshop on Computational Genetics
 
 Timothy Webster and Alan Rogers are hosting the AGAR Workshop on
-Computational Genetics July 27-29, 2022. The workshop will be
+Computational Genetics July 27-29, 2022. The workshop will focus on
+methods for inferring population history and admixture. It will be
 virtual, with lectures via Zoom and materials made available on
 [github](https://github.com/alanrogers/agar22.git).
 
@@ -18,8 +19,7 @@ most likely to benefit from the workshop.
 
 1. Working with genomic data (types of genomic data, pros/cons, etc.).
 Speaker to be announced.
-<!--Invitations: Joanna Malukiewicz, Maria Nieves-Colon,
-and Ainash Childebayeva.-->
+<!--Invitations: Joanna Malukiewicz, and Ainash Childebayeva.-->
 
 2. Reproducible bioinformatic pipelines and working on the command
    line. [Tim Webster](https://www.websterlab.org/)
@@ -28,11 +28,11 @@ and Ainash Childebayeva.-->
 <!--Invitation: Colin Brand-->
 
 4. Introgression: background and
-   theory. [Shyamalika Gopalan](https://www.goldberglab.org/people). 
+   theory. Shyamalika Gopalan.
 
 5. Admixtools. Robert Maier
 
-6. Legofit. [Alan Rogers](https://anthro.utah.edu/profile.php?unid=u0028949)
+6. Legofit. Alan Rogers
 
 # Background reading
 
@@ -45,3 +45,35 @@ and Ainash Childebayeva.-->
 * [Legofit](legofit/legotut.pdf)
 
 * [Msprime](msprime/msptut.pdf)
+
+# Faculty
+
+* Shyamalika Gopalan is a postdoc in the
+  [Goldberg lab](https://www.goldberglab.org/people) at Duke
+  University. She has [extensive experience][gopalan:scholar] using
+  genetic data to infer population history.
+
+* [Robert Maier](https://heb.fas.harvard.edu/people/robert-maier) is a
+  Research Fellow at the Broad Institute, Harvard University. He is
+  the lead developer of AdmixTools2, which he will teach during the
+  workshop. 
+
+* [Alan Rogers](https://anthro.utah.edu/profile.php?unid=u0028949) is
+  in the Anthro Dept of Anthropology of the University of Utah. He has
+  developed several methods for inferring population history from
+  genetic data. He will cover one of those
+  methods--[Legofit](https://alanrogers.github.io/legofit/html/index.html)
+  during the workshop.
+
+* [Timothy Webster](https://faculty.utah.edu/u6023206-TIM_WEBSTER/hm/index.hml)
+  is in the Anthro Dept of the University of Utah. He uses genomic
+  data and computational methods to understand primate evolution,
+  ecology, and behavior. In particular, he explores (1)
+  macroevolutionary processes, especially speciation, adaptation, and
+  lineage-specific demographic history, (2) modern and historical
+  aspects of behavioral ecology and social organization, and (3) sex
+  chromosome evolution.
+
+
+[gopalan:scholar]:
+(https://scholar.google.com/citations?user=mZhqPRMAAAAJ&hl=en)
