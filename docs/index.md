@@ -41,6 +41,8 @@ Speaker to be announced.
 
 * Chs. 4-5 of [Lecture notes on gene genealogies](ggeneal.pdf)
 
+* [How to install WSL](https://docs.microsoft.com/en-us/windows/wsl/install), the Windows Subsystem for Linux, which any Windows user will need to have to participate
+
 # Tutorials
 
 * [Legofit](legofit/legotut.pdf)
