@@ -41,7 +41,17 @@ Speaker to be announced.
 
 * Chs. 4-5 of [Lecture notes on gene genealogies](ggeneal.pdf)
 
-* [How to install WSL](https://docs.microsoft.com/en-us/windows/wsl/install), the Windows Subsystem for Linux, which any Windows user will need to have to participate
+* During the workshop, we will make use of the
+[Bash shell](https://www.gnu.org/software/bash/manual), a command-line
+interpreter that is widely used in computational genetics. It is
+available on MacOS through the "Terminal" application and on Windows
+through the
+[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install). Anyone
+using Linux will be familiar with it already.
+
+We won't try to teach you Bash, but you should familiarize yourself
+with the basic commands--"ls", "pwd", "cd", "rm", and "mkdir"--and
+also with bash pipes, and the redirection of input and output. 
 
 # Tutorials
 
