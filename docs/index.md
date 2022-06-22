@@ -47,11 +47,10 @@ interpreter that is widely used in computational genetics. It is
 available on MacOS through the "Terminal" application and on Windows
 through the
 [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install). Anyone
-using Linux will be familiar with it already.
-
-We won't try to teach you Bash, but you should familiarize yourself
-with the basic commands--"ls", "pwd", "cd", "rm", and "mkdir"--and
-also with bash pipes, and the redirection of input and output. 
+using Linux will be familiar with it already.  We won't try to teach
+you Bash, but you should familiarize yourself with the basic
+commands--"ls", "pwd", "cd", "rm", and "mkdir"--and also with bash
+pipes, and the redirection of input and output.
 
 # Tutorials
 
