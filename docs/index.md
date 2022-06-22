@@ -41,6 +41,9 @@ Speaker to be announced.
 
 * Chs. 4-5 of [Lecture notes on gene genealogies](ggeneal.pdf)
 
+* [Rogers 2022](https://arxiv.org/abs/2201.02668) Using genetic data
+    to build intuition about population history.
+
 * During the workshop, we will make use of the
 [Bash shell](https://www.gnu.org/software/bash/manual), a command-line
 interpreter that is widely used in computational genetics. It is
