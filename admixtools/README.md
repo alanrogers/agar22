@@ -11,7 +11,7 @@
     devtools::install_github("uqrmaie1/admixtools")
 	library(admixtools)
 
-This will allow you to use admixtools within R's command-line
+This will allow you to use admixtools from R's command line
 interface. To use the browser interface, you'll need to install
 additional packages:
 
