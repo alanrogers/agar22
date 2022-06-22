@@ -1,6 +1,6 @@
 # Admixtools
 
-For Robert.
+* [Tutorial](https://uqrmaie1.github.io/admixtools/articles/admixtools.html)
 
 ## Installing AdmixTools under the R command line
 
@@ -11,7 +11,9 @@ For Robert.
     devtools::install_github("uqrmaie1/admixtools")
 	library(admixtools)
 
-Then:
+This will allow you to use admixtools within R's command-line
+interface. To use the browser interface, you'll need to install
+additional packages:
 
     install.packages("shiny")
     install.packages("htmlwidgets")
@@ -25,8 +27,8 @@ Then:
     install.packages("shinyWidgets")
     install.packages("shinydashboard")
 
-After these packages have been installed, then this works:
+After these have been installed, then this launches the browser
+interface: 
 
     admixtools::run_shiny_admixtools()
 
-[Tutorial](https://uqrmaie1.github.io/admixtools/articles/admixtools.html)
