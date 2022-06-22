@@ -9,11 +9,16 @@
     library(devtools)
     library(usethis)
     devtools::install_github("uqrmaie1/admixtools")
+
+These commands only need to be run once. They install packages onto
+your computer's hard disk. Once they're installed, the following
+command will work:
+
 	library(admixtools)
 
-This will allow you to use admixtools from R's command line
-interface. To use the browser interface, you'll need to install
-additional packages:
+This will allow you to use admixtools from R's command line interface,
+or in an R program. If you want to use the browser interface, you'll
+need to install additional packages:
 
     install.packages("shiny")
     install.packages("htmlwidgets")
