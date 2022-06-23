@@ -21,13 +21,12 @@ To apply, [please fill out this form](https://forms.gle/MoyVS7JsWc94SsSj9).
 
 1. Working with genomic data (types of genomic data, pros/cons, etc.).
 Speaker to be announced.
-<!--Invitations: Joanna Malukiewicz, and Ainash Childebayeva.-->
+<!--Invitations: Ainash Childebayeva.-->
 
 2. Reproducible bioinformatic pipelines and working on the command
    line. [Tim Webster](https://www.websterlab.org/)
 
-3. Simulation with msprime. Speaker to be announced.
-<!--Invitation: Colin Brand-->
+3. Simulation with msprime. Colin Brand.
 
 4. Introgression: background and theory. Shyamalika Gopalan.
 
