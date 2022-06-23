@@ -62,6 +62,14 @@ pipes, and the redirection of input and output.
 
 # Faculty
 
+* [Colin Brand](https://colinmbrand.weebly.com) is a postdoc in the
+  [Capra Lab](https://http://www.capralab.org) at UCSF. His current
+  research focuses on understanding evolutionary processes,
+  particularly adaptation and introgression, in humans and non-human
+  primates.  He also studies variation in the behavior and ecology of
+  non-human primates. Finally, He's interested in the care, health, and
+  management of zoo-housed primates and other taxa.
+
 * Shyamalika Gopalan is a postdoc in the
   [Goldberg lab](https://www.goldberglab.org/people) at Duke
   University. She has
