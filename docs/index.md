@@ -82,9 +82,9 @@ pipes, and the redirection of input and output.
   workshop. 
 
 * [Alan Rogers](https://anthro.utah.edu/profile.php?unid=u0028949) is
-  in the Anthro Dept of Anthropology of the University of Utah. He has
-  developed several methods for inferring population history from
-  genetic data. He will cover one of those methods,
+  in the Anthro Dept of the University of Utah. He has developed
+  several methods for inferring population history from genetic
+  data. He will cover one of those methods,
   [Legofit](https://alanrogers.github.io/legofit/html/index.html),
   during the workshop.
 
