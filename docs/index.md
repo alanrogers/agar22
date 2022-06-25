@@ -20,7 +20,7 @@ To apply, [please fill out this form](https://forms.gle/MoyVS7JsWc94SsSj9).
 # Modules
 
 1. Working with genomic data (types of genomic data, pros/cons, etc.).
-Speaker to be announced.
+Ainash Childebayeva.
 <!--Invitations: Ainash Childebayeva.-->
 
 2. Reproducible bioinformatic pipelines and working on the command
@@ -69,6 +69,10 @@ pipes, and the redirection of input and output.
   primates.  He also studies variation in the behavior and ecology of
   non-human primates. Finally, He's interested in the care, health, and
   management of zoo-housed primates and other taxa.
+
+* [Ainash Childebayeva](https://sph.umich.edu/stories/2020posts/ainash-childebayeva.html)
+  is in the Dept of Archaeogenetics, in the
+  [Max Planck Instute of Evolutionary Anthropology](https://pure.mpg.de/cone/persons/resource/persons242932).
 
 * Shyamalika Gopalan is a postdoc in the
   [Goldberg lab](https://www.goldberglab.org/people) at Duke
