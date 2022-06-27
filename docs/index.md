@@ -64,11 +64,8 @@ pipes, and the redirection of input and output.
 
 * [Colin Brand](https://colinmbrand.weebly.com) is a postdoc in the
   [Capra Lab](https://http://www.capralab.org) at UCSF. His current
-  research focuses on understanding evolutionary processes,
-  particularly adaptation and introgression, in humans and non-human
-  primates.  He also studies variation in the behavior and ecology of
-  non-human primates. Finally, He's interested in the care, health, and
-  management of zoo-housed primates and other taxa.
+  research focuses on characterizing adaptation and introgression in non-human
+  primates and predicting phenotypes from genomic data in archaic hominins.
 
 * [Ainash Childebayeva](https://sph.umich.edu/stories/2020posts/ainash-childebayeva.html)
   is in the Dept of Archaeogenetics, in the
