@@ -7,8 +7,6 @@
 #SBATCH --ntasks 1
 #SBATCH -e pclgo.err # stderr
 
-# Exclude dimensions that account for less than a fraction 0.001 of
-# the variance.
 cmd="(grep ^# a.lgo;"
 cmd+=" pclgo a.lgo a2.legofit a2boot*.legofit;"
 cmd+=" grep -v ^# a.lgo | egrep -v \"\<free\>\")"

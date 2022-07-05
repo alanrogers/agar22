@@ -12,7 +12,7 @@ i=${SLURM_ARRAY_TASK_ID}
 ifile=`printf "../boot/boot%d.opf" $i`    # input file
 lgofile=a.lgo
 
-time legofit -1 -d 0 --tol 3e-6 -S 5000@ ${lgofile} ${ifile} \
+time legofit -1 -d 0 --tol 3e-6 -S 5000 ${lgofile} ${ifile} \
   --stateIn a1.state \
   --stateIn a1boot0.state \
   --stateIn a1boot1.state \

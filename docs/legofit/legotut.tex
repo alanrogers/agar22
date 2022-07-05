@@ -20,12 +20,21 @@ This is a tutorial on Legofit, a package that uses genetic data to
 estimate the history of population size, subdivision, and admixture
 \citep{Rogers:BMC-20-526, Rogers:PCJ-2-e32}. The full documentation is
 available
-\href{http://alanrogers.github.io/legofit/html/index.html}{online}.
+\href{http://alanrogers.github.io/legofit/html/index.html}{online}. It
+will step you through the process of installing the software, using it
+to create the input files used by the legofit program, and then
+analyzing these data to fit a model of population history. We will
+assume that data files are already available in .vcf format.
+
+This tutorial will be used in the 2022 edition of the AGAR
+Workshop. During the workshop, we will do only last step in this
+process, which estimates population history from the frequencies of
+nucleotide site patterns (explained below). We will not do the
+preliminary steps, which tabulate these site pattern
+frequencies. Nonetheless, this tutorial describes the whole process.
 
 \section{Installing and Using Legofit}
-
 \subsection{Install git if necessary}
-
 You may have git already. To find out whether you do, type:
 \begin{verbatim}
     type git
@@ -155,7 +164,7 @@ If everyone in the lab defines these soft links in the same way, then
 we can all use path names of the form
 \verb|~/grp1/rogers/data/whatever|.
 
-\subsection{Making a file in .raf format}
+\subsection{Making an input file in .raf format}
 Legofit uses data in ``.raf'' format. The following data sets are
 already available on the server at Utah's CHPC.
 \begin{description}
@@ -332,7 +341,9 @@ under study. The syntax of a .lgo file is described in the
   \item[\texttt{a2.slr}]
 \end{description}    
 
-%some text
+\begin{verbatim}
+sed -i "" 's/5000/100/g' *.sh 
+\end{verbatim}
 
 \printbibliography
 
