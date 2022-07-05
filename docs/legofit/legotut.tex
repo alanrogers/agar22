@@ -313,14 +313,21 @@ data. In research, you would want a smaller number here. The next
 argument, \texttt{a.lgo}, is the file describing the model of history,
 and the final argument, \texttt{../data.opf}, is the data file.
 
-\subsubsection{Organizing the subdirectory for each model}
-File
-\href{https://github.com/alanrogers/agar22/tree/main/legofit/europe/a/a1.slr}{a1.slr}
-is a script, which can be interpreted by ``slurm,'' a program that
-manages jobs on a compute cluster. Have a look at this file. Rather
-than executing it on the cluster, start with a similar analysis on
-your own computer.
-
+\subsubsection{Studying a model of history}
+For any given data set, you will want to study several models. It is
+convenient to keep the files relating to a given model in a directory
+just under the one that holds the data file. The directory for each
+model contains the following files:
+\begin{description}
+  \item[\texttt{a.lgo}] describes the model of history
+under study. The syntax of a .lgo file is described in the
+\href{http://alanrogers.github.io/legofit/html/index.html#lgo}{legofit
+  documentation}.
+  \item[\texttt{a1.slr}}] is a script, which can be interpreted by
+    ``slurm,'' a program that manages jobs on a compute cluster. Have
+    a look at this file. Rather than executing it on the cluster,
+    start with a similar analysis on your own computer.
+\end{description}    
 
 \printbibliography
 
