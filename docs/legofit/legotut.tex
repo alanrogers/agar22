@@ -323,11 +323,16 @@ model contains the following files:
 under study. The syntax of a .lgo file is described in the
 \href{http://alanrogers.github.io/legofit/html/index.html#lgo}{legofit
   documentation}.
-  \item[\texttt{a1.slr}}] is a script, which can be interpreted by
-    ``slurm,'' a program that manages jobs on a compute cluster. Have
-    a look at this file. Rather than executing it on the cluster,
-    start with a similar analysis on your own computer.
+  \item[\texttt{a1.slr}] is a script, which can be interpreted by
+    ``slurm,'' a program that manages jobs on a compute cluster. This
+    file runs legofit on the real data.
+  \item[\texttt{a1boot.slr}] a slurm script that runs legofit on a
+    bootstrap replicate. This script is run once for each bootstrap
+    replicate, using slurm's \texttt{sbatch --array} command.
+  \item[\texttt{a2.slr}]
 \end{description}    
+
+%some text
 
 \printbibliography
 
