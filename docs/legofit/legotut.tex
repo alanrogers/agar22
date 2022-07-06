@@ -18,13 +18,13 @@
 \section{Introduction}
 This is a tutorial on Legofit, a package that uses genetic data to
 estimate the history of population size, subdivision, and admixture
-\citep{Rogers:BMC-20-526, Rogers:PCJ-2-e32}. The full documentation is
-available
-\href{http://alanrogers.github.io/legofit/html/index.html}{online}. It
-will step you through the process of installing the software, using it
-to tabulate the frequencies of nucleotide site patterns, and then
-analyzing these data to fit a model of population history. We will
-assume that data files are already available in .vcf format.
+\citep{Rogers:BMC-20-526, Rogers:PCJ-2-e32}. It will step you through
+the process of installing the software, using it to tabulate the
+frequencies of nucleotide site patterns, and then analyzing these data
+to fit a model of population history. We will assume that data files
+are already available in .vcf format. The full Legofit documentation
+is available
+\href{http://alanrogers.github.io/legofit/html/index.html}{online}.
 
 This tutorial will be used in the 2022 edition of the AGAR
 Workshop. During the workshop, we will do only last step in this
@@ -43,7 +43,32 @@ the last step, which can be done in two ways: either on the CHPC
 (using SLURM), or on your own computer (using the bash shell). This
 tutorial will cover both environments.
 
-\section{Installing and Using Legofit}
+The material below is organized into the following sections:
+\begin{enumerate}
+\item[\ref{sec.install}] Installing Legofit on your own machine
+\item[\ref{sec.chpc}] Setting up your environment at the CHPC  
+\item[\ref{sec.raf}] Making an input file in .raf format
+\item[\ref{sec.tabulate}] Tabulating site pattern frequencies
+\item[\ref{sec.fit}] Fitting models of history
+\item[\ref{sec.msma}] Model selection and model averaging
+\item[\ref{sec.graph}] Graphing results
+\end{enumerate}
+Try to install Legofit (sec.~\ref{sec.install}) on your own before the
+workshop starts. We'll help with installation problems during the
+workshop, but that will take less time if you've already made a start.
+The workshop will not cover
+secs.~\ref{sec.raf}--\ref{sec.tabulate}. Those sections are only for
+reference, when you work with Legofit on your own. During the
+workshop, most of our efforts will be on fitting models
+(sec.~\ref{sec.fit}), but we'll spend some time at the end on model
+selection, model averaging, and graphing
+(secs.~\ref{sec.msma}--\ref{sec.graph}).
+
+\section{Installing Legofit}
+\label{sec.install}
+This section explains how to get Legofit running on your own
+computer. (It's already installed on the CHPC, so these steps are not
+ needed there.)
 \subsection{Install git if necessary}
 You may have git already. To find out whether you do, type:
 \begin{verbatim}
@@ -154,8 +179,10 @@ This will print your PATH.
 \subsection{Compile and install legofit}
 The details are in the
 \href{http://alanrogers.github.io/legofit/html/index.html}{Legofit
-  documentation}. 
+  documentation}.
 
+\section{Setting up your environment at the CHPC}
+\label{sec.chpc}
 \subsection{Soft links to group storage}
 In the sections that follow, I will introduce you to several
 directories and files on the CHPC servers. Each one is described by
@@ -174,7 +201,8 @@ If everyone in the lab defines these soft links in the same way, then
 we can all use path names of the form
 \verb|~/grp1/rogers/data/whatever|.
 
-\subsection{Making an input file in .raf format}
+\section{Making an input file in .raf format}
+\label{sec.raf}
 Legofit uses data in ``.raf'' format. The following data sets are
 already available on the server at Utah's CHPC.
 \begin{description}
@@ -233,6 +261,10 @@ work on notchpeak but not on kingspeak. For kingspeak, they should read
     #SBATCH --partition=rogersa-kp
 \end{verbatim}
 
+\section{Tabulating site patterns}
+\label{sec.tabulate}
+\section{Fitting models of history}
+\label{sec.fit}
 \subsection{Working with Legofit}
 \subsubsection{Organizing the top-level directory for a Legofit project}
 For each project, I create a directory tree with the same format,
@@ -354,6 +386,12 @@ under study. The syntax of a .lgo file is described in the
 \begin{verbatim}
 sed -i "" 's/5000/100/g' *.sh 
 \end{verbatim}
+
+\section{Model selection and model averaging}
+\label{sec.msma}
+
+\section{Graphing results}
+\label{sec.graph}
 
 \printbibliography
 
