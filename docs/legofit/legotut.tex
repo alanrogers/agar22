@@ -67,8 +67,8 @@ selection, model averaging, and graphing
 \section{Installing Legofit}
 \label{sec.install}
 This section explains how to get Legofit running on your own
-computer. (It's already installed on the CHPC, so these steps are not
- needed there.)
+computer. It's already installed on the CHPC, so these steps are not
+ needed there.
 \subsection{Install git if necessary}
 You may have git already. To find out whether you do, type:
 \begin{verbatim}
@@ -76,10 +76,14 @@ You may have git already. To find out whether you do, type:
 \end{verbatim}
 On Mac or Linux, this will print the location of the executable git
 file. If there is no such file, you'll get an error message saying
-\texttt{type: git: not found}. In that case, install git:
+\texttt{type: git: not found}. I recommend using
+\href{https://brew.sh}{homebrew} to install packages on a Mac. To
+install git using homebrew, type:
 \begin{verbatim}
     brew install git
 \end{verbatim}
+Otherwise, visit \href{https://git-scm.com}{git's website} and look
+for the download instructions.
 
 \subsection{Clone legofit}
 Use git to clone Legofit onto your machine. This step will create a
@@ -94,7 +98,7 @@ people have written. I keep such code in a directory called
 \end{verbatim}
 Then clone legofit by typing:
 \begin{verbatim}
-    git clone git@github.com:alanrogers/legofit.git legofit
+    git clone https://github.com/alanrogers/legofit.git legofit
 \end{verbatim}
 This will create a directory called legofit. Use \texttt{cd} to move into it.
 
@@ -183,6 +187,12 @@ The details are in the
 
 \section{Setting up your environment at the CHPC}
 \label{sec.chpc}
+These instructions are needed only if you're using the facilities of
+the Center for High Performance Computing (CHPC) at the University of
+Utah. We are in the process of getting that set up for the
+workshop. The current instructions may need to change once we get that
+set up.
+
 \subsection{Soft links to group storage}
 In the sections that follow, I will introduce you to several
 directories and files on the CHPC servers. Each one is described by
@@ -197,9 +207,8 @@ can establish these links by typing
     ln -s /uufs/chpc.utah.edu/common/home/rogersa-group1 ~/grp1
     ln -s /uufs/chpc.utah.edu/common/home/rogersa-group2 ~/grp2
 \end{verbatim}
-If everyone in the lab defines these soft links in the same way, then
-we can all use path names of the form
-\verb|~/grp1/rogers/data/whatever|.
+If everyone defines these soft links in the same way, then we can all
+use path names of the form \verb|~/grp1/rogers/data/whatever|.
 
 \section{Making an input file in .raf format}
 \label{sec.raf}
@@ -263,8 +272,61 @@ work on notchpeak but not on kingspeak. For kingspeak, they should read
 
 \section{Tabulating site patterns}
 \label{sec.tabulate}
+Legofit works with the frequencies of ``nucleotide site patterns,''
+which are explained in 
+\href{http://alanrogers.github.io/legofit/html/index.html#sitepattern}{this
+  section} of the Legofit website. During the workshop, you will not
+need to tabulate site patterns, because I'll do that for you before
+the workshop begins. This section is here to help you do the job on
+your own, after the workshop.
+
+The Legofit package includes several programs for tabulating site
+patterns. I'll focus here on ``sitepat,'' which works with data files
+rather than with the output of a simulation program. Sitepat reads a
+series of files in
+\href{http://alanrogers.github.io/legofit/html/index.html#sitepattern}{.raf
+  format} and writes a file describing the frequency of each site
+pattern. Optionally, it also writes a series of output files, each
+describing site pattern frequencies in a different
+\href{https://en.wikipedia.org/wiki/Bootstrapping_(statistics)}{bootstrap
+  replicate}. These replicates are used for measuring statistical
+uncertainty. Details are in the
+\href{https://alanrogers.github.io/legofit/html/sitepat.html}{Legofit
+  docs}. Sitepat reads enormous data files and can take hours to run,
+even on a compute cluster. That is why we aren't doing this step
+during the workshop.
+
+Have a look at file
+\href{https://github.com/alanrogers/agar22/blob/main/legofit/europe/data.opf}{data.opf}. After
+the header, the first few lines look like
+\begin{verbatim}
+#       SitePat             E[count]           loBnd           hiBnd
+              x       312922.8110121  311974.2398439  313732.1909228
+              y       306301.1413693  305178.5610866  307121.6833708
+              v       102039.5699405  101293.0904018  102887.7097098
+              a        78653.9538690   77779.2808408   79467.4795387
+              d       339489.6889881  337728.6566221  341531.9807664
+            x:y       189532.2514885  187871.4715776  191321.2242190
+\end{verbatim}
+The left column lists the site patterns. ``E[count]'' is (more or
+less) the number of sites exhibiting each site pattern. (For a full
+explanation, see the
+\href{https://alanrogers.github.io/legofit/html/index.html#sitepattern}{Legofit
+  docs}.) The values under ``loBnd'' and ``hiBnd'' enclose a 95\%
+confidence interval. The frequency of site pattern ``x'' is its value
+of ``E[count]'' divided by the sum of all the values under ``E[count].''
+
+It's best to run sitepat within a script, both because it takes awhile
+to run, and also because the script will document what you did.
+\href{https://github.com/alanrogers/agar22/blob/main/legofit/europe/sitepat.slr}{Here}
+is the slurm script that generated the output above.
+
 \section{Fitting models of history}
 \label{sec.fit}
+First read the section on
+\href{http://alanrogers.github.io/legofit/html/index.html#lgo}{describing
+  population history} in the Legofit documentation.
+
 \subsection{Working with Legofit}
 \subsubsection{Organizing the top-level directory for a Legofit project}
 For each project, I create a directory tree with the same format,
@@ -299,37 +361,6 @@ short. Mine tend to have names like ``a,'' ``b,'' ``ab,'' etc. The
 ``a'' directory contains a model in which there is only one episode of
 admixture, labeled $\alpha$. The ``ab'' directory is for a model that
 has episodes $\alpha$ and $\beta$.
-
-\subsubsection{Tabulating site patterns}
-The next step is to run sitepat, which reads a series of .raf files
-and writes a file describing the frequency of each site
-pattern. Optionally, it also writes a series of output files, each
-describing site pattern frequencies in a different
-\href{https://en.wikipedia.org/wiki/Bootstrapping_(statistics)}{bootstrap
-  replicate}. These replicates are used for measuring statistical
-uncertainty. Details are in the
-\href{https://alanrogers.github.io/legofit/html/sitepat.html}{Legofit
-  docs}. Sitepat reads enormous data files and can take hours to run,
-even on a compute cluster. In this workshop, I'll do this step for
-you.
-
-Have a look at file
-\href{https://github.com/alanrogers/agar22/blob/main/legofit/europe/data.opf}{data.opf}. After
-the header, the first few lines look like
-\begin{verbatim}
-#       SitePat             E[count]           loBnd           hiBnd
-              x       312922.8110121  311974.2398439  313732.1909228
-              y       306301.1413693  305178.5610866  307121.6833708
-              v       102039.5699405  101293.0904018  102887.7097098
-              a        78653.9538690   77779.2808408   79467.4795387
-              d       339489.6889881  337728.6566221  341531.9807664
-            x:y       189532.2514885  187871.4715776  191321.2242190
-\end{verbatim}
-The left column lists the site patterns. ``E[count]'' is (more or
-less) the number of sites exhibiting each site pattern. (For a full
-explanation, see the
-\href{https://alanrogers.github.io/legofit/html/index.html#sitepattern}{Legofit
-  docs}.)
 
 
 \subsubsection{Running legofit}
