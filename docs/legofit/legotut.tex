@@ -9,6 +9,8 @@
 \usepackage{graphicx}
 \addbibresource{defs.bib}
 \addbibresource{arrpubs.bib}
+\addbibresource{math.bib}
+\addbibresource{tree.bib}
 \begin{document}
 \title{A Legofit Tutorial}
 \author{Alan R. Rogers}
@@ -390,7 +392,147 @@ data. In research, you would want a smaller number here. The next
 argument, \texttt{a.lgo}, is the file describing the model of history,
 and the final argument, \texttt{../data.opf}, is the data file.
 
-\subsubsection{Studying a model of history}
+Now lets examine the output of that last command. The first section of output
+echoes the the legofit command and the input parameters, along with
+default values of parameters that we didn't set on the command line.
+\begin{verbatim}
+########################################
+# legofit: estimate population history #
+#      version 2.3.8-12-gf1f00c9       #
+########################################
+#
+# Program was compiled: Jun 21 2022 11:28:40
+# Program was run: Thu Jul  7 20:38:55 2022
+#
+# cmd: legofit -1 -d 0 --tol 1e-3 a.lgo ../data.opf
+# curr dir: /Users/rogers/txt/agar22/legofit/europe/a
+# Stage nOptItr nSimReps
+#     0    1000        1
+# algorithm          : deterministic
+# ignoring probs <=  : 0
+# Branch length floor: 0
+# DE strategy        : 2
+#    F               : 0.3
+#    CR              : 0.8
+#    tolerance       : 0.001
+# nthreads           : 2
+# lgo input file     : a.lgo
+# site pat input file: ../data.opf
+# free parameters    : 12
+# points in DE swarm : 120
+# Including singleton site patterns.
+# cost function      : KL
+\end{verbatim}
+In the output above, ``tolerance'' is the value we specified as
+\texttt{--tol 1e-3} on the command line.  The next section prints the
+initial values of all parameters, as read from the .lgo file.
+\begin{verbatim}
+Initial parameter values
+Fixed:
+      zero = 0
+       one = 1
+       TmN = 1
+     Txynd = 25920
+Free:
+       Tnd = 24000
+       Tav = 14000
+       Txy = 10000
+        Td = 2500
+        Ta = 4000
+        Tv = 1000
+    twoNav = 2000
+     twoNn = 2000
+    twoNnd = 2000
+    twoNxy = 20000
+  twoNxynd = 20000
+        mN = 0.01
+\end{verbatim}
+Then comes a line that tells us the result of the optimization procedure.
+\begin{verbatim}
+DiffEv reached_goal. cost=7.22802e-04 spread=8.77863e-04
+\end{verbatim}
+To understand this line, you need to know how legofit fits parameters
+to data. It uses something called ``KL divergence''
+\citep{Kullback:AMS-22-79} to measure the difference between observed
+site pattern frequencies and those predicted by the model of history.
+Legofit searches for parameter values that minimize KL divergence,
+which is called ``cost'' in the output above. The value printed there
+(7.22802e-04) is the lowest KL divergence legofit was able to
+find. This search is conducted by an algorithm called ``differential
+evolution'' (DE) \citep{Price:DE-06}. DE maintains a swarm of points,
+each representing a guess about parameter values.  In each iteration
+of the algorithm, the best points (those with lowest KL) mutate,
+recombine, and reproduce to produce a new generation of points. The
+algorithm stops when the difference between the best point and the
+worst (called ``spread'' in the output above) falls to a specified
+tolerance. As you can see in this output, spread is smaller than
+0.001, the tolerance we specified using ``\texttt{--tol 1e-3}'' on the
+command line. Thus, the algorithm has reached its goal, and this is
+why it printed \verb|DiffEv reached_goal| in the output above. This
+goal is arbitrary, and the output can be useful even when the goal is
+not reached.
+
+The next section of output lists the fitted values of all parameters.
+\begin{verbatim}
+Fitted parameter values
+Free:
+       Tnd = 24871.7
+       Tav = 16727.1
+       Txy = 13090.4
+        Td = 1494.04
+        Ta = 5346.73
+        Tv = 2660.19
+    twoNav = 14309.4
+     twoNn = 8788.21
+    twoNnd = 2998.19
+    twoNxy = 23935.7
+  twoNxynd = 46699.2
+        mN = 0.0198353
+\end{verbatim}
+Finally, legofit prints the expected branch length associated with
+each site pattern in the fitted model.
+\begin{verbatim}
+#       SitePat  BranchLen
+              x 38204.0073508
+              y 37200.1770458
+              v 12628.3146863
+              a 10003.0899715
+              d 41976.1547361
+            x:y 22591.0958761
+            x:v 274.3861485
+            x:a 278.8300856
+            x:d 3121.4558596
+            y:v 383.1800171
+            y:a 321.8630482
+            y:d 2936.3292837
+            v:a 28571.5881777
+            v:d 1060.8437350
+            a:d 1067.6185093
+          x:y:v 576.2188433
+          x:y:a 571.7749063
+          x:y:d 7001.3957667
+          x:v:a 2884.5519560
+          x:v:d 225.8439349
+          x:a:d 230.2878720
+          y:v:a 3460.0030731
+          y:v:d 235.9020933
+          y:a:d 229.1273190
+          v:a:d 17599.3335385
+        x:y:v:a 7238.2996703
+        x:y:v:d 624.7610570
+        x:y:a:d 620.3171199
+        x:v:a:d 5567.0327885
+        y:v:a:d 6019.8141157
+\end{verbatim}
+For example, the expected branch length of site pattern $x$ is
+38204.0073508 generations. This is the average length, within the gene
+genealogy, of the branch that, should a mutation strike it, would
+generate the $x$ site pattern. Under the model of infinite sites
+\citep{Kimura:InfiniteSites}, the probability of a site pattern is
+proportional to its expected length and can be calculated as the ratio
+of this length to the sum of all the lengths.
+
+\subsection{Studying a model of history}
 For any given data set, you will want to study several models. It is
 convenient to keep the files relating to a given model in a directory
 just under the one that holds the data file. The directory for each
