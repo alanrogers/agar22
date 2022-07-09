@@ -937,7 +937,63 @@ lines of output look like this
 The first number in the left column is the bepe value of the real
 data. This is the number to use in choosing among models. The numbers
 below this one refer to bootstrap replicates and are use by booma,
-which is discussed below.
+to which we now turn.
+
+If one model has a bepe value much lower than the others, then it's a
+pretty obvious winner. But what if the best bepe is only slightly
+lower than the second best? When several models provide reasonable
+descriptions of the data, it is better to average across models than
+to choose just one. This allows uncertainty about the model itself to
+be incorporated into confidence intervals. For this purpose, Legofit
+uses bootstrap model averaging, ``booma''
+\citep{Buckland:B-53-603,Rogers:BMC-20-526}. The booma weight of the
+$i$th model is the fraction of data sets (including the real data and
+50 bootstrap replicates) in which that model ``wins,'' i.e.\ has the
+lowest value of bepe.
+
+If you have fit several models to the same data, you can use Legofit's
+``booma'' program to calculate model-averaged estimates. Before
+running booma, make sure that the directory for each model has a file
+named ``b2.bepe.'' Each directory should also contain a file named
+``b2.flat,'' which contains a row for each data set and a column for
+each estimated parameter. To create these files, \texttt{cd} into the
+directory for each model, and type
+\begin{verbatim}
+flatfile.py b2.legofit b2boot*.legofit > b2.flat
+\end{verbatim}
+Within the agar22 repository, all the model directories with
+\texttt{legofit/europe} already have both b2.bepe and b2.flat. From
+the parent directory (the one that contains data.opf), type
+\begin{verbatim}
+booma */b2.bepe -F */b2.flat > all.bma
+\end{verbatim}
+This will create a file called ``all.bma'' that gives the booma weight
+of each model and also the model-averaged parameter estimates. The
+first few lines look like this
+\begin{verbatim}
+##################################
+# booma: bootstrap model average #
+#    version 2.3.9-7-g8bbcef2    #
+##################################
+#
+# Program was compiled: Jul  9 2022 14:41:56
+# Program was run: Sat Jul  9 14:50:30 2022
+# cmd: booma a/b2.bepe ab/b2.bepe abc/b2.bepe abcd/b2.bepe abd/b2.bepe ac/b2.be>
+# curr dir: /Users/rogers/txt/agar22/legofit/europe
+#         Weight        MSC_file       Flat_file
+#              0       a/b2.bepe       a/b2.flat
+#              0      ab/b2.bepe      ab/b2.flat
+#              0     abc/b2.bepe     abc/b2.flat
+#   0.9803921569    abcd/b2.bepe    abcd/b2.flat
+#  0.01960784314     abd/b2.bepe     abd/b2.flat
+#              0      ac/b2.bepe      ac/b2.flat
+#              0     acd/b2.bepe     acd/b2.flat
+#              0      ad/b2.bepe      ad/b2.flat
+\end{verbatim}
+Only two of the models (abc and abcd) have non-zero weights.
+These weights are used in calculated the model-averaged parameter
+estimates, which are listed below the weights.
+
 
 \section{Graphing results}
 \label{sec.graph}
