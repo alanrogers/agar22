@@ -890,7 +890,7 @@ instead, because it's simpler.
 \label{sec.snakemake}
 This section hasn't been written yet.
 
-\section{Model selection and model averaging}
+\section{Model selection, model averaging, and confidence intervals}
 \label{sec.msma}
 As discussed above, legofit uses KL divergence to measure the
 difference between observed and expected site pattern frequences, and
@@ -1006,6 +1006,25 @@ under a given model.
 
 \section{Graphing results}
 \label{sec.graph}
+You will find three R scripts in the agar22 repository, in directory
+\texttt{legofit/europe/abcd}:
+\begin{center}
+  \begin{tabular}{ll}
+  b2pairs.r & makes a pairwise scatterplot like
+  Fig.~\ref{fig.pairs}\\
+  resid.r & plots residual error as in Fig.~5 of \citep{Rogers:PCJ-2-e32}\\
+  dotplot.r & plots confidence intervals as in Fig.~7 of
+  \citep{Rogers:PCJ-2-e32}\\
+  \end{tabular}
+\end{center}
+To use these, first make sure that R is installed on your system. Then
+copy them into the directory that contains your own fitted model, edit
+them so that the labels correspond to those in your own model, and so
+that the output file is named according to your taste. Then run, for
+example,
+\begin{verbatim}
+Rscript b2pairs.r
+\end{verbatim}
 
 \printbibliography
 
