@@ -16,6 +16,7 @@
 \author{Alan R. Rogers}
 \date{\today}
 \maketitle
+\tableofcontents
 
 \section{Introduction}
 This is a tutorial on Legofit, a package that uses genetic data to
@@ -138,9 +139,9 @@ brew install make
 
 \subsection{Set up a ``bin'' directory to hold executable files.}
 On Unix-like operating systems (MacOS and Linux) it is conventional
-for each user to maintain a directory named "bin", just below the home
-directory, which contains executable files. This directory must also
-be added to the system's PATH variable, which is used for finding
+for each user to maintain a directory named ``bin,'' just below the
+home directory, which contains executable files. This directory must
+also be added to the system's PATH variable, which is used for finding
 executable files.
 
 First create a ``bin'' directory, if you don't already have one. To do
@@ -195,22 +196,101 @@ Utah. We are in the process of getting that set up for the
 workshop. The current instructions may need to change once we get that
 set up.
 
-\subsection{Soft links to group storage}
+Utah's CHPC has several ``clusters,'' each with many ``nodes.''  Each
+node is a powerful computer in its own right. The
+\href{https://slurm.schedmd.com/documentation.html}{SLURM} version of
+the pipeline submits legofit jobs to multiple nodes so that they can
+run in parallel. Within each node, legofit parallelizes across all
+available cores. This greatly reduces the time required for an
+analysis.
+
+To log into a CHPC cluster, your own computer must support ssh. To
+find out whether it does, type the command
+\begin{verbatim}
+type ssh
+\end{verbatim}
+at the bash prompt. If ssh is on your system, the response will be
+something like
+\begin{verbatim}
+ssh is /usr/bin/ssh
+\end{verbatim}
+If ssh is not on your system, the response will be
+\begin{verbatim}
+-bash: type: ssh: not found
+\end{verbatim}
+In the latter case, install \href{https://www.openssh.com}{openssh} by
+typing
+\begin{verbatim}
+brew install openssh
+\end{verbatim}
+
+Now that you have access to ssh, you can log into one of the CHPC
+clusters by typing the following at the bash prompt. Either
+\begin{verbatim}
+ssh -l <your unid> notchpeak.chpc.utah.edu
+\end{verbatim}
+or
+\begin{verbatim}
+ssh -l <your unid> kingspeak.chpc.utah.edu
+\end{verbatim}
+or
+\begin{verbatim}
+ssh -l <your unid> lonepeak.chpc.utah.edu
+\end{verbatim}
+Here, \verb|<your unid>| is your own University of Utah id. Each of
+these commands will log you onto one of the clusters at Utah's CHPC.
+Then if you haven't already done so, you'll then need to set up your
+CHPC environment as described above in section~\ref{sec.chpc}.
+
 In the sections that follow, I will introduce you to several
 directories and files on the CHPC servers. Each one is described by
 its ``path name'' relative to your own ``home directory,'' which is
-represented by the symbol \verb|~|. Before these path names will work,
-you'll need to define two ``soft links'' within your own home
-directory, which point to group storage devices owned by the Rogers
-lab. After you define these soft links, \verb|~/grp1| will refer to
-one of these group storage devices and \verb|~/grp2| to the other. You
-can establish these links by typing
+represented by the symbol \verb|~|. (In scripts, this directory is
+often called \verb|$HOME|.) Before these path names will work, you'll
+need to define two ``soft links'' within your own home directory,
+which point to group storage devices owned by the Rogers lab. After
+you define these soft links, \verb|~/grp1| will refer to one of these
+group storage devices and \verb|~/grp2| to the other. You can
+establish these links by typing
 \begin{verbatim}
 ln -s /uufs/chpc.utah.edu/common/home/rogersa-group1 ~/grp1
 ln -s /uufs/chpc.utah.edu/common/home/rogersa-group2 ~/grp2
 \end{verbatim}
 If everyone defines these soft links in the same way, then we can all
 use path names of the form \verb|~/grp1/rogers/data/whatever|.
+
+The Legofit executables are already available directory
+\verb|~/grp1/bin|. To make these easily available, use a text editor
+to edit the file \verb|.bash_profile| in your home directory. Within
+that file, you will find a line that defines a variable called
+\texttt{PATH}, which is used by bash to find executable programs. We
+want to add \verb|~/grp1/bin| to the end of \texttt{PATH}, so that
+bash can find the Legofit executables. Edit that line that defines
+\texttt{PATH} so that it looks like this
+\begin{verbatim}
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/grp1/bin
+\end{verbatim}
+Also add the following line at the end of the file
+\begin{verbatim}
+module --latest load git
+\end{verbatim}
+This last line will give you access to the program ``git,'' which
+you'll need to access the agar22 repository. After making these
+changes, save the file and exit the editor. The file
+\verb|.bash_profile| is normally read only once, when you first log
+in. You've only just edited this file, bash doesn't yet know about the
+changes you made there. To fix this, you can either type
+\texttt{logout} and then \texttt{ssh} back in again, or type
+\verb|. .bash_profile|, which tells bash to execute the commands in
+this file.
+
+Finally, clone the agar22 repository into your own home directory on
+the CHPC.
+\begin{verbatim}
+git clone https://github.com/alanrogers/agar22.git agar22
+\end{verbatim}
+This will create a subdirectory called ``agar22,'' which contains
+files related to the workshop.
 
 \section{Making an input file in .raf format}
 \label{sec.raf}
@@ -325,8 +405,9 @@ is the slurm script that generated the output above.
 
 \section{Fitting models of history}
 \label{sec.fit}
-For each project, I create a directory tree with the same format,
-which is illustrated in the github repository at
+\subsection{Organizing the data directory}
+For each set of site pattern data, I create a directory tree with the
+same format, which is illustrated in the github repository at
 \href{https://github.com/alanrogers/agar22/tree/main/legofit/europe}{legofit/europe}. Within
 this directory, you'll find (1)~a README.md file, which describes all
 the others, (2)~a file called ``data.opf,'' which contains observed
@@ -343,6 +424,7 @@ naming scheme, directory ``a'' contains a model in which there is only
 one episode of admixture, labeled $\alpha$; ``ab'' is for a model that
 has episodes $\alpha$ and $\beta$; and so on.
 
+\subsection{Preliminary exercises with legosim and legofit}
 Within the subdirectory for each model, assumptions about population
 history are described in file ``a.lgo.''  These assumptions are
 described using syntax that you can read about
@@ -527,34 +609,286 @@ each site pattern in the fitted model.
 For example, the expected branch length of site pattern $x$ is
 38204.0073508 generations. This is the average length, within the gene
 genealogy, of the branch that, should a mutation strike it, would
-generate the $x$ site pattern. Under the model of infinite sites
+generate site pattern $x$. Under the model of infinite sites
 \citep{Kimura:InfiniteSites}, the expected frequency of a site pattern
 among polymorphic sites is proportional to its expected length and can
 be calculated as the ratio of this length to the sum of all the
 lengths.
 
-\subsection{Studying a model of history}
-For any given data set, you will want to study several models. It is
-convenient to keep the files relating to a given model in a directory
-just under the one that holds the data file. The directory for each
-model contains the following files:
-\begin{description}
-  \item[\texttt{a.lgo}] describes the model of history
-under study. The syntax of a .lgo file is described in the
-\href{http://alanrogers.github.io/legofit/html/index.html#lgo}{legofit
-  documentation}.
-  \item[\texttt{a1.slr}] is a script, which can be interpreted by
-    ``slurm,'' a program that manages jobs on a compute cluster. This
-    file runs legofit on the real data.
-  \item[\texttt{a1boot.slr}] a slurm script that runs legofit on a
-    bootstrap replicate. This script is run once for each bootstrap
-    replicate, using slurm's \texttt{sbatch --array} command.
-  \item[\texttt{a2.slr}]
-\end{description}    
+\subsection{A legofit pipeline}
+\label{sec.pipeline}
+A minimal legofit analysis would consist of just one run of the
+program, such as the one we did above. This provides a point estimate
+of each parameter but does not estimate the uncertainties of those
+estimates. To estimate uncertainties, you also need to run legofit on
+each bootstrap estimate. Having done all that, you have completed what
+I like to call ``stage~1'' of a complete analysis.
 
+The second stage of analysis is designed to guard against a problem
+that often arises when one tries to find the minimum of a complex
+function. The cost function may have many
+\href{https://en.wikipedia.org/wiki/Maxima_and_minima}{local minima}
+(low spots), some of which are deeper than others. We are looking for
+the ``global minimum,'' which is the deepest of these local
+minima. The DE algorithm is pretty good at finding global minima, but
+it isn't perfect. It's possible that the legofit runs from stage~1
+ended up at several local minima. Stage~2 is designed to choose among
+these local minima.
+
+To make this possible, each job in stage~1 uses the
+\texttt{--stateOut} option, which tells legofit to write a file
+summarizing the final state of the DE swarm. Then, each job in
+stage~2 uses the \texttt{--stateIn} option, which tells legofit to
+initialize its swarm of DE points by reading all the state files
+produced by stage~1. Thus, each legofit job in stage~2 begins with a
+DE swarm that includes points from all the legofit jobs of stage~1. If
+the initial swarm includes points from several local minima, then
+legofit can choose among these to find the global minimum.
+
+In addition to multiple local minima, legofit also faces another
+problem: a small increase in the value of one parameter may have
+nearly the same effect as a small decrease in another. This problem
+can be seen in Fig.~\ref{fig.pairs}, where some parameter estimates
+are tightly correlated with others. These correlations make it hard
+for the optimizer to zero in on optimal parameter values.
+
+\begin{figure*}
+  {\centering
+    \includegraphics[width=\linewidth]{detpairs.pdf}\\}
+  \caption{Scatter plot of each parameter against each other, based on
+    50 simulated data sets. After \citet[Fig.~3]{Rogers:PCJ-2-e32}.}
+  \label{fig.pairs}
+\end{figure*}
+
+To ameliorate this problem, I use the ``pclgo'' program (within the
+Legofit package). It uses principal components analysis to reexpress
+all free parameters as functions of a set of uncorrelated ``principal
+components.'' Optionally, you can tell pclgo to ignore principal
+components that account only for a tiny fraction of the variance. This
+step rewrites a.lgo to produce a new file called ``b.lgo.'' In this
+new file, all free variables are principal components, and all the
+real variables are functions of the principal components.  The third
+and fourth stages of analysis are just like the first and second,
+except that I use b.lgo instead of a.lgo.
+
+There are several ways to organize this four-stage analysis into a
+pipeline. On the CHPC cluster, I use SLURM scripts, which are
+discussed below. First, however, I will introduce a version of the
+pipeline that is written entirely in bash.
+
+\subsubsection{Bash version of pipeline}
+\label{sec.bashpipe}
+Within the agar22 directory tree, \texttt{cd} into directory
+\texttt{legofit/europe/a}. You'll find several bash scripts there,
+whose names all end with \texttt{.sh}. All but one of these scripts is
+involved in the bash version of the pipeline. To experiment with this
+pipeline, let's copy these scripts into a temporary directory. From
+within this directory, type
+\begin{verbatim}
+mkdir ../tmp    # make a temporary directory
+cp a.lgo ../tmp # copy .lgo file into tmp
+cp *.sh ../tmp  # copy scripts into tmp
+cd ../tmp       # move into that directory
+rm pipeline.sh  # get rid of the file that isn't part of the bash pipeline
+\end{verbatim}
+Your \texttt{tmp} directory should now contain the following files:
+\begin{center}
+  \begin{tabular}{ll}
+\texttt{a.lgo} & defines model of history\\    
+\texttt{a1.sh} & stage~1 of analysis on real data\\
+\texttt{a1boot.sh} & stage~1 on a bootstrap replicate\\
+\texttt{a2.sh} & stage~2 on real data\\
+\texttt{a2boot.sh} & stage~2 on a bootstrap replicate\\
+\texttt{pclgo.sh} & run pclgo to create b.lgo  \\
+\texttt{b1.sh} & stage~3 of analysis on real data\\
+\texttt{b1boot.sh} & stage~3 on a bootstrap replicate\\
+\texttt{b2.sh} & stage~4 on real data\\
+\texttt{b2boot.sh} & stage~4 on a bootstrap replicate\\
+\verb|bash_pipeline.sh| & runs all the other scripts\\
+\end{tabular}
+\end{center}
+If you examine these scripts (for example, by typing
+\texttt{less a1.sh}), you'll find that the legofit commands include
+the option \texttt{-S 5000}, which tells the DE algorithm to do as
+many as 5000 iterations. This could take awhile, so let's speed things
+up. To change ``5000'' into ``100'' in all the files at once, type
 \begin{verbatim}
 sed -i "" 's/5000/100/g' *.sh 
 \end{verbatim}
+This will reduce the accuracy of our answers, but that's okay---this
+is only an exercise. To run the first stage of analysis on the real
+data, enter the following command:
+\begin{verbatim}
+bash a1.sh
+\end{verbatim}
+That command takes 2.7 seconds on my 2018 Macbook Air. After it runs,
+there should be three new files in your directory:
+\begin{center}
+  \begin{tabular}{ll}
+    a1.legofit & main output from legofit\\
+    a1.err     & error output from legofit\\
+    a1.state   & state of DE swarm at end of legofit run\\
+  \end{tabular}
+\end{center}
+To run the first stage on all bootstrap replicates, type:
+\begin{verbatim}
+seq 0 49 | xargs -n 1 bash a1boot.sh
+\end{verbatim}
+This command will run 50 jobs, each of which might have been launched
+by typing on the command line something like
+\begin{verbatim}
+bash a1boot.sh <i>
+\end{verbatim}
+where \verb|<i>| is 0 for the first job, 1 for the second, and so on
+up to 49. Each job will analyze a single bootstrap replicate and will
+write three files that are analogous to the three discussed above. It
+takes several minutes to do all 50 bootstrap replicates.
+
+We could, if we wished, proceed in this fashion and execute the
+remaining stages of analysis by typing bash commands at the
+terminal. But there is an easier way. Examine the file
+\verb|bash_pipeline.sh| by typing 
+\begin{verbatim}
+less bash_pipeline.sh
+\end{verbatim}
+After a few lines at the top, which establish rules for dealing with
+errors, you will find
+\begin{verbatim}
+# Stage 1 of analysis.
+bash a1.sh
+seq 0 49 | xargs -n 1 bash a1boot.sh
+\end{verbatim}
+These lines are identical to the commands we used above to execute the
+first stage of analysis. The script as a whole does the entire legofit
+analysis. To execute it all, you would type
+\begin{verbatim}
+bash bash_pipeline.sh
+\end{verbatim}
+You would end up with 204 .legofit files (51 for each stage), the same
+number of .err files, and half that many .state files. Before talking
+about what to do with these files, let us consider other ways to
+implement a pipeline.
+
+This implementation, using bash, has the advantages of simplicity and
+low overhead. It's probably the easiest version to get working on your
+laptop. However, there are better ways to implement a pipeline. One
+problem the current approach is that when something goes wrong half
+way through the analysis, it's hard to start the process up again in
+the middle. Another is that we are doing only one legofit run at a
+time. It would be better to do many runs in parallel.
+
+In the bash pipeline, we used the xargs command. This has a
+``\texttt{-P}'' argument, which makes it possible to run multipe jobs
+in parallel. This would not be useful in the current pipeline,
+however, because legofit is multithreaded and each run uses all the
+cores available on your computer. To run multiple legofit jobs in
+parallel, you need a compute cluster such as those available at the
+University of Utah's Center for High Performance Computing (CHPC).
+
+\subsubsection{SLURM version of pipeline}
+\label{sec.slurmpipe}
+Use ssh as described above to log into one of the CHPC clusters, and
+then \texttt{cd} into directory
+\texttt{agar22/legofit/europe/a}. You'll find several SLURM scripts
+there, whose names all end with \texttt{.slr}. There is also a shell
+script called ``pipeline.sh,'' which runs the entire pipeline.  To
+experiment with this pipeline, let's copy these scripts into a
+temporary directory. From within this directory, type
+\begin{verbatim}
+mkdir ../tmp          # make a temporary directory
+cp a.lgo ../tmp       # copy .lgo file into tmp
+cp *.slr ../tmp       # copy slurm scripts into tmp
+cp pipeline.sh ../tmp # copy pipeline script
+cd ../tmp             # move into that directory
+\end{verbatim}
+Your \texttt{tmp} directory should now contain the following files:
+\begin{center}
+  \begin{tabular}{ll}
+\texttt{a.lgo} & defines model of history\\    
+\texttt{a1.slr} & stage~1 of analysis on real data\\
+\texttt{a1boot.slr} & stage~1 on a bootstrap replicate\\
+\texttt{a2.slr} & stage~2 on real data\\
+\texttt{a2boot.slr} & stage~2 on a bootstrap replicate\\
+\texttt{pclgo.slr} & run pclgo to create b.lgo  \\
+\texttt{b1.slr} & stage~3 of analysis on real data\\
+\texttt{b1boot.slr} & stage~3 on a bootstrap replicate\\
+\texttt{b2.slr} & stage~4 on real data\\
+\texttt{b2boot.slr} & stage~4 on a bootstrap replicate\\
+\verb|pipeline.sh| & runs all the SLURM scripts\\
+\end{tabular}
+\end{center}
+To speed things up, we can reduce the number of iterations (as
+explained above) by typing
+\begin{verbatim}
+sed -i "" 's/5000/100/g' *.slr 
+\end{verbatim}
+Now each legofit job will do only 100 DE iterations. The results won't
+be as precise, but the pipeline will be fast. To run the first stage
+of analysis on the real data, enter the following command
+\begin{verbatim}
+sbatch -A rogersa -p <your cluster> a1.slr
+\end{verbatim}
+where \verb|<your cluster>| is ``notchpeak,'' ``kingspeak,'' or
+``lonepeak,'' depending on which cluster you logged into.
+This queues your job for execution but does not necessarily run it
+immediately. If the system is busy, it may not run for hours. To check
+on the status of this job, type
+\begin{verbatim}
+squeue -u <your unid>
+\end{verbatim}
+The output will summarize the status of all jobs you've submitted to
+SLURM.
+
+To run the first stage of analysis on all bootstrap replicates, the
+command is
+\begin{verbatim}
+sbatch -A rogersa -p <your cluster> --array=0-49 a1boot.slr
+\end{verbatim}
+
+To launch the entire pipeline, first use a text editor (e.g., vim or
+emacs) to edit the file pipeline.sh. Near the top of that file, you'll
+find the lines
+\begin{verbatim}
+export SBATCH_ACCOUNT=rogersa
+export SBATCH_PARTITION=notchpeak
+\end{verbatim}
+Edit these lines to reflect the account and partition you are using,
+then save the file and exit the editor. Finally, type
+\begin{verbatim}
+. pipeline.sh
+\end{verbatim}
+This will queue the entire pipeline for execution.
+
+When the pipeline finishes, you'll want to copy the results back to
+your own machine for analysis. One way to do this uses the
+``rsync'' command, which you may need to install on your machine by
+typing
+\begin{verbatim}
+brew install rsync
+\end{verbatim}
+Then, to get the results of the SLURM pipeline, type this from your
+own computer:
+\begin{verbatim}
+rsync -Cavzbu <your_unid>@notchpeak.chpc.utah.edu:agar22/legofit/europe/tmp .
+\end{verbatim}
+This assumes that the results you want are on the CHPC server in a
+directory called \url{~/agar22/legofit/europe/tmp}. It will create on
+your own machine a directory called ``tmp'' in the directory from
+which you issued the rsync command. That directory should now contain
+all the results from the SLURM pipeline.
+
+Incidentally, rsync is a fairly awkward tool for copying things back
+and forth between the CHPC server and your own machine. I usually do
+this by setting up a repository on github, which I can access both
+from the CHPC and from my home machine. To transfer from CHPC to home,
+I do \texttt{git push} from the CHPC and then \texttt{git pull} from
+home. I'm not teaching you how to do this here, because this tutorial
+is complicated enough already. I'm teaching the rsync approach
+instead, because it's simpler.
+
+\subsubsection{Snakemake version of the pipeline}
+\label{sec.snakemake}
+This section hasn't been written yet.
 
 \section{Model selection and model averaging}
 \label{sec.msma}
