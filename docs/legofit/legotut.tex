@@ -994,6 +994,15 @@ Only two of the models (abc and abcd) have non-zero weights.
 These weights are used in calculated the model-averaged parameter
 estimates, which are listed below the weights.
 
+To calculate the bootstrap confidence interval of each parameter, type
+\begin{verbatim}
+bootci.py all.bma > all.bootci
+\end{verbatim}
+These confidence intervals are slightly wider than they would be, had
+we based them on results from a single model, rather than on an
+average across models. This is because they include uncertainty about
+the model itself in addition to uncertainty about parameter values
+under a given model.
 
 \section{Graphing results}
 \label{sec.graph}
