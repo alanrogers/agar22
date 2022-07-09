@@ -5,5 +5,7 @@
 *.log
 *.run.xml
 *.aux
+*.toc
+*.state
 legotut.out
 msptut.out
