@@ -52,16 +52,6 @@ the last step, which can be done in two ways: either on the CHPC
 (using slurm), or on your own computer (using the bash shell). This
 tutorial will cover both environments.
 
-The material below is organized into the following sections:
-\begin{enumerate}
-\item[\ref{sec.install}] Installing Legofit on your own machine
-\item[\ref{sec.chpc}] Setting up your environment at the CHPC  
-\item[\ref{sec.raf}] Making an input file in .raf format
-\item[\ref{sec.tabulate}] Tabulating site pattern frequencies
-\item[\ref{sec.fit}] Fitting models of history
-\item[\ref{sec.msma}] Model selection and model averaging
-\item[\ref{sec.graph}] Graphing results
-\end{enumerate}
 Try to install Legofit (sec.~\ref{sec.install}) on your own before the
 workshop starts. We'll help with installation problems during the
 workshop, but that will take less time if you've already made a start.
@@ -696,13 +686,13 @@ account only for a tiny fraction of the variance. This step rewrites
 a.lgo to produce a new file called ``b.lgo.'' In this new file, all
 free variables are principal components, and all the real variables
 are functions of the principal components.  The third and fourth
-stages of analysis are just like the first and second, except that I
+stages of analysis are just like the first and second, except that they
 use b.lgo instead of a.lgo.
 
 There are several ways to organize this four-stage analysis into a
 pipeline. On the CHPC cluster, I use slurm scripts, which are
-discussed below. First, however, I will introduce a version of the
-pipeline that is written entirely in bash.
+discussed below. First, however, I introduce a version of the pipeline
+written entirely in bash.
 
 \subsubsection{Bash version of pipeline}
 \label{sec.bashpipe}
@@ -991,7 +981,15 @@ a file named \texttt{b2.flat}, which was calculated like this:
 \begin{verbatim}
 flatfile.py b2.legofit b2boot*.legofit > b2.flat
 \end{verbatim}
-From the parent directory (the one that contains data.opf), type
+The \texttt{legofit/europe} directory may also contain a subdirectory
+called \texttt{tmp}, which you created for the exercises above. If so,
+delete that directory or move it out of the way. For example, to move
+it to your home directory, you could \texttt{cd} into the
+\texttt{legofit/europe} directory and type
+\begin{verbatim}
+mv tmp ~
+\end{verbatim}
+Then, from the \texttt{legofit/europe} directory, type
 \begin{verbatim}
 booma */b2.bepe -F */b2.flat > all.bma
 \end{verbatim}
@@ -1064,6 +1062,21 @@ example,
 \begin{verbatim}
 Rscript b2pairs.r
 \end{verbatim}
+
+\section{Conclusions}
+\label{sec.conclusions}
+If you followed all the steps above except the ones that involve the
+CHPC, then you should have all the tools you need to do a complete
+legofit analysis on your own computer. It is feasible to fit models of
+moderate complexity on a laptop. More complex models demand faster
+computers with multiple cores. Highly complex models are best studied
+on a high-performance computing cluster. The instructions above are
+specific to the CHPC at my own institution. You may need to modify
+them if you use a different center for high-performance computing.
+
+\section*{Acknowledgements}
+This work was supported by NSF BCS~1638840, NSF BCS~1945782, and the Center
+for High Performance Computing at the University of Utah.
 
 \printbibliography
 
