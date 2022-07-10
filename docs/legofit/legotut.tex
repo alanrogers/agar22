@@ -43,7 +43,7 @@ getting accounts for everyone enrolled in the workshop.) These
 sections involve using the SLURM Workload Manager to submit jobs to
 the compute cluster. However, our focus during the workshop will be on
 the last step, which can be done in two ways: either on the CHPC
-(using SLURM), or on your own computer (using the bash shell). This
+(using slurm), or on your own computer (using the bash shell). This
 tutorial will cover both environments.
 
 The material below is organized into the following sections:
@@ -59,10 +59,9 @@ The material below is organized into the following sections:
 Try to install Legofit (sec.~\ref{sec.install}) on your own before the
 workshop starts. We'll help with installation problems during the
 workshop, but that will take less time if you've already made a start.
-The workshop will not cover
-secs.~\ref{sec.raf}--\ref{sec.tabulate}. Those sections are only for
-reference, when you work with Legofit on your own. During the
-workshop, most of our efforts will be on fitting models
+Sections~\ref{sec.raf}--\ref{sec.tabulate} are only for reference,
+when you work with Legofit on your own. They will not be covered
+during the workshop. Most of our efforts will be on fitting models
 (sec.~\ref{sec.fit}), but we'll spend some time at the end on model
 selection, model averaging, and graphing
 (secs.~\ref{sec.msma}--\ref{sec.graph}).
@@ -79,7 +78,7 @@ type git
 \end{verbatim}
 On Mac or Linux, this will print the location of the executable git
 file. If there is no such file, you'll get an error message saying
-\texttt{type: git: not found}. I recommend using
+\verb|type: git: not found|. I recommend using
 \href{https://brew.sh}{homebrew} to install packages on a Mac. To
 install git using homebrew, type:
 \begin{verbatim}
@@ -198,7 +197,7 @@ set up.
 
 Utah's CHPC has several ``clusters,'' each with many ``nodes.''  Each
 node is a powerful computer in its own right. The
-\href{https://slurm.schedmd.com/documentation.html}{SLURM} version of
+\href{https://slurm.schedmd.com/documentation.html}{slurm} version of
 the pipeline submits legofit jobs to multiple nodes so that they can
 run in parallel. Within each node, legofit parallelizes across all
 available cores. This greatly reduces the time required for an
@@ -239,8 +238,6 @@ ssh -l <your unid> lonepeak.chpc.utah.edu
 \end{verbatim}
 Here, \verb|<your unid>| is your own University of Utah id. Each of
 these commands will log you onto one of the clusters at Utah's CHPC.
-Then if you haven't already done so, you'll then need to set up your
-CHPC environment as described above in section~\ref{sec.chpc}.
 
 In the sections that follow, I will introduce you to several
 directories and files on the CHPC servers. Each one is described by
@@ -259,7 +256,7 @@ ln -s /uufs/chpc.utah.edu/common/home/rogersa-group2 ~/grp2
 If everyone defines these soft links in the same way, then we can all
 use path names of the form \verb|~/grp1/rogers/data/whatever|.
 
-The Legofit executables are already available directory
+The Legofit executables are already available in directory
 \verb|~/grp1/bin|. To make these easily available, use a text editor
 to edit the file \verb|.bash_profile| in your home directory. Within
 that file, you will find a line that defines a variable called
@@ -278,8 +275,8 @@ This last line will give you access to the program ``git,'' which
 you'll need to access the agar22 repository. After making these
 changes, save the file and exit the editor. The file
 \verb|.bash_profile| is normally read only once, when you first log
-in. You've only just edited this file, bash doesn't yet know about the
-changes you made there. To fix this, you can either type
+in. Because you've only just edited this file, bash doesn't yet know
+about the changes you made there. To fix this, you can either type
 \texttt{logout} and then \texttt{ssh} back in again, or type
 \verb|. .bash_profile|, which tells bash to execute the commands in
 this file.
@@ -311,14 +308,18 @@ already available on the server at Utah's CHPC.
 \end{description}
 You can use any or all of these in your projects. But you'll also need
 to make at least one more. To do so, copy the following
-\href{https://alanrogers.github.io/agar22/legofit/weur.slr.html}{script}
-into a directory of your own:
+\href{https://alanrogers.github.io/agar22/legofit/weur.slr.html}{slurm
+  script} into a directory of your own:
 \begin{verbatim}
 ~/grp1/rogers/data/simons/raf/weur.slr
 \end{verbatim}
 Change its name (because ``weur'' stands for ``western European'') and
 edit it to reflect the population or populations that you want to
-study. It's set up to run on the ``notchpeak'' cluster, where I have
+study. You'll find lots of options under
+\begin{verbatim}
+~/grp1/rogers/data/simons/
+\end{verbatim}
+This slurm script is set up to run on the ``notchpeak'' cluster, where I have
 only one node.
 
 If that node is free, you can run it there by using ``cd'' to move to
@@ -448,9 +449,9 @@ and more accurate)
 \begin{verbatim}
 legosim -1 -d 0 a.lgo
 \end{verbatim}
-Because it is fast, the legosim program is a useful way to check for
-errors in your .lgo file. For further details about the program and
-its command-line arguments, see
+Because it is fast, legosim is a useful way to check for errors in
+your .lgo file. For further details about the program and its
+command-line arguments, see
 \href{http://alanrogers.github.io/legofit/html/legosim.html}{its
   documentation}.
 
@@ -660,19 +661,19 @@ for the optimizer to zero in on optimal parameter values.
   \label{fig.pairs}
 \end{figure*}
 
-To ameliorate this problem, I use the ``pclgo'' program (within the
-Legofit package). It uses principal components analysis to reexpress
-all free parameters as functions of a set of uncorrelated ``principal
-components.'' Optionally, you can tell pclgo to ignore principal
-components that account only for a tiny fraction of the variance. This
-step rewrites a.lgo to produce a new file called ``b.lgo.'' In this
-new file, all free variables are principal components, and all the
-real variables are functions of the principal components.  The third
-and fourth stages of analysis are just like the first and second,
-except that I use b.lgo instead of a.lgo.
+To ameliorate this problem, I use Legofit's ``pclgo'' program. It uses
+principal components analysis to reexpress all free parameters as
+functions of a set of uncorrelated ``principal components.''
+Optionally, you can tell pclgo to ignore principal components that
+account only for a tiny fraction of the variance. This step rewrites
+a.lgo to produce a new file called ``b.lgo.'' In this new file, all
+free variables are principal components, and all the real variables
+are functions of the principal components.  The third and fourth
+stages of analysis are just like the first and second, except that I
+use b.lgo instead of a.lgo.
 
 There are several ways to organize this four-stage analysis into a
-pipeline. On the CHPC cluster, I use SLURM scripts, which are
+pipeline. On the CHPC cluster, I use slurm scripts, which are
 discussed below. First, however, I will introduce a version of the
 pipeline that is written entirely in bash.
 
@@ -785,11 +786,11 @@ cores available on your computer. To run multiple legofit jobs in
 parallel, you need a compute cluster such as those available at the
 University of Utah's Center for High Performance Computing (CHPC).
 
-\subsubsection{SLURM version of pipeline}
+\subsubsection{Slurm version of pipeline}
 \label{sec.slurmpipe}
 Use ssh as described above to log into one of the CHPC clusters, and
 then \texttt{cd} into directory
-\texttt{agar22/legofit/europe/a}. You'll find several SLURM scripts
+\texttt{agar22/legofit/europe/a}. You'll find several slurm scripts
 there, whose names all end with \texttt{.slr}. There is also a shell
 script called ``pipeline.sh,'' which runs the entire pipeline.  To
 experiment with this pipeline, let's copy these scripts into a
@@ -814,7 +815,7 @@ Your \texttt{tmp} directory should now contain the following files:
 \texttt{b1boot.slr} & stage~3 on a bootstrap replicate\\
 \texttt{b2.slr} & stage~4 on real data\\
 \texttt{b2boot.slr} & stage~4 on a bootstrap replicate\\
-\verb|pipeline.sh| & runs all the SLURM scripts\\
+\verb|pipeline.sh| & runs all the slurm scripts\\
 \end{tabular}
 \end{center}
 To speed things up, we can reduce the number of iterations (as
@@ -837,7 +838,7 @@ on the status of this job, type
 squeue -u <your unid>
 \end{verbatim}
 The output will summarize the status of all jobs you've submitted to
-SLURM.
+slurm.
 
 To run the first stage of analysis on all bootstrap replicates, the
 command is
@@ -866,7 +867,7 @@ typing
 \begin{verbatim}
 brew install rsync
 \end{verbatim}
-Then, to get the results of the SLURM pipeline, type this from your
+Then, to get the results of the slurm pipeline, type this from your
 own computer:
 \begin{verbatim}
 rsync -Cavzbu <your_unid>@notchpeak.chpc.utah.edu:agar22/legofit/europe/tmp .
@@ -875,7 +876,7 @@ This assumes that the results you want are on the CHPC server in a
 directory called \url{~/agar22/legofit/europe/tmp}. It will create on
 your own machine a directory called ``tmp'' in the directory from
 which you issued the rsync command. That directory should now contain
-all the results from the SLURM pipeline.
+all the results from the slurm pipeline.
 
 Incidentally, rsync is a fairly awkward tool for copying things back
 and forth between the CHPC server and your own machine. I usually do
@@ -990,8 +991,8 @@ first few lines look like this
 #              0     acd/b2.bepe     acd/b2.flat
 #              0      ad/b2.bepe      ad/b2.flat
 \end{verbatim}
-Only two of the models (abc and abcd) have non-zero weights.
-These weights are used in calculated the model-averaged parameter
+Only two of the models (abc and abcd) have non-zero weights.  These
+weights are used in calculating the model-averaged parameter
 estimates, which are listed below the weights.
 
 To calculate the bootstrap confidence interval of each parameter, type
