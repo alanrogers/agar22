@@ -9,8 +9,14 @@
 \usepackage{graphicx}
 \addbibresource{defs.bib}
 \addbibresource{arrpubs.bib}
+\addbibresource{arrunpub.bib}
 \addbibresource{math.bib}
 \addbibresource{tree.bib}
+\newenvironment{leftindent}%
+{\begin{list}{}%
+         {\setlength{\leftmargin}{2em}}%
+         \item[]%
+}{\end{list}}
 \begin{document}
 \title{A Legofit Tutorial}
 \author{Alan R. Rogers}
@@ -293,21 +299,17 @@ files related to the workshop.
 \label{sec.raf}
 Legofit uses data in ``.raf'' format. The following data sets are
 already available on the server at Utah's CHPC.
-\begin{description}
-\item[Altai Neanderthal]
-\verb|~/grp1/rogers/data/altai/orig2/altai.raf.gz|
-
-\item[Vindija Neanderthal]
-\verb|~/grp1/rogers/data/vindija/orig/vindija.raf.gz|
-
-\item[Denisovan]
-\verb|~/grp1/rogers/data/denisova/orig2/denisova.raf.gz|
-
-\item[Western Europeans (SGDP)]
-\verb|~/grp1/rogers/data/simons/raf/weur.raf.gz|
-\end{description}
-You can use any or all of these in your projects. But you'll also need
-to make at least one more. To do so, copy the following
+\begin{leftindent}
+\begin{tabbing}
+Western Europeans (SGDP)XX\=\kill    
+Altai Neanderthal\>\verb|~/grp1/rogers/data/altai/orig2/altai.raf.gz|\\
+Vindija Neanderthal\>\verb|~/grp1/rogers/data/vindija/orig/vindija.raf.gz|\\
+Denisovan\>\verb|~/grp1/rogers/data/denisova/orig2/denisova.raf.gz|\kill
+Western Europeans (SGDP)\>\verb|~/grp1/rogers/data/simons/raf/weur.raf.gz|
+\end{tabbing}
+\end{leftindent}
+If you'd like to make a data set for another modern human population,
+copy the following
 \href{https://alanrogers.github.io/agar22/legofit/weur.slr.html}{slurm
   script} into a directory of your own:
 \begin{verbatim}
@@ -319,17 +321,47 @@ study. You'll find lots of options under
 \begin{verbatim}
 ~/grp1/rogers/data/simons/
 \end{verbatim}
-This slurm script is set up to run on the ``notchpeak'' cluster, where I have
-only one node.
-
-If that node is free, you can run it there by using ``cd'' to move to
-the directory that contains the script and then typing
+Near the top of this script, you'll find the lines
+\begin{verbatim}
+#SBATCH --account=rogersa-np
+#SBATCH --partition=rogersa-np
+\end{verbatim}
+These specify the account and partition under which the job will
+run. The choice ``rogersa-np'' refers to my (single) node on the
+notchpeak cluster. To run the job there, log into the notchpeak
+cluster, use ``cd'' to move to the directory that contains the script
+and then type
 \begin{verbatim}
 sbatch <your script name>
 \end{verbatim}
 where \verb|<your script name>| is the name of your version of the
-script. This script will take many hours to complete. You can check on
-its status at any time by typing
+script.
+
+If the notchpeak node is busy, try kingspeak. To do so, log into
+kingspeak and specify \texttt{--account=rogersa-kp} and
+\texttt{--partition=rogersa-kp}. To do this, it isn't necessary to
+edit the file. You can override the values in the file by specifying
+these options on the command line, like this:
+\begin{verbatim}
+sbatch -A rogersa-kp -p rogersa-kp <your script name>
+\end{verbatim}
+If you're a member of my lab, you can also run under my allocation. To
+do this on notchpeak, log into that cluster and use
+\begin{verbatim}
+sbatch -A rogersa -p notchpeak <your script name>
+\end{verbatim}
+On kingspeak, the command is
+\begin{verbatim}
+sbatch -A rogersa -p kingspeak <your script name>
+\end{verbatim}
+The lonepeak cluster is available to users who have no allocation. To
+use it, log into lonepeak and type
+\begin{verbatim}
+sbatch -A rogersa -p lonepeak <your script name>
+\end{verbatim}
+
+However you run your script, it will take hours to complete. You can
+check on its status at any time by typing
 \begin{verbatim}
 squeue -u <your user id>
 \end{verbatim}
@@ -338,20 +370,8 @@ As a shorthand, I often type this as
 \begin{verbatim}
 squeue -u `whoami`
 \end{verbatim}
-which uses Linux's ``whoami'' command to fill in your user id.
-
-If the notchpeak node is busy, try kingspeak instead. I have six nodes
-there, so your odds are better. Before doing so, edit your slurm
-script. The lines that read
-\begin{verbatim}
-#SBATCH --account=rogersa-np
-#SBATCH --partition=rogersa-np
-\end{verbatim}
-work on notchpeak but not on kingspeak. For kingspeak, they should read
-\begin{verbatim}
-#SBATCH --account=rogersa-kp
-#SBATCH --partition=rogersa-kp
-\end{verbatim}
+which uses Linux's ``whoami'' command to fill in your user id. (Note:
+the ticks in this command are ``back ticks.'')
 
 \section{Tabulating site patterns}
 \label{sec.tabulate}
@@ -693,21 +713,22 @@ cd ../tmp       # move into that directory
 rm pipeline.sh  # get rid of the file that isn't part of the bash pipeline
 \end{verbatim}
 Your \texttt{tmp} directory should now contain the following files:
-\begin{center}
-  \begin{tabular}{ll}
-\texttt{a.lgo} & defines model of history\\    
-\texttt{a1.sh} & stage~1 of analysis on real data\\
-\texttt{a1boot.sh} & stage~1 on a bootstrap replicate\\
-\texttt{a2.sh} & stage~2 on real data\\
-\texttt{a2boot.sh} & stage~2 on a bootstrap replicate\\
-\texttt{pclgo.sh} & run pclgo to create b.lgo  \\
-\texttt{b1.sh} & stage~3 of analysis on real data\\
-\texttt{b1boot.sh} & stage~3 on a bootstrap replicate\\
-\texttt{b2.sh} & stage~4 on real data\\
-\texttt{b2boot.sh} & stage~4 on a bootstrap replicate\\
-\verb|bash_pipeline.sh| & runs all the other scripts\\
-\end{tabular}
-\end{center}
+\begin{leftindent}
+\begin{tabbing}
+\verb|bash_pipeline.sh|XX\=\kill
+\texttt{a.lgo} \> defines model of history\\    
+\texttt{a1.sh} \> stage~1 of analysis on real data\\
+\texttt{a1boot.sh} \> stage~1 on a bootstrap replicate\\
+\texttt{a2.sh} \> stage~2 on real data\\
+\texttt{a2boot.sh} \> stage~2 on a bootstrap replicate\\
+\texttt{pclgo.sh} \> run pclgo to create b.lgo  \\
+\texttt{b1.sh} \> stage~3 of analysis on real data\\
+\texttt{b1boot.sh} \> stage~3 on a bootstrap replicate\\
+\texttt{b2.sh} \> stage~4 on real data\\
+\texttt{b2boot.sh} \> stage~4 on a bootstrap replicate\\
+\verb|bash_pipeline.sh| \> runs all the other scripts
+\end{tabbing}
+\end{leftindent}
 If you examine these scripts (for example, by typing
 \texttt{less a1.sh}), you'll find that the legofit commands include
 the option \texttt{-S 5000}, which tells the DE algorithm to do as
@@ -724,13 +745,14 @@ bash a1.sh
 \end{verbatim}
 That command takes 2.7 seconds on my 2018 Macbook Air. After it runs,
 there should be three new files in your directory:
-\begin{center}
-  \begin{tabular}{ll}
-    a1.legofit & main output from legofit\\
-    a1.err     & error output from legofit\\
-    a1.state   & state of DE swarm at end of legofit run\\
-  \end{tabular}
-\end{center}
+\begin{leftindent}
+  \begin{tabbing}
+  dotplot.rXX\=\kill
+    a1.legofit \> main output from legofit\\
+    a1.err     \> error output from legofit\\
+    a1.state   \> state of DE swarm at end of legofit run
+  \end{tabbing}
+\end{leftindent}
 To run the first stage on all bootstrap replicates, type:
 \begin{verbatim}
 seq 0 49 | xargs -n 1 bash a1boot.sh
@@ -779,12 +801,13 @@ the middle. Another is that we are doing only one legofit run at a
 time. It would be better to do many runs in parallel.
 
 In the bash pipeline, we used the xargs command. This has a
-``\texttt{-P}'' argument, which makes it possible to run multipe jobs
+``\texttt{-P}'' argument, which makes it possible to run multiple jobs
 in parallel. This would not be useful in the current pipeline,
 however, because legofit is multithreaded and each run uses all the
 cores available on your computer. To run multiple legofit jobs in
-parallel, you need a compute cluster such as those available at the
-University of Utah's Center for High Performance Computing (CHPC).
+parallel, you need to run each one on a different node within a
+high-performance computing cluster. This is the rationale for the
+slurm version of the pipeline.
 
 \subsubsection{Slurm version of pipeline}
 \label{sec.slurmpipe}
@@ -803,21 +826,22 @@ cp pipeline.sh ../tmp # copy pipeline script
 cd ../tmp             # move into that directory
 \end{verbatim}
 Your \texttt{tmp} directory should now contain the following files:
-\begin{center}
-  \begin{tabular}{ll}
-\texttt{a.lgo} & defines model of history\\    
-\texttt{a1.slr} & stage~1 of analysis on real data\\
-\texttt{a1boot.slr} & stage~1 on a bootstrap replicate\\
-\texttt{a2.slr} & stage~2 on real data\\
-\texttt{a2boot.slr} & stage~2 on a bootstrap replicate\\
-\texttt{pclgo.slr} & run pclgo to create b.lgo  \\
-\texttt{b1.slr} & stage~3 of analysis on real data\\
-\texttt{b1boot.slr} & stage~3 on a bootstrap replicate\\
-\texttt{b2.slr} & stage~4 on real data\\
-\texttt{b2boot.slr} & stage~4 on a bootstrap replicate\\
-\verb|pipeline.sh| & runs all the slurm scripts\\
-\end{tabular}
-\end{center}
+\begin{leftindent}
+  \begin{tabbing}
+\verb|pipeline.sh|XX\=\kill
+\texttt{a.lgo} \> defines model of history\\    
+\texttt{a1.slr} \> stage~1 of analysis on real data\\
+\texttt{a1boot.slr} \> stage~1 on a bootstrap replicate\\
+\texttt{a2.slr} \> stage~2 on real data\\
+\texttt{a2boot.slr} \> stage~2 on a bootstrap replicate\\
+\texttt{pclgo.slr} \> run pclgo to create b.lgo  \\
+\texttt{b1.slr} \> stage~3 of analysis on real data\\
+\texttt{b1boot.slr} \> stage~3 on a bootstrap replicate\\
+\texttt{b2.slr} \> stage~4 on real data\\
+\texttt{b2boot.slr} \> stage~4 on a bootstrap replicate\\
+\verb|pipeline.sh| \> runs all the slurm scripts
+\end{tabbing}
+\end{leftindent}
 To speed things up, we can reduce the number of iterations (as
 explained above) by typing
 \begin{verbatim}
@@ -952,19 +976,15 @@ $i$th model is the fraction of data sets (including the real data and
 50 bootstrap replicates) in which that model ``wins,'' i.e.\ has the
 lowest value of bepe.
 
-If you have fit several models to the same data, you can use Legofit's
-``booma'' program to calculate model-averaged estimates. Before
-running booma, make sure that the directory for each model has a file
-named ``b2.bepe.'' Each directory should also contain a file named
-``b2.flat,'' which contains a row for each data set and a column for
-each estimated parameter. To create these files, \texttt{cd} into the
-directory for each model, and type
+In the agar22 repository, there are several subdirectories just below
+\texttt{legofit/europe}, each of which contains the analysis of a
+single model. Each of these contains a file names \texttt{b2.bepe},
+which was calculated as described above. Each directory also contains
+a file named \texttt{b2.flat}, which was calculated like this:
 \begin{verbatim}
 flatfile.py b2.legofit b2boot*.legofit > b2.flat
 \end{verbatim}
-Within the agar22 repository, all the model directories with
-\texttt{legofit/europe} already have both b2.bepe and b2.flat. From
-the parent directory (the one that contains data.opf), type
+From the parent directory (the one that contains data.opf), type
 \begin{verbatim}
 booma */b2.bepe -F */b2.flat > all.bma
 \end{verbatim}
@@ -1007,17 +1027,28 @@ under a given model.
 
 \section{Graphing results}
 \label{sec.graph}
-You will find three R scripts in the agar22 repository, in directory
-\texttt{legofit/europe/abcd}:
-\begin{center}
-  \begin{tabular}{ll}
-  b2pairs.r & makes a pairwise scatterplot like
+There are several R scripts in the legofit section of the agar22
+repository. Two of them are in \texttt{legofit/europe}:
+\begin{leftindent}
+\begin{tabbing}
+  dotplot.rXX\=\kill
+patfrq.r \> plots site pattern frequencies as in
+    \citet[Fig.~3]{Rogers:arXiv-2201.02668}\\ 
+bmadot.r \> plots confidence intervals as 
+  \citet[Fig.~7]{Rogers:PCJ-2-e32}
+\end{tabbing}
+\end{leftindent}
+And three others are in \texttt{legofit/europe/abcd}:
+\begin{leftindent}
+\begin{tabbing}
+  dotplot.rXX\=\kill
+b2pairs.r \> makes a pairwise scatterplot like
   Fig.~\ref{fig.pairs}\\
-  resid.r & plots residual error as in Fig.~5 of \citep{Rogers:PCJ-2-e32}\\
-  dotplot.r & plots confidence intervals as in Fig.~7 of
-  \citep{Rogers:PCJ-2-e32}\\
-  \end{tabular}
-\end{center}
+resid.r \> plots residual error as in Fig.~5 of \citep{Rogers:PCJ-2-e32}\\
+dotplot.r \> plots confidence intervals as in Fig.~7 of
+  \citep{Rogers:PCJ-2-e32}
+\end{tabbing}
+\end{leftindent}
 To use these, first make sure that R is installed on your system. Then
 copy them into the directory that contains your own fitted model, edit
 them so that the labels correspond to those in your own model, and so
