@@ -53,7 +53,9 @@ using Linux will be familiar with it already.  We won't try to teach
 you Bash, but you should familiarize yourself with the basic
 commands--"ls", "pwd", "cd", "rm", and "mkdir"--and also with bash
 pipes, and the redirection of input and output. In addition to these
-basic commands, please read up on "seq" and "xargs", which are used
+basic commands, please read up on
+"[seq](https://linuxhandbook.com/seq-command/)" and
+"[xargs](https://en.wikipedia.org/wiki/Xargs)", which are used
 extensively in pipelines.
 
 # Tutorials
