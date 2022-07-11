@@ -19,9 +19,9 @@
 
 \section{Introduction}
 \label{sec.intro}
-In this project, you will use msprime \citep{Kelleher:PLO-12-1} to
-check for bias in the estimates from your Legofit project. This will
-involve the following steps:
+This tutorial introduces msprime \citep{Kelleher:PLO-12-1}. It was
+written for a class that used msprime simulations to check for bias in
+legofit estimates. That effort involved the following steps:
 \begin{enumerate}
 \item Install msprime on your computer.
 \item Modify the Python script described below, so that it simulates
@@ -43,14 +43,14 @@ simple:
 python3 -m pip install msprime
 \end{verbatim}
 
-\begin{verbatim}
-1012  module load python/3.9.7
- 1013  python
- 1014  python -m pip install numpy
- 1015  python -m pip install --upgrade pip --user
- 1016  python -m pip install msprime --user
- 1017  python
-\end{verbatim}
+%\begin{verbatim}
+%1012  module load python/3.9.7
+%1013  python
+%1014  python -m pip install numpy
+%1015  python -m pip install --upgrade pip --user
+%1016  python -m pip install msprime --user
+%1017  python
+%\end{verbatim}
 
 \section{A Python script to run msprime}
 
@@ -103,16 +103,16 @@ to change to build your own model of history. Here is a listing of
 \listinginput[3]{1}{msp.py}
 
 In this program, line~4 imports msprime and abbreviates its name as
-``msp.'' Lines 7--12 define a function that prints a usage message
+``msp.'' Lines 7--11 define a function that prints a usage message
 message and then aborts. It is used if some problem is detected in
-parsing the command-line arguments. Line 14 sets \verb|do_simulation|
+parsing the command-line arguments. Line 13 sets \verb|do_simulation|
 equal to \texttt{false}. Unless this is changed by a command-line
 argument, the program will not execute a computer
-simulation. Lines~15--19 parse command-line arguments and set
+simulation. Lines~14--18 parse command-line arguments and set
 \verb|do_simulation| equal to \texttt{true} if the user specifies the
-\texttt{-r} argument.  Lines 21--35 define population history
+\texttt{-r} argument.  Lines 21--34 define population history
 parameters. These values should reflect the fitted parameters of your
-own model of history. Lines~37--43 define parameters relating to the
+own model of history. Lines~36--42 define parameters relating to the
 simulation. In this code, I have set \texttt{nchromosomes} equal to
 10. You will eventually want to increase it to 1000. The
 \texttt{basepairs} parameter is the length of a chromosome. I have set
@@ -120,9 +120,9 @@ it to \texttt{2e6}, because there isn't much linkage disequilibrium
 between sites that are farther apart than that. Using a large number
 of relatively short chromosomes makes the simulations faster.
 
-Line~45 defines a variable called \texttt{dem}, which will hold our
-model of demographic history. It is in instance of the
-\texttt{Demography} class, which is defined by msprime. Lines 48--77
+Line~44 defines a variable called \texttt{dem}, which will hold our
+model of demographic history. It is an instance of the
+\texttt{Demography} class, which is defined by msprime. Lines 47--76
 define the populations used in the model. Each population has a short
 name, a description, and an initial size. This size represents the
 diploid size of the population at the recent end of its temporal
@@ -130,7 +130,7 @@ extent. My model of history does not include growth within
 populations, so the initial size of a population is its size
 throughout its history.
 
-Lines~79--85 define an episode of admixture, giving the time at which
+Lines~78--84 define an episode of admixture, giving the time at which
 it occurs, the name of the derived population, those of the two
 ancestral populations, and the proportions of the derived population
 that came from each of the two parents. Msprime does not allow you to
@@ -138,31 +138,52 @@ specify the same population as both derived and ancestral within the
 same episode of admixture. That is why I define \texttt{Y1} to
 represent the pre-admixture portion of population \texttt{Y}.
 
-Lines~87--99 define two population splits, one separating \texttt{XY}
+Lines~86--98 define two population splits, one separating \texttt{XY}
 into \texttt{X} and \texttt{Y}, and the other separating \texttt{XYN}
 into \texttt{XY} and \texttt{N}. A population split is similar to
 admixture, except that there are two derived populations and only one
 derived one.
 
-Lines~103--107 define a list called \texttt{samples}, each element of
+The \verb|add_population_split| function is also needed in another
+context, which is not illustrated in our example. Suppose that two
+parent nodes, \texttt{a} and \texttt{b}, give rise to two daughter
+nodes, \texttt{c} and \texttt{d}, of which \texttt{c} is a mixture of
+\texttt{a} and \texttt{b}, but \texttt{d} derives only from
+\texttt{b}. To specify the relationship between \texttt{b} and
+\texttt{d}, you would use \verb|add_population_split| like this:
+\begin{verbatim}
+dem.add_population_split(
+    time = age_of_b,
+    derived = ["d"],
+    ancestral = "b"
+)
+\end{verbatim}
+Note that there is now only one derived population and that its name
+is enclosed not only in quotes but also in square brackets.
+
+Continuing with the code above, line 100 sorts the events that have
+been added to \texttt{dem}. If you fail to do this, it's necessary to
+define the events in order of their time parameters.
+
+Lines~102--108 define a list called \texttt{samples}, each element of
 which is an object of class \texttt{SampleSet}. The arguments are self
 explanatory. I set \texttt{ploidy=1} for consistency with Legofit.
 
-Lines~109--147 execute only if we are doing a simulation. The only
-line you will need to change is 128, which defines the labels of the
+Lines~110--148 execute only if we are doing a simulation. The only
+line you will need to change is 129, which defines the labels of the
 populations. These should be consistent with the \texttt{population}
-parameters specified in lines 103--107. There is presumably a way to
+parameters specified in lines 105--107. There is presumably a way to
 read these labels directly from the \texttt{samples} array, but I
 haven't yet figured out how to do that. This is why I define a
-separate \texttt{lbl} array on line 128.
+separate \texttt{lbl} array on line 129.
 
 Even though you won't need to change the other lines, let me explain
-what is going on in lines~109--147. The variable \texttt{seed} is set
+what is going on in lines~111--148. The variable \texttt{seed} is set
 using random data provided by the operating system. This value is used
 to initialize the random number generator so that each run of the
 program will use a different sequence of pseudo-random numbers.
 
-Lines~119--125 simulate the population history, using msprime's
+Lines~120--126 simulate the population history, using msprime's
 \verb|sim_ancestry| function. The type of the value returned by this
 function depends on whether the \verb|num_replicates| parameter is
 used. Without \verb|num_replicates|, \verb|sim_ancestry| returns an
@@ -171,15 +192,15 @@ msprime. With \verb|num_replicates|, it returns a Python
 ``generator,'' which can be used to iterate over the
 \texttt{TreeSequence} objects of the replicates.
 
-That is the purpose of the loop beginning at line~135. Each pass
+That is the purpose of the loop beginning at line~136. Each pass
 through that loop handles a different replicate, which I think of as a
-different chromosome. Within the loop \texttt{i} is the number of the
+different chromosome. Within the loop, \texttt{i} is the number of the
 current chromosome, and \texttt{chr} is an object (defined by msprime)
-that describes the current chromosome. Line~136 creates \texttt{sim},
+that describes the current chromosome. Line~137 creates \texttt{sim},
 which holds all the data about genetic variation on the current
 chromosome. This variable can be thought of as a list of polymorphic
 loci, or ``variants.'' We loop across these variants beginning at
-line~138, ignoring those that aren't biallelic (lines~141--142).
+line~139, ignoring those that aren't biallelic (lines~142--143).
 Each variant includes a list of genotypes, which we loop over in
 lines~146--147.
 

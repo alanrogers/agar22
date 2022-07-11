@@ -7,8 +7,7 @@ import os, sys
 def usage():
     print("Usage: ./msp.py [options]")
     print("  where options may include:")
-    print("  -r or --run: run simulation. Default: run")
-    print("               DemographyDebugger")
+    print("  -r or --run: run simulation. Default: run DemographyDebugger")
     sys.exit(1)
 
 do_simulation = False
@@ -100,9 +99,6 @@ dem.add_population_split(
 
 dem.sort_events()
 
-if dem == None:
-    raise ValueError("dem = None after sort_evenrts")
-    
 # One haploid sample from each of 3 populations: 2 modern (X,Y),
 # and 1 archaic (N).
 samples = [
