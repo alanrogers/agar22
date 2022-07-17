@@ -8,14 +8,9 @@ virtual, with lectures via Zoom and materials made available on
 
 # How to apply
 
-The workshop is free, but attendees must apply. Applications are due
-*July 15, 2022*.
-
-The workshop is open to anyone interested in using genetic data to
-study population history. If space runs short, we will prioritize those
-most likely to benefit from the workshop.
-
-To apply, [please fill out this form](https://forms.gle/MoyVS7JsWc94SsSj9).
+Applications are now closed. If you applied, you should have received
+an invitation to join the agar22 Google Group, which we will be using
+to communicate with participants.
 
 # Modules
 
