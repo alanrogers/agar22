@@ -12,22 +12,61 @@ Applications are now closed. If you applied, you should have received
 an invitation to join the agar22 Google Group, which we will be using
 to communicate with participants.
 
-# Modules
+# Schedule
 
-1. Working with genomic data (types of genomic data, pros/cons, etc.).
-Ainash Childebayeva.
-<!--Invitations: Ainash Childebayeva.-->
+We will meet each day from 9am-12pm and from 1-4pm, Mountain Daylight
+Time (UTC-6).
 
-2. Reproducible bioinformatic pipelines and working on the command
-   line. [Tim Webster](https://www.websterlab.org/)
+<table>
+<tr>
+<th>Day</th>
+<th>Time</th>
+<th>Speaker</th>
+<th>Topic</th>
+</tr>
 
-3. Simulation with msprime. Colin Brand.
+<tr>
+<td>2022-7-27</td>
+<td>AM</td>
+<td>Ainash Childebayeva</td>
+<td>Working with genomic data</td>
+</tr>
 
-4. Introgression: background and theory. Shyamalika Gopalan.
+<tr>
+<td>2022-7-27</td>
+<td>PM</td>
+<td>Tim Webster</td>
+<td>Reproducible pipelines; the command line</td>
+</tr>
 
-5. Admixtools. Robert Maier
+<tr>
+<td>2022-7-28</td>
+<td>AM</td>
+<td>Colin Brand</td>
+<td>Simulation with msprime</td>
+</tr>
 
-6. Legofit. Alan Rogers
+<tr>
+<td>2022-7-28</td>
+<td>PM</td>
+<td>Shyamalika Gopalan</td>
+<td>Introgression: background and theory</td>
+</tr>
+
+<tr>
+<td>2022-7-29</td>
+<td>AM</td>
+<td>Robert Maier</td>
+<td>Admixtools</td>
+</tr>
+
+<tr>
+<td>2022-7-29</td>
+<td>PM</td>
+<td>Alan Rogers</td>
+<td>Legofit</td>
+</tr>
+</table>
 
 # Background reading
 
