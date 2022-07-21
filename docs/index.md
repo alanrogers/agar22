@@ -12,6 +12,20 @@ Applications are now closed. If you applied, you should have received
 an invitation to join the agar22 Google Group, which we will be using
 to communicate with participants.
 
+# If you've already applied
+
+We've set up a google group for communicating with participants. If
+you applied to the workshop, you should have received an invitation to
+join this group. If you accepted that invitation, you should be
+receiving posts.
+
+Several people, who applied using their institutional email addresses,
+have had trouble accessing the google group. We've been fixing those
+problems by using alternate email addresses, such as gmail.
+
+If you're having problems of this sort, or if you haven't received the
+emails described above, please get in touch: sregorra@gmail.com
+
 # Schedule
 
 We will meet each day from 9am-12pm and from 1-4pm, Mountain Daylight
