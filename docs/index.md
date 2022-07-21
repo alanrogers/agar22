@@ -8,9 +8,7 @@ virtual, with lectures via Zoom and materials made available on
 
 # How to apply
 
-Applications are now closed. If you applied, you should have received
-an invitation to join the agar22 Google Group, which we will be using
-to communicate with participants.
+Applications are now closed.
 
 # If you've already applied
 
