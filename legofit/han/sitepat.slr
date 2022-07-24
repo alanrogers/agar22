@@ -20,19 +20,6 @@ simons2=$HOME/grp2/islam/legofit/data
 # Unless it already exists, make a directory to hold bootstrap replicates
 mkdir -p boot
 
-# Create observed pattern frequency (.opf) file and bootstrap replicates.
-# This will not run until you have created the .raf.gz files that you
-# need. 
-#time sitepat -1 --bootfile boot/boot --bootreps 50 \
-#     x=${simons}/yoruba.raf.gz \
-#     y=${simons2}/han.raf.gz \
-#     v=${vindija}/vindija.raf.gz \
-#     a=${altai}/altai.raf.gz \
-#     d=${denisova}/denisova.raf.gz \
-#     outgroup=${ape}/chigor.raf.gz
-
-#echo "finished sitepat" 1>&2
-
 time sitepat -1 --bootfile boot/boot --bootreps 50 \
      x=${simons}/yoruba.raf.gz \
      y=${simons2}/han.raf.gz \
