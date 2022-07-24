@@ -9,6 +9,12 @@ This current directory contains:
   described in the tutorial. The data set studied there includes
   samples from Europe, Africa, Neanderthals, and a Denisovan.
 
+* quechua: directory containing site pattern frequencies and bootstrap
+  replicates like those in the "europe" directory, except that the
+  Quechua population is used instead of Europe.
+
+* bougainville: as above, but with Bougainville instead of Europe.
+
 The complete analysis involves several steps, which are detailed in
 the tutorial. Here's a brief synopsis.
 
@@ -44,5 +50,7 @@ computer. Instructions can be found in the tutorial. We'll spend some
 time during the workshop sorting out installation issues, so don't
 worry if you run into problems.
 
-The Legofit documentation is available
-[here](https://alanrogers.github.io/legofit/html/index.html). 
+Further information is available in the Legofit
+[documentation](https://alanrogers.github.io/legofit/html/index.html)
+and the
+[tutorial](https://alanrogers.github.io/agar22/legofit/legotut.pdf).

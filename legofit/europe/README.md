@@ -14,11 +14,27 @@ Populations: X, Yoruba; Y, Europe (France and England); V, Vindija; A,
 Altai; D, Denisova. Outgroup=chigor (merged chimp and gorilla
 reference sequences).
 
-sitepat.slr : slurm script to generate data.opf and boot/*.opf
+<table>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
 
-data.opf : observed site-pattern frequencies and confidence intervals
+<tr>
+<td>sitepat.slr</td>
+<td>Slurm script to generate data.opf and boot/boot*.opf</td>
+</tr>
 
-boot: subdirectory containing .opf files for bootstrap replicates
+<tr>
+<td>data.opf</td>
+<td>observed site pattern frequencies and confidence intervals</td>
+</tr>
+
+<tr>
+<td>boot</td>
+<td>directory for bootstrap replicates</td>
+</tr>
+</table>
 
 ad, a, ab, abc, abcd, abd, ac, acd: these subdirectories contain
 analyses of different models. For details, see the README.md file

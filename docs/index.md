@@ -106,6 +106,8 @@ extensively in pipelines.
 
 # Tutorials
 
+* [AdmixTools](https://uqrmaie1.github.io/admixtools/articles/admixtools.html)
+
 * [Legofit](legofit/legotut.pdf)
 
 * [Msprime](msprime/msptut.pdf)
