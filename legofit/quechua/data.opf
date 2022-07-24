@@ -1,0 +1,49 @@
+# sitepat version 2.3.4-14-g5771ef6
+# Population labels:
+#  x=/uufs/chpc.utah.edu/common/home/u1322049/grp1/rogers/data/simons/raf/yoruba.raf.gz
+#  y=/uufs/chpc.utah.edu/common/home/u1322049/grp2/dalmas/data/raf/quechua/quechua.raf.gz
+#  v=/uufs/chpc.utah.edu/common/home/u1322049/grp1/rogers/data/vindija/orig/vindija.raf.gz
+#  a=/uufs/chpc.utah.edu/common/home/u1322049/grp1/rogers/data/altai/orig2/altai.raf.gz
+#  d=/uufs/chpc.utah.edu/common/home/u1322049/grp1/rogers/data/denisova/orig2/denisova.raf.gz
+#  outgroup=/uufs/chpc.utah.edu/common/home/u1322049/grp1/rogers/data/ape/chigor.raf.gz
+# Including singleton site patterns.
+# Number of site patterns: 30
+# Chromosomes or scaffolds       : 22
+# Aligned sites                  : 1421994572
+# Sites with multiple alt alleles: 84418
+# Monomorphic sites              : 1416325615
+# Undetermined ancestral allele  : 162381
+# Sites used                     : 5422158
+# bootstrap output files = boot/boot*.opf
+# confidence level = 95.00%
+#       SitePat             E[count]             low            high
+              x       514530.1927083  513161.8958779  516253.3121756
+              y       503310.8489583  501577.7373700  505023.4488717
+              v       164878.0381944  163492.4362196  165950.9534071
+              a       127418.8750000  126118.1077040  128482.5609375
+              d       550630.5069444  547975.3376519  553548.6435981
+            x:y       308718.4114583  306312.3136723  311235.6092018
+            x:v         4756.1805556    4578.8205512    5005.1796875
+            x:a         4484.5729167    4291.1131293    4673.1560547
+            x:d        37448.1909722   36690.6637804   38008.0689019
+            y:v         6374.8368056    6140.6399740    6630.6545573
+            y:a         4787.2708333    4583.3307075    4978.1454644
+            y:d        36264.3472222   35654.4931424   36894.1802951
+            v:a       383508.1753472  381154.9968533  385598.5767144
+            v:d        13293.0364583   12673.6310547   13856.5145182
+            a:d        15332.4079861   14787.7161024   15971.6432292
+          x:y:v         8835.3194444    8483.8456597    9309.7007161
+          x:y:a         7517.9062500    7188.6674696    7838.7677734
+          x:y:d        81775.0798611   80426.6068359   83068.7041667
+          x:v:a        37045.2517361   36454.2874349   37813.4529731
+          x:v:d         2893.9322917    2768.9905599    3017.2602865
+          x:a:d         3160.7065972    3009.9319878    3313.9702257
+          y:v:a        45130.6996528   44184.4600043   46089.9086154
+          y:v:d         3066.5052083    2890.1848524    3231.1892361
+          y:a:d         3195.1128472    3049.6173177    3403.3703559
+          v:a:d       226701.8437500  223535.0273221  229135.9973525
+        x:y:v:a       101302.7482639   99192.3625434  102947.6919922
+        x:y:v:d         8755.4010417    8411.0899306    9051.1901910
+        x:y:a:d         9384.8975694    8995.4290365    9821.4950521
+        x:v:a:d        77480.2500000   76493.0568576   78395.7947700
+        y:v:a:d        84969.2395833   84169.6414063   85963.3136285

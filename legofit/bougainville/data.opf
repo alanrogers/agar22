@@ -1,0 +1,32 @@
+# sitepat version 2.3.4-14-g5771ef6
+# Population labels:
+#  x=/uufs/chpc.utah.edu/common/home/u1370481/grp1/rogers/data/simons/raf/yoruba.raf.gz
+#  y=/uufs/chpc.utah.edu/common/home/u1370481/archgen/bougainville.raf.gz
+#  a=/uufs/chpc.utah.edu/common/home/u1370481/grp1/rogers/data/altai/orig2/altai.raf.gz
+#  d=/uufs/chpc.utah.edu/common/home/u1370481/grp1/rogers/data/denisova/orig2/denisova.raf.gz
+#  outgroup=/uufs/chpc.utah.edu/common/home/u1370481/grp1/rogers/data/ape/chigor.raf.gz
+# Including singleton site patterns.
+# Number of site patterns: 14
+# Chromosomes or scaffolds       : 22
+# Aligned sites                  : 1489115341
+# Sites with multiple alt alleles: 83778
+# Monomorphic sites              : 1483474213
+# Undetermined ancestral allele  : 161756
+# Sites used                     : 5395594
+# bootstrap output files = boot/boot*.opf
+# confidence level = 95.00%
+#       SitePat             E[count]             low            high
+              x       552306.6927083  550651.2683601  554112.5532559
+              y       531593.6093750  529812.7893229  533122.4888021
+              a       536880.4531250  533415.3407552  540062.0686198
+              d       586140.8281250  583007.6492188  589405.2464844
+            x:y       326294.3906250  323134.9119792  329166.4644531
+            x:a        44992.9218750   44323.0289063   45625.5949219
+            x:d        42087.5468750   41359.7682292   42954.9588542
+            y:a        52625.4635417   51827.3114583   53567.6098958
+            y:d        46590.4218750   45794.3936198   47593.9453125
+            a:d       248669.3072917  245762.8173177  251596.6688802
+          x:y:a       112758.4114583  111445.5026042  114481.7382812
+          x:y:d        95904.4531250   94360.0785156   97883.7035156
+          x:a:d        83305.6927083   82327.1187500   84338.7641927
+          y:a:d        97762.5260417   96811.0294271   99052.1260417
