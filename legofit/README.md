@@ -40,10 +40,10 @@ It's also possible to improve the fit by doing additional legofit runs
 and by re-expressing the free variables in terms of (uncorrelated)
 principal components. The tutorial has details.
 
-In the workshop, we won't have time for a full analysis. I'll do step
-1 before the workshop starts. Students can choose from several data
-sets, which will focus on populations from different parts of the
-world. Students will do steps 2 and 3 during the workshop.
+In the workshop, we won't have time for a full analysis. We've done
+step 1 for you. During the workshop, you can choose between several
+data sets, which focus on different parts of the world. You'll do 2
+and 3 during the workshop.
 
 Before the workshop starts, please try to install legofit on your own
 computer. Instructions can be found in the tutorial. We'll spend some
@@ -51,6 +51,4 @@ time during the workshop sorting out installation issues, so don't
 worry if you run into problems.
 
 Further information is available in the Legofit
-[documentation](https://alanrogers.github.io/legofit/html/index.html)
-and the
-[tutorial](https://alanrogers.github.io/agar22/legofit/legotut.pdf).
+[documentation](https://alanrogers.github.io/legofit/html/index.html).
