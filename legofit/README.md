@@ -9,6 +9,12 @@ This current directory contains:
   described in the tutorial. The data set studied there includes
   samples from Europe, Africa, Neanderthals, and a Denisovan.
 
+* quechua: directory containing site pattern frequencies and bootstrap
+  replicates like those in the "europe" directory, except that the
+  Quechua population is used instead of Europe.
+
+* bougainville: as above, but with Bougainville instead of Europe.
+
 The complete analysis involves several steps, which are detailed in
 the tutorial. Here's a brief synopsis.
 
