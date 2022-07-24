@@ -50,5 +50,7 @@ computer. Instructions can be found in the tutorial. We'll spend some
 time during the workshop sorting out installation issues, so don't
 worry if you run into problems.
 
-The Legofit documentation is available
-[here](https://alanrogers.github.io/legofit/html/index.html). 
+Further information is available in the Legofit
+[documentation](https://alanrogers.github.io/legofit/html/index.html)
+and the
+[tutorial](https://alanrogers.github.io/agar22/legofit/legotut.pdf).
