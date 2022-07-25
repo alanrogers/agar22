@@ -104,6 +104,8 @@ basic commands, please read up on
 "[xargs](https://en.wikipedia.org/wiki/Xargs)", which are used
 extensively in pipelines.
 
+* Module 4 will require RStudio. Please ensure you have [R](https://www.r-project.org/) and [RStudio](https://www.rstudio.com/products/rstudio/download/) installed on your machine, and familiarize yourself with how to change directories and source scripts in R.
+
 # Tutorials
 
 * [AdmixTools](https://uqrmaie1.github.io/admixtools/articles/admixtools.html)
