@@ -80,7 +80,7 @@ Time (UTC-6).
 </tr>
 </table>
 
-# Background reading
+# What to do before the workshop starts
 
 * [Just enough probability](http://content.csbs.utah.edu/~rogers/pubs/Rogers-JEP.pdf)
 
