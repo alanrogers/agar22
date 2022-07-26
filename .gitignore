@@ -7,5 +7,8 @@
 *.aux
 *.toc
 *.state
+*.nav
+main.out
+*.snm
 legotut.out
 msptut.out

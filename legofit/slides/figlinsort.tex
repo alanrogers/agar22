@@ -1,0 +1,52 @@
+%-*-latex-*-
+\let\put\pictexput
+\mbox{\beginpicture
+\headingtoplotskip=\baselineskip
+\setcoordinatesystem units <0.4cm, 0.4cm> point at 12 1
+\setplotarea x from 1 to 11, y from 1 to 13
+\axis bottom invisible ticks length <0pt>
+  withvalues {$X$} {$Y$} {$N$} /  at 2 6 10 / /
+\axis bottom invisible shiftedto y=-0.3 ticks length <0pt>
+  withvalues {1} {0} {1} / at 2 6 10 / /
+%\axis left ticks andacross numbered from 1 to 13 by 1 /
+%\axis top ticks andacross numbered from 1 to 11 by 1 /
+\plotheading{Pattern \textit{xn}}
+\setplotsymbol ({\normalsize .})
+\plot 1 1 5 9 5 13 /
+\plot 3 1 4 3 5 1 / 
+\plot 7 1 5 5 6 7 9 1 /
+\plot 11 1 7 9 7 13 /
+\setplotsymbol ({\textcolor{gray}{\scriptsize .}})
+\plot 2 1  6 9 /
+\plot 6 12 6 13 / % xyn
+\plot 6 1 4.5 3.5 4.5 5 6.5 9 6 12 / %y
+\setplotsymbol ({\textcolor{red}{\scriptsize .}})
+\plot 6 9  6 12 / % x
+\setplotsymbol ({\textcolor{gray}{\scriptsize .}})
+\plot 10 1 6 9 / %n
+%\arrow <10pt> [.2,.67] from 8.5 2 to 6.5 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcoordinatesystem units <0.4cm, 0.4cm> point at 0 1
+\setplotarea x from 1 to 11, y from 1 to 13
+\axis bottom invisible ticks length <0pt>
+  withvalues {$X$} {$Y$} {$N$} /  at 2 6 10 / /
+\axis bottom invisible shiftedto y=-0.3 ticks length <0pt>
+  withvalues {0} {1} {1} / at 2 6 10 / /
+%\axis left ticks andacross numbered from 1 to 13 by 1 /
+%\axis top ticks andacross numbered from 1 to 11 by 1 /
+\plotheading{Pattern \textit{yn}}
+\setplotsymbol ({\normalsize .})
+\plot 1 1 5 9 5 13 /
+\plot 3 1 4 3 5 1 / 
+\plot 7 1 5 5 6 7 9 1 /
+\plot 11 1 7 9 7 13 /
+\setplotsymbol ({\textcolor{gray}{\scriptsize .}})
+\plot 2 1  6 9 6 13 /
+\plot 6 1 4.5 3.5 4.5 5 6.5 9 / %y
+\setplotsymbol ({\textcolor{red}{\scriptsize .}})
+\plot 6.5 9  6 12 / % x
+\setplotsymbol ({\scriptsize .})
+\plot 10 1 6.5 8 6.5 9 / %n
+%\arrow <10pt> [.2,.67] from 8.5 2 to 6.5 2
+\endpicture}
+\let\put\latexput
