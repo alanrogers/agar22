@@ -13,4 +13,4 @@ ofile=a1boot${1}.legofit      # main output
 efile=a1boot${1}.err          # error output
 
 (time legofit -1 -d 0 --stateOut ${stateout} --tol 3e-6 \
-  -S 5000 ${lgofile} ${ifile}) 1>${ofile} 2>${efile}
+  -S 100 ${lgofile} ${ifile}) 1>${ofile} 2>${efile}

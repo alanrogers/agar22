@@ -27,46 +27,26 @@
 \section{Introduction}
 This is a tutorial on Legofit, a package that uses genetic data to
 estimate the history of population size, subdivision, and admixture
-\citep{Rogers:BMC-20-526, Rogers:PCJ-2-e32}. It will step you through
-the process of installing the software, using it to tabulate the
-frequencies of nucleotide site patterns, and then analyzing these data
-to fit a model of population history. We will assume that data files
-are already available in .vcf format. The full Legofit documentation
-is available
+\citep{Rogers:BMC-20-526, Rogers:PCJ-2-e32}. I've designed it for use
+in the AGAR Workshop on Computational Evolutionary Genetics, which
+will meet online July~27--29, 2022. There is much more in this
+document than we will use in the workshop. The extra material is there
+for those who want to use Legofit on their own, after the workshop is
+over. For the workshop itself, you will need
+sections~\ref{sec.install}, \ref{sec.fit}
+(excluding~\ref{sec.slurmpipe}), and \ref{sec.graph}.  Further
+information about Legofit is available
 \href{http://alanrogers.github.io/legofit/html/index.html}{online}.
-
-This tutorial will be used in the 2022 edition of the AGAR
-Workshop. During the workshop, we will do only last step in this
-process, which estimates population history from site pattern
-frequencies. We will not do the preliminary steps, which tabulate
-these frequencies. Nonetheless, this tutorial describes the whole
-process.
-
-We plan to introduce students to the Center for High-Performance
-Computing (CHPC) at the University of Utah, and some of the sections
-below assume that you have an account on that system. (We'll be
-getting accounts for everyone enrolled in the workshop.) These
-sections involve using the SLURM Workload Manager to submit jobs to
-the compute cluster. However, our focus during the workshop will be on
-the last step, which can be done in two ways: either on the CHPC
-(using slurm), or on your own computer (using the bash shell). This
-tutorial will cover both environments.
 
 Try to install Legofit (sec.~\ref{sec.install}) on your own before the
 workshop starts. We'll help with installation problems during the
 workshop, but that will take less time if you've already made a start.
-Sections~\ref{sec.raf}--\ref{sec.tabulate} are only for reference,
-when you work with Legofit on your own. They will not be covered
-during the workshop. Most of our efforts will be on fitting models
-(sec.~\ref{sec.fit}), but we'll spend some time at the end on model
-selection, model averaging, and graphing
-(secs.~\ref{sec.msma}--\ref{sec.graph}).
 
 \section{Installing Legofit}
 \label{sec.install}
 This section explains how to get Legofit running on your own
-computer. It's already installed on the CHPC, so these steps are not
- needed there.
+computer.
+
 \subsection{Install git if necessary}
 You may have git already. To find out whether you do, type:
 \begin{verbatim}
@@ -185,11 +165,8 @@ The details are in the
 
 \section{Setting up your environment at the CHPC}
 \label{sec.chpc}
-These instructions are needed only if you're using the facilities of
-the Center for High Performance Computing (CHPC) at the University of
-Utah. We are in the process of getting that set up for the
-workshop. The current instructions may need to change once we get that
-set up.
+This section isn't needed for the AGAR workshop, because we aren't
+using the CHPC.
 
 Utah's CHPC has several ``clusters,'' each with many ``nodes.''  Each
 node is a powerful computer in its own right. The
@@ -699,17 +676,16 @@ written entirely in bash.
 Within the agar22 directory tree, \texttt{cd} into directory
 \texttt{legofit/europe/a}. You'll find several bash scripts there,
 whose names all end with \texttt{.sh}. All but one of these scripts is
-involved in the bash version of the pipeline. To experiment with this
-pipeline, let's copy these scripts into a temporary directory. From
-within this directory, type
-\begin{verbatim}
-mkdir ../tmp    # make a temporary directory
-cp a.lgo ../tmp # copy .lgo file into tmp
-cp *.sh ../tmp  # copy scripts into tmp
-cd ../tmp       # move into that directory
-rm pipeline.sh  # get rid of the file that isn't part of the bash pipeline
-\end{verbatim}
-Your \texttt{tmp} directory should now contain the following files:
+involved in the bash version of the pipeline. The bash pipeline is a
+scaled-down version of the one described below in
+section~\ref{sec.slurmpipe}. In this smaller version, legofit fits
+only 10 of the bootstrap replicates, rather than all 50, and each run
+of legofit is allowed to do only 100 iterations of the optimization
+algorithm, rather than 5000. Because we are using so few replicates,
+it isn't possible to do a principal components analysis, so the bash
+pipeline does only the first two stages of analysis.
+
+The bash pipeline consists of the following files:
 \begin{leftindent}
 \begin{tabbing}
 \verb|bash_pipeline.sh|XX\=\kill
@@ -718,25 +694,12 @@ Your \texttt{tmp} directory should now contain the following files:
 \texttt{a1boot.sh} \> stage~1 on a bootstrap replicate\\
 \texttt{a2.sh} \> stage~2 on real data\\
 \texttt{a2boot.sh} \> stage~2 on a bootstrap replicate\\
-\texttt{pclgo.sh} \> run pclgo to create b.lgo  \\
-\texttt{b1.sh} \> stage~3 of analysis on real data\\
-\texttt{b1boot.sh} \> stage~3 on a bootstrap replicate\\
-\texttt{b2.sh} \> stage~4 on real data\\
-\texttt{b2boot.sh} \> stage~4 on a bootstrap replicate\\
 \verb|bash_pipeline.sh| \> runs all the other scripts
 \end{tabbing}
 \end{leftindent}
-If you examine these scripts (for example, by typing
-\texttt{less a1.sh}), you'll find that the legofit commands include
-the option \texttt{-S 5000}, which tells the DE algorithm to do as
-many as 5000 iterations. This could take awhile, so let's speed things
-up. To change ``5000'' into ``100'' in all the files at once, type
-\begin{verbatim}
-sed -i "" 's/5000/100/g' *.sh 
-\end{verbatim}
-This will reduce the accuracy of our answers, but that's okay---this
-is only an exercise. To run the first stage of analysis on the real
-data, enter the following command:
+
+To run the first stage of analysis on the real data, enter the
+following command:
 \begin{verbatim}
 bash a1.sh
 \end{verbatim}
@@ -750,19 +713,20 @@ there should be three new files in your directory:
     a1.state   \> state of DE swarm at end of legofit run
   \end{tabbing}
 \end{leftindent}
-To run the first stage on all bootstrap replicates, type:
+To run the first stage on the first 10 bootstrap replicates, type:
 \begin{verbatim}
-seq 0 49 | xargs -n 1 bash a1boot.sh
+seq 0 9 | xargs -n 1 bash a1boot.sh
 \end{verbatim}
-This command will run 50 jobs, each of which might have been launched
-by typing on the command line something like
+In real research, you'd want to use all 50 bootstrap replicates.  The
+abbreviated command above will run 10 jobs, each of which might have
+been launched by typing on the command line something like
 \begin{verbatim}
 bash a1boot.sh <i>
 \end{verbatim}
 where \verb|<i>| is 0 for the first job, 1 for the second, and so on
-up to 49. Each job will analyze a single bootstrap replicate and will
+up to 9. Each job will analyze a single bootstrap replicate and will
 write three files that are analogous to the three discussed above. It
-takes several minutes to do all 50 bootstrap replicates.
+takes a minute or two to do all 10 bootstrap replicates.
 
 We could, if we wished, proceed in this fashion and execute the
 remaining stages of analysis by typing bash commands at the
@@ -776,15 +740,14 @@ errors, you will find
 \begin{verbatim}
 # Stage 1 of analysis.
 bash a1.sh
-seq 0 49 | xargs -n 1 bash a1boot.sh
+seq 0 9 | xargs -n 1 bash a1boot.sh
 \end{verbatim}
 These lines are identical to the commands we used above to execute the
-first stage of analysis. The script as a whole does the entire legofit
-analysis. To execute it all, you would type
+first stage of analysis. To do the entire analysis, type
 \begin{verbatim}
 bash bash_pipeline.sh
 \end{verbatim}
-You would end up with 204 .legofit files (51 for each stage), the same
+You should end up with 22 .legofit files (11 for each stage), the same
 number of .err files, and half that many .state files. Before talking
 about what to do with these files, let us consider other ways to
 implement a pipeline.
@@ -805,6 +768,9 @@ cores available on your computer. To run multiple legofit jobs in
 parallel, you need to run each one on a different node within a
 high-performance computing cluster. This is the rationale for the
 slurm version of the pipeline.
+
+We won't be using slurm in the AGAR workshop. So if you're in the
+workshop, skip ahead to section~\ref{sec.graph}.
 
 \subsubsection{Slurm version of pipeline}
 \label{sec.slurmpipe}
@@ -907,10 +873,6 @@ I do \texttt{git push} from the CHPC and then \texttt{git pull} from
 home. I'm not teaching you how to do this here, because this tutorial
 is complicated enough already. I'm teaching the rsync approach
 instead, because it's simpler.
-
-\subsubsection{Snakemake version of the pipeline}
-\label{sec.snakemake}
-This section hasn't been written yet.
 
 \section{Model selection, model averaging, and confidence intervals}
 \label{sec.msma}
@@ -1043,36 +1005,84 @@ bmadot.r \> plots confidence intervals as
   \citet[Fig.~7]{Rogers:PCJ-2-e32}
 \end{tabbing}
 \end{leftindent}
-And three others are in \texttt{legofit/europe/abcd}:
+You can experiment with those on your own. During the workshop, we'll
+be working with the three R scripts in \texttt{legofit/europe/a}:
 \begin{leftindent}
 \begin{tabbing}
   dotplot.rXX\=\kill
-b2pairs.r \> makes a pairwise scatterplot like
+a2pairs.r \> makes a pairwise scatterplot like
   Fig.~\ref{fig.pairs}\\
 resid.r \> plots residual error as in Fig.~5 of \citep{Rogers:PCJ-2-e32}\\
 dotplot.r \> plots confidence intervals as in Fig.~7 of
   \citep{Rogers:PCJ-2-e32}
 \end{tabbing}
 \end{leftindent}
-To use these, first make sure that R is installed on your system. Then
-copy them into the directory that contains your own fitted model, edit
-them so that the labels correspond to those in your own model, and so
-that the output file is named according to your taste. Then run, for
-example,
+To use these, first make sure that R is installed on your system.
+
+The next step is to summarize legofit's output files, so that R can
+read them. Type
 \begin{verbatim}
-Rscript b2pairs.r
+flatfile.py a2.legofit a2boot*.legofit > a2.flat
 \end{verbatim}
+This creates ``a2.flat,'' a file with a row for each data set (the
+real data and 10 bootstrap replicates) and a column for each free
+variable. To examine it, type \texttt{less -S a2.flat}. The final
+summary file is created like this:
+\begin{verbatim}
+bootci.py a2.flat > a2.bootci
+\end{verbatim}
+This creates ``a2.bootci,'' which gives the bootstrap confidence
+interval of each parameter.
+
+To make a pairwise scatterplot, type
+\begin{verbatim}
+Rscript a2pairs.r
+\end{verbatim}
+This creates a file called ``a2pairs.pdf,'' which you can examine with
+any pdf viewer. It makes a scatter plot of each parameter against each
+other parameter. One of the plotted circles in each panel is the real
+data and the rest are bootstrap replicates. You will probably find
+that some parameters are tightly correlated with others, as in
+Fig.~\ref{fig.pairs}.
+
+To plot the residuals, type
+\begin{verbatim}
+Rscript resid.r
+\end{verbatim}
+This will make ``a-a2-resid.pdf,'' which will show you the residual
+errors, i.e.\ the difference between the observed site pattern
+frequencies and those predicted by the model. The red asterisks are
+the real data, and the blue circles are bootstrap replicates. The blue
+scatters measure the uncertainty in the estimate, and ideally these
+scatters would all overlap zero. But you'll probably find that this
+isn't so. You've fit a very simple model, and the lack of fit is a
+clue that something is missing from the model.
+
+To plot the confidence interval of each parameter, type
+\begin{verbatim}
+Rscript dotplot.r
+\end{verbatim}
+This will create ``a-det-dot.pdf.'' In this graph, the open circles
+are point estimates, and the horizontal lines are 95\% bootstrap
+confidence intervals. Don't worry if some of your point estimates are
+outside of the confidence intervals. This can happen when confidence
+intervals are generated by bootstrap. Look at the confidence intervals
+of the parameters that are tightly correlated with other parameters in
+a2pairs.pdf. You'll probably find that these parameters have wide
+confidence intervals. This is because tight correlations make it hard
+to get precise estimates, and this results in broad confidence
+intervals. 
 
 \section{Conclusions}
 \label{sec.conclusions}
-If you followed all the steps above except the ones that involve the
-CHPC, then you should have all the tools you need to do a complete
-legofit analysis on your own computer. It is feasible to fit models of
-moderate complexity on a laptop. More complex models demand faster
-computers with multiple cores. Highly complex models are best studied
-on a high-performance computing cluster. The instructions above are
-specific to the CHPC at my own institution. You may need to modify
-them if you use a different center for high-performance computing.
+If you followed all the steps above, you should have all the tools you
+need to do a complete legofit analysis on your own computer. It is
+feasible to fit models of moderate complexity on a laptop. More
+complex models demand faster computers with multiple cores. Highly
+complex models are best studied on a high-performance computing
+cluster. The instructions above are specific to the CHPC at my own
+institution. You may need to modify them if you use a different center
+for high-performance computing.
 
 \section*{Acknowledgements}
 This work was supported by NSF BCS~1638840, NSF BCS~1945782, and the Center

@@ -3,7 +3,7 @@ library(stringr)
 
 real.datafile <- "../data.opf"
 model <- "a"
-stage <- "b2"
+stage <- "a2"
 
 # Construct a script, which will be processed by the linux command
 # "sed". The script has two commands separated by a semicolon. The
@@ -77,7 +77,7 @@ obsres <- getresid(real.datafile, real.legofit)
 bootres <- data.frame(pat=vector("character", 0), resid=vector("numeric",0))
 
 # read bootstrap replicates and concatenate into df
-for(i in 0:49) {
+for(i in 0:9) {
     # file names
     curr.legofit <- paste(stage, "boot", i, ".legofit", sep="")
     curr.boot <- paste("../boot/boot", i, ".opf", sep="")
@@ -103,5 +103,5 @@ ggplot(bootres, aes(resid, pat)) +
                 alpha=0.25) +
     geom_point(data=obsres, shape=8, size=3, color="red")
 
-outfile <- paste("xyvad", model, stage, "resid.pdf", sep="-")
+outfile <- paste(model, stage, "resid.pdf", sep="-")
 ggsave(outfile)
