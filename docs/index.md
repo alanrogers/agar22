@@ -108,9 +108,10 @@ Time (UTC-6).
 3. Module 4 (Day 2) will require RStudio. Please ensure you have [R](https://www.r-project.org/) and
 [RStudio](https://www.rstudio.com/products/rstudio/download/)
 installed on your machine. On a Mac, using homebrew, you can
-install it by typing
+install R and Rstudio by typing
 
     brew install r
+    brew install rstudio
 
 at the bash prompt. Please familiarize yourself with how to change
 directories and source scripts in R.
