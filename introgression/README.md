@@ -2,8 +2,9 @@
 
 This module will require that participants have the following software installed:
 - R and RStudio
-- tskit
+- python3
 - msprime
+- vcftools
 - admixture
 - rfmix
 
