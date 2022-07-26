@@ -17,7 +17,7 @@ def main(args):
 	ts = msprime.sim_ancestry(samples={"A": 100, "B": 100}, sequence_length=1e6, demography=demography)
 	mts = msprime.sim_mutations(ts, rate=1e-8)
 
-	fst = mts.Fst(sample_sets=[range(0, 200), range(201, 400)])
+	fst = mts.Fst(sample_sets=[range(0, 200), range(200, 400)])
 	print("\nNe of descendent populations is " + str(args.Ne))
 	print("Populations split " + str(args.t_split) + " generations ago\n")
 	print("   * Fst between descendent populations is " + str(np.around(fst, decimals=5)) + "\n")
