@@ -106,7 +106,25 @@ Time (UTC-6).
 	"[xargs](https://en.wikipedia.org/wiki/Xargs)", which are used
 	extensively in pipelines.
 3. Module 4 (Day 2) will require RStudio. Please ensure you have [R](https://www.r-project.org/) and
-[RStudio](https://www.rstudio.com/products/rstudio/download/) installed on your machine, and familiarize yourself with how to change directories and source scripts in R.
+[RStudio](https://www.rstudio.com/products/rstudio/download/)
+installed on your machine, and familiarize yourself with how to change
+directories and source scripts in R.
+4. You will need `git` both to download the code and data for this
+   workshop, and also to install Legofit on your computer. See the
+   [Legofit tutorial](legofit/legotut.pdf) to find out how to install
+   git and Legofit. Once git is up and running, you can download the
+   agar22 repository as follows, using a bash terminal. First use `cd`
+   to move to the directory within which you want to install
+   agar22. Then type
+
+    git clone https://github.com/alanrogers/agar22.git agar22
+
+   When that has run, you should find a directory named "agar22",
+   which contains all the files related to the workshop. As we make
+   changes to the workshop files, it's easy to keep your own copy up
+   to date. Use `cd` to move into the agar22 directory and type
+
+    git pull
 
 ### Reading
 
