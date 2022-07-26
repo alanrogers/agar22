@@ -1,6 +1,6 @@
 # AGAR Workshop on Computational Genetics
 
-Timothy Webster and Alan Rogers are hosting the AGAR Workshop on
+Tim Webster and Alan Rogers are hosting the AGAR Workshop on
 Computational Genetics July 27-29, 2022. The workshop will focus on
 methods for inferring population history and admixture. It will be
 virtual, with lectures via Zoom and materials made available on
@@ -48,7 +48,7 @@ Time (UTC-6).
 <td>2022-7-27</td>
 <td>PM</td>
 <td>Tim Webster</td>
-<td>Reproducible pipelines; the command line</td>
+<td>Building a reproducible pipeline to map reads and call variants</td>
 </tr>
 
 <tr>
@@ -82,29 +82,41 @@ Time (UTC-6).
 
 # What to do before the workshop starts
 
-* [Just enough probability](http://content.csbs.utah.edu/~rogers/pubs/Rogers-JEP.pdf)
+### Computer set up
 
-* Chs. 4-5 of [Lecture notes on gene genealogies](ggeneal.pdf)
+1. Set up Bash (Mac and Windows) and Command Line Tools (Mac) (both available by default on Linux)
+	* During the workshop, we will make use of the
+	[Bash shell](https://www.gnu.org/software/bash/manual), a command-line
+	interpreter that is widely used in computational genetics.
+	* **It is available on MacOS** through the "Terminal" application
+	(located in the "Utilities" subdirectory of your "Applications" folder). If you're using
+	a newer operating system on your Mac (Catalina or later) and haven't changed
+	your shell, you might be using "zsh" instead. To check, type ```echo $SHELL``` into your terminal.
+	If the result is ```/bin/bash```, you're all set. If not, [see this tutorial for changing your
+	default shell](https://support.apple.com/en-us/HT208050).
+	* **If you're using a Mac** and have never used "Terminal" before on your machine, you might have to install "Command Line Tools", which, as it sounds, adds a slew of command line tools. [This tutorial](https://mac.install.guide/commandlinetools/index.html) gives three options for installation.
+	* **On Windows**, bash is available through the
+	[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) (WSL); that link contains
+	instructions for installation.
+2. We won't try to teach you Bash, but you should familiarize yourself with the basic
+	commands--"ls", "pwd", "cd", "rm", and "mkdir"--and also with bash
+	pipes, and the redirection of input and output. In addition to these
+	basic commands, please read up on
+	"[seq](https://linuxhandbook.com/seq-command/)" and
+	"[xargs](https://en.wikipedia.org/wiki/Xargs)", which are used
+	extensively in pipelines.
+3. Module 4 (Day 2) will require RStudio. Please ensure you have [R](https://www.r-project.org/) and
+[RStudio](https://www.rstudio.com/products/rstudio/download/) installed on your machine, and familiarize yourself with how to change directories and source scripts in R.
 
-* [Rogers 2022](https://arxiv.org/abs/2201.02668) Using genetic data
+### Reading
+
+1. Suggested reading for Day 2 and Day 3
+	* [Just enough probability](http://content.csbs.utah.edu/~rogers/pubs/Rogers-JEP.pdf)
+
+	* Chs. 4-5 of [Lecture notes on gene genealogies](ggeneal.pdf)
+
+	* [Rogers 2022](https://arxiv.org/abs/2201.02668) Using genetic data
     to build intuition about population history.
-
-* During the workshop, we will make use of the
-[Bash shell](https://www.gnu.org/software/bash/manual), a command-line
-interpreter that is widely used in computational genetics. It is
-available on MacOS through the "Terminal" application and on Windows
-through the
-[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install). Anyone
-using Linux will be familiar with it already.  We won't try to teach
-you Bash, but you should familiarize yourself with the basic
-commands--"ls", "pwd", "cd", "rm", and "mkdir"--and also with bash
-pipes, and the redirection of input and output. In addition to these
-basic commands, please read up on
-"[seq](https://linuxhandbook.com/seq-command/)" and
-"[xargs](https://en.wikipedia.org/wiki/Xargs)", which are used
-extensively in pipelines.
-
-* Module 4 will require RStudio. Please ensure you have [R](https://www.r-project.org/) and [RStudio](https://www.rstudio.com/products/rstudio/download/) installed on your machine, and familiarize yourself with how to change directories and source scripts in R.
 
 # Tutorials
 
@@ -134,7 +146,7 @@ extensively in pipelines.
 * [Robert Maier](https://heb.fas.harvard.edu/people/robert-maier) is a
   Research Fellow at the Broad Institute, Harvard University. He is
   the lead developer of AdmixTools2, which he will teach during the
-  workshop. 
+  workshop.
 
 * [Alan Rogers](https://anthro.utah.edu/profile.php?unid=u0028949) is
   in the Anthro Dept of the University of Utah. He has developed
@@ -143,12 +155,11 @@ extensively in pipelines.
   [Legofit](https://alanrogers.github.io/legofit/html/index.html),
   during the workshop.
 
-* [Timothy Webster](https://faculty.utah.edu/u6023206-TIM_WEBSTER/hm/index.hml)
-  is in the Anthro Dept of the University of Utah. He uses genomic
+* [Tim Webster](https://faculty.utah.edu/u6023206-TIM_WEBSTER/hm/index.hml)
+  is in the Anthropology Department at the University of Utah. He uses genomic
   data and computational methods to understand primate evolution,
   ecology, and behavior. In particular, he explores (1)
   macroevolutionary processes, especially speciation, adaptation, and
   lineage-specific demographic history, (2) modern and historical
   aspects of behavioral ecology and social organization, and (3) sex
   chromosome evolution.
-
