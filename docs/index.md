@@ -107,8 +107,14 @@ Time (UTC-6).
 	extensively in pipelines.
 3. Module 4 (Day 2) will require RStudio. Please ensure you have [R](https://www.r-project.org/) and
 [RStudio](https://www.rstudio.com/products/rstudio/download/)
-installed on your machine, and familiarize yourself with how to change
+installed on your machine. On a Mac, using homebrew, you can
+install it by typing
+
+    brew install r
+
+at the bash prompt. Please familiarize yourself with how to change
 directories and source scripts in R.
+
 4. You will need `git` both to download the code and data for this
    workshop, and also to install Legofit on your computer. See the
    [Legofit tutorial](legofit/legotut.pdf) to find out how to install
