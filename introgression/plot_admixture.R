@@ -1,4 +1,4 @@
-setwd("/Users/shyamie/Dropbox (Duke Bio_Ea)/Shyamie/Work/Presentations_and_Teaching/2022_AGAR/")
+setwd("/your/working/directory/")
 outfile <- "test"
 options(stringsAsFactors=F)
 
@@ -19,7 +19,6 @@ for (K in 2:5) {
 K = 3
 Q.dat <- read.table(paste0(outfile, ".", K, ".Q"))
 rownames(Q.dat) <- c(paste0(fam[,1], "_", rep(1:sample_size, 4)))
-pops <- rep(c("SP1", "SP2", "SP3", "AP"), each=sample_size)
 for (i in 1:K) {
   pop <- pops[which.max(Q.dat[,i])]
   avg.anc <- mean(Q.dat[pops=="AP",i])
