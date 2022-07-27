@@ -6,6 +6,7 @@ This module will require that participants have the following software installed
 - [msprime](https://anaconda.org/conda-forge/msprime)
 - [plink](https://anaconda.org/bioconda/plink)
 - [admixture](https://anaconda.org/bioconda/admixture)
+- [vcftools](https://anaconda.org/bioconda/vcftools)
 - [rfmix](https://anaconda.org/bioconda/rfmix)
 
 ### ***Part 1 - Population genetics and evolutionary forces***
