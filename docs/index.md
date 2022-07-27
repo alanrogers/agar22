@@ -129,7 +129,7 @@ directories and source scripts in R.
    changes to the workshop files, it's easy to keep your own copy up
    to date. Use `cd` to move into the agar22 directory and type
 <pre><code>git pull
-</code></pre>	
+</code></pre>
 
 ### Reading
 
@@ -148,6 +148,14 @@ directories and source scripts in R.
 * [Legofit](legofit/legotut.pdf)
 
 * [Msprime](msprime/msptut.pdf)
+
+# Slides
+
+1. [Genomic data](./Bash_fastq_exercise.pdf)
+
+
+
+
 
 # Faculty
 
