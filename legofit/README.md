@@ -20,6 +20,8 @@ Before the workshop starts, please try to install legofit on your own
 computer. Instructions can be found in the tutorial. We'll spend some
 time during the workshop sorting out installation issues.
 
+The Legofit module will begin with [these slides](speda.pdf).
+
 This current directory contains:
 
 * europe: directory containing the code and data for the analysis
@@ -34,3 +36,4 @@ This current directory contains:
 
 Further information is available in the Legofit
 [documentation](https://alanrogers.github.io/legofit/html/index.html).
+
