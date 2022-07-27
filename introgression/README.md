@@ -1,12 +1,12 @@
 # Introduction to the population genomics of admixture and introgression
 
 This module will require that participants have the following software installed:
-- R and RStudio
-- python3
-- msprime
-- plink
-- admixture
-- rfmix
+- [R](https://www.r-project.org/) and [RStudio](https://www.rstudio.com/)
+- [python3] (https://anaconda.org/anaconda/python)
+- [msprime] (https://anaconda.org/conda-forge/msprime)
+- [plink] (https://anaconda.org/bioconda/plink)
+- [admixture] (https://anaconda.org/bioconda/admixture)
+- [rfmix] (https://anaconda.org/bioconda/rfmix)
 
 ### ***Part 1 - Population genetics and evolutionary forces***
 - What is population genetics?
