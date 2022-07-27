@@ -20,7 +20,7 @@ Before the workshop starts, please try to install legofit on your own
 computer. Instructions can be found in the tutorial. We'll spend some
 time during the workshop sorting out installation issues.
 
-The Legofit module will begin with [these slides](speda.pdf).
+The Legofit module will begin with [these slides](https://alanrogers.github.io/agar22/speda.pdf).
 
 This current directory contains:
 
