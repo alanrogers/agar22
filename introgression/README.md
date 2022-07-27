@@ -17,3 +17,12 @@ This module will require that participants have the following software installed
 - **Exercise 2**
 
 ### ***Part 2 - Gene flow***
+- Population relatedness
+- Definition and estimation of gene flow
+- **Exercise 3**
+- Multi-locus genetic data
+- Case study: Neanderthal introgression
+- Admixture
+- **Exercise 4**
+- Global and local ancestry
+- **Exercise 5**
