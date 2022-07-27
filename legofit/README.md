@@ -10,6 +10,16 @@ assess the uncertainty of those estimates. Finally, they will use R to
 make graphs of the results. Details of this exercise are in the
 [Legofit tutorial](https://alanrogers.github.io/agar22/legofit/legotut.pdf).
 
+In the first exercise, everyone will study the data in file
+`europe/data.opf` and fit the model in directory `europe/a`. If there
+is time, we'll do a second exercise in which students will study a
+data set (either Europe, Quechua, or Bougainville) and a model of
+their choice.
+
+Before the workshop starts, please try to install legofit on your own
+computer. Instructions can be found in the tutorial. We'll spend some
+time during the workshop sorting out installation issues.
+
 This current directory contains:
 
 * europe: directory containing the code and data for the analysis
@@ -21,11 +31,6 @@ This current directory contains:
   Quechua population is used instead of Europe.
 
 * bougainville: as above, but with Bougainville instead of Europe.
-
-Before the workshop starts, please try to install legofit on your own
-computer. Instructions can be found in the tutorial. We'll spend some
-time during the workshop sorting out installation issues, so don't
-worry if you run into problems.
 
 Further information is available in the Legofit
 [documentation](https://alanrogers.github.io/legofit/html/index.html).

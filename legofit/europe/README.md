@@ -34,26 +34,48 @@ reference sequences).
 <td>boot</td>
 <td>directory for bootstrap replicates</td>
 </tr>
+
+<tr>
+<td>all.bma</td>
+<td>Booma weights of all models; model-averaged parameter
+estimates.</td>
+</tr>
+
+<tr>
+<td>all.bootci</td>
+<td>Confidence intervals for model-averaged estimates</td>
+</tr>
+
+<tr>
+<td>patfrq.r</td>
+<td>R script to make patfrq.pdf</td>
+</tr>
+
+<tr>
+<td>patfrq.pdf</td>
+<td>Graph of site pattern frequencies</td>
+</tr>
+
+<tr>
+<td>bmadot.r</td>
+<td>R script to make bmadot.pdf</td>
+</tr>
+
+<tr>
+<td>bmadot.pdf</td>
+<td>Graph of estimates and confidence intervals</td>
+</tr>
+
 </table>
 
 ad, a, ab, abc, abcd, abd, ac, acd: these subdirectories contain
 analyses of different models. For details, see the README.md file
 within each subdirectory.
 
-patfrq.r : R script to graph site pattern frequencies. Generates xyvad-frq.pdf
-
-xyvad-frq.pdf : graph of site pattern frequencies and confidence intervals
-
-all.bma : bootstrap model average of all models. Produced like this:
+all.bma, all.bootci, patfrq.pdf, and bmadot.pdf were produced like this:
 
     booma */b2.bepe -F */b2.flat > all.bma
-
-all.bootci : model-averaged estimates and confidence intervals. Also
-has booma weights. Produced like this:
-
     bootci.py all.bma > all.bootci
+	Rscript patfrq.r
+	Rscript bmadot.r
 
-bmadot.r : R script to graph estimates. Reads all.bootci. Writes
-bmadot.pdf.
-
-bmadot.pdf: graph of parameter estimates and confidence intervals.
