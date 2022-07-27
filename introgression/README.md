@@ -8,7 +8,7 @@ This module will require that participants have the following software installed
 - [admixture](https://anaconda.org/bioconda/admixture)
 - [rfmix](https://anaconda.org/bioconda/rfmix)
 
-[### ***Part 1 - Population genetics and evolutionary forces***](https://github.com/alanrogers/agar22/blob/main/introgression/AGAR_2022_Module4_pt1.pdf)
+###[***Part 1 - Population genetics and evolutionary forces***](https://github.com/alanrogers/agar22/blob/main/introgression/AGAR_2022_Module4_pt1.pdf)
 - What is population genetics?
 - Mechanisms of evolution
 - Genetic drift
