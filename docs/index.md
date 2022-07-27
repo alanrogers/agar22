@@ -152,18 +152,11 @@ directories and source scripts in R.
 # Slides
 
 1. [Genomic data](Bash_fastq_exercise.pdf)
-
 2.
-
 3.
-
 4.
-
 5.
-
 6. [Legofit](speda.pdf)
-
-
 
 # Faculty
 
