@@ -5,6 +5,10 @@ plink --vcf ${1} --maf 0.02 --make-bed --out ${2}_maf0.02
 awk '{print $1 "\t" $4 "\t" $3 "\t" $4 "\t" $5 "\t" $6}' ${2}_maf0.02.bim > ${2}.bim.tmp
 mv ${2}.bim.tmp ${2}_maf0.02.bim
 
+# Give sample unique names
+awk '{print $1, $1"_"$2, $3, $4, $5, $6}' ${2}_maf0.02.fam > ${2}.fam.tmp
+mv ${2}.fam.tmp ${2}_maf0.02.fam
+
 # Thin for linkage disequilibrium - within 10kb window (sliding 20 SNPs at a time), removes SNPs with an r2 of 0.3 or greater
 plink --bfile ${2}_maf0.02 --indep-pairwise 10kb 20 0.3 --out $2
 plink --bfile ${2}_maf0.02 --exclude ${2}.prune.out --make-bed --out ${2}_maf0.02_LDpruned

@@ -42,8 +42,10 @@ def main(args):
 	print("SP1 and SP2 split " + str(args.t_split_SP1_SP2) + " generations ago")
 	print("The initial population split was " + str(args.t_split_all) + " generations ago")
 	print("\n** VCF output for " + str(sample_size) + " diploid samples per population being written to " + str(args.out) + " **\n")
+	pop_ids = np.repeat(["SP1", "SP2", "SP3", "AP"], repeats=np.repeat(sample_size, 4))
+	ind_ids = [str(x) for x in np.tile(range(1, sample_size+1), 4)]
 	with open(args.out, "w") as vcf_file:
-		mts.write_vcf(vcf_file, individual_names=np.repeat(["SP1", "SP2", "SP3", "AP"], [sample_size, sample_size, sample_size, sample_size]))
+		mts.write_vcf(vcf_file, individual_names=np.char.add(np.char.add(pop_ids, np.repeat("_", sample_size*4)), ind_ids))
         	
 ## Run script
 if __name__ == "__main__":
