@@ -110,8 +110,10 @@ Time (UTC-6).
 installed on your machine. On a Mac, using homebrew, you can
 install R and Rstudio by typing
 
-    brew install r
-    brew install rstudio
+<pre><code>
+brew install r
+brew install rstudio
+</code></pre>	
 
 at the bash prompt. Please familiarize yourself with how to change
 directories and source scripts in R.
@@ -124,14 +126,18 @@ directories and source scripts in R.
    to move to the directory within which you want to install
    agar22. Then type
 
-    git clone https://github.com/alanrogers/agar22.git agar22
+<pre><code>
+git clone https://github.com/alanrogers/agar22.git agar22
+</code></pre>	
 
    When that has run, you should find a directory named "agar22",
    which contains all the files related to the workshop. As we make
    changes to the workshop files, it's easy to keep your own copy up
    to date. Use `cd` to move into the agar22 directory and type
 
-    git pull
+<pre><code>
+git pull
+</code></pre>	
 
 ### Reading
 
