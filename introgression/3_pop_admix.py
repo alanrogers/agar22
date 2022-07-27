@@ -18,7 +18,7 @@ def main(args):
 	argp.add_argument("--SP2_prop", type=float, default=0.33333, help="Admixture proportion contributed by source population 2")
 	args = argp.parse_args(args)
 	
-	sample_size=20
+	sample_size=50
 
 	demography = msprime.Demography()
 	demography.add_population(name="SP1", initial_size=args.SP1_Ne)
