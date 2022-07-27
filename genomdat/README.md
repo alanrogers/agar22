@@ -1,4 +1,4 @@
 # Genomic Data
 
-[Slides](Bash_fastq_exercise.pdf)
+[Slides](./Bash_fastq_exercise.pdf)
 
