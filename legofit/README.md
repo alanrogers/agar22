@@ -1,8 +1,15 @@
 # Legofit
 
 Legofit is a program that uses genetic data to infer the history of
-population size, subdivision, and admixture. Click
-[here](https://alanrogers.github.io/agar22) for the Legofit tutorial.
+population size, subdivision, and admixture.  During the workshop,
+we'll be doing an exercise that uses it to fit the model in directory
+`europe/a`. Students will run a version of the legofit pipeline, which
+has been scaled down to run easily on a laptop. They will estimate
+parameters describing population history, and use a bootstrap to
+assess the uncertainty of those estimates. Finally, they will use R to
+make graphs of the results. Details of this exercise are in the
+[Legofit tutorial](https://alanrogers.github.io/agar22/legofit/legotut.pdf).
+
 This current directory contains:
 
 * europe: directory containing the code and data for the analysis
@@ -14,36 +21,6 @@ This current directory contains:
   Quechua population is used instead of Europe.
 
 * bougainville: as above, but with Bougainville instead of Europe.
-
-The complete analysis involves several steps, which are detailed in
-the tutorial. Here's a brief synopsis.
-
-1. Quality control and tabulation. This step reads data in .vcf
-   format, removes sites of low quality, calls ancestral alleles, and
-   tabulates the frequencies of nucleotide site patterns. It works
-   with large data files and is best done on a compute cluster. We end
-   up with 51 small files, 1 describing site pattern frequencies in
-   the full data set, and 50 describing those in bootstrap replicates.
-
-2. Write a file in .lgo format, which describes the model of history
-   whose parameters you wish to estimate.
-
-3. Use this model to run legofit 51 times: once for the full data, and
-   once for each bootstrap replicate.
-
-It's okay to jump from here straight to the final step, which
-involves making graphs of the results and calculating bepe (the
-"bootstrap estimate of predictive error") to see how well the model
-fits the data. 
-
-It's also possible to improve the fit by doing additional legofit runs
-and by re-expressing the free variables in terms of (uncorrelated)
-principal components. The tutorial has details.
-
-In the workshop, we won't have time for a full analysis. We've done
-step 1 for you. During the workshop, you can choose between several
-data sets, which focus on different parts of the world. You'll do 2
-and 3 during the workshop.
 
 Before the workshop starts, please try to install legofit on your own
 computer. Instructions can be found in the tutorial. We'll spend some
