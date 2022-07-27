@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Re-do allele frequency filtering, but using vcftools to preserve phase
 vcftools --vcf ${1} --maf 0.02 --recode --out ${2}_maf0.02
 
@@ -10,10 +12,10 @@ for POP in SP1 SP2 SP3;do
 	for i in `seq 1 50`;do
 		if [[ $i -eq 1 && $POP == "SP1" ]];then
 			echo ${POP}_${i} > ref_panel.list
-			echo -e ${POP}_${i}'\t'${POP} > ref_panel.map
+			echo ${POP}_${i}'\t'${POP} > ref_panel.map
 		else
 			echo ${POP}_${i} >> ref_panel.list
-			echo -e ${POP}_${i}'\t'${POP} >> ref_panel.map
+			echo ${POP}_${i}'\t'${POP} >> ref_panel.map
 		fi
 	done
 done
@@ -26,8 +28,8 @@ vcftools --vcf ${2}_maf0.02.recode.vcf --keep ref_panel.list --recode --out ${2}
 vcftools --vcf ${2}_maf0.02.recode.vcf --keep focal.list --recode --out ${2}_focal
 
 # Generate a fake recombination map
-echo -e chr1'\t'0'\t'0 > recomb_map
-echo -e chr1'\t'30000000'\t'30 >> recomb_map
+echo chr1'\t'0'\t'0 > recomb_map
+echo chr1'\t'30000000'\t'30 >> recomb_map
 
 # Run RFMix
 rfmix -f ${2}_focal.recode.vcf \

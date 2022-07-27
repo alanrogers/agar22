@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Remove rare variants (carried by less than 2% of entire sample)
 plink --vcf ${1} --maf 0.02 --make-bed --out ${2}_maf0.02
 
