@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Re-do allele frequency filtering, but using vcftools to preserve phase
-vcftools --vcf ${1} --maf 0.02 --recode --out ${2}_maf0.02
+vcftools --vcf ${1} --maf 0.03 --recode --out ${2}_maf0.03
 
 # Add 'chr' to start of chromosome number in vcf file
-awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' ${2}_maf0.02.recode.vcf > ${2}_maf0.02.recode.vcf.TMP
-mv ${2}_maf0.02.recode.vcf.TMP  ${2}_maf0.02.recode.vcf
+awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' ${2}_maf0.03.recode.vcf > ${2}_maf0.03.recode.vcf.TMP
+mv ${2}_maf0.03.recode.vcf.TMP  ${2}_maf0.03.recode.vcf
 
 # Designate samples from the three source populations to different reference panels
 for POP in SP1 SP2 SP3;do
@@ -24,8 +24,8 @@ done
 echo ${3} > focal.list
 
 # Split data into 'reference' and 'focal' sets
-vcftools --vcf ${2}_maf0.02.recode.vcf --keep ref_panel.list --recode --out ${2}_ref_panel
-vcftools --vcf ${2}_maf0.02.recode.vcf --keep focal.list --recode --out ${2}_focal
+vcftools --vcf ${2}_maf0.03.recode.vcf --keep ref_panel.list --recode --out ${2}_ref_panel
+vcftools --vcf ${2}_maf0.03.recode.vcf --keep focal.list --recode --out ${2}_focal
 
 # Generate a fake recombination map
 echo chr1'\t'0'\t'0 > recomb_map
