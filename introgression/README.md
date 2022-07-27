@@ -4,7 +4,7 @@ This module will require that participants have the following software installed
 - R and RStudio
 - python3
 - msprime
-- vcftools
+- plink
 - admixture
 - rfmix
 
