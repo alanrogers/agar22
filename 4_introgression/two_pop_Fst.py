@@ -15,13 +15,13 @@ def main(args):
 	demography.add_population(name="B", initial_size=args.Ne)
 	demography.add_population(name="C", initial_size=1e4)
 	demography.add_population_split(time=args.t_split, derived=["A", "B"], ancestral="C")
-	demography.add_symmetric_migration_rate_change(time=args.t_split, populations=["A", "B"], rate=args.mig_rate)
+	demography.set_symmetric_migration_rate(populations=["A", "B"], rate=args.mig_rate)
 	ts = msprime.sim_ancestry(samples={"A": 100, "B": 100}, sequence_length=1e6, demography=demography)
 	mts = msprime.sim_mutations(ts, rate=1e-8)
 
-	fst = mts.Fst(sample_sets=[range(0, 200), range(201, 400)])
-	print("\nNe of descendent populations is " + str(args.Ne))
-	print("Populations split " + str(args.t_split) + " generations ago\n")
+	fst = mts.Fst(sample_sets=[range(0, 200), range(200, 400)])
+	print("\nThe Ne of descendent populations is " + str(args.Ne))
+	print("Populations split " + str(args.t_split) + " generations ago")
 	print("The post-split migraton rate is " + str(args.mig_rate) + " per generation (symmetric)\n")
 	print("   * Fst between descendent populations is " + str(np.around(fst, decimals=5)) + "\n")
 
