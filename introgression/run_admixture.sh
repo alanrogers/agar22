@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Remove rare variants (carried by less than 2% of entire sample)
+# Remove rare variants (carried by less than 5% of entire sample)
 plink --vcf ${1} --maf 0.05 --make-bed --out ${2}_maf0.05
 
 # Give variants unique names based on base pair location
