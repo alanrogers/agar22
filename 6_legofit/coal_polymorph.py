@@ -30,7 +30,7 @@ for i in range(nitr):
     # of zero mutations in this particular gene genealogy
     pr_mono += exp(-u*brlen)
 
-# Mean probability that sample is monomorphic    
+# Average estimates probability that sample is monomorphic.
 pr_mono /= nitr
 
 print("Probability of polymorphism:", 1 - pr_mono)
