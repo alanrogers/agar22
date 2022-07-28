@@ -3,11 +3,11 @@ outfile <- "test"
 options(stringsAsFactors=F)
 
 # Load in the .fam file for sample names
-fam <- read.table(paste0(outfile, "_maf0.02.fam"))
+fam <- read.table(paste0(outfile, "_maf0.05.fam"))
 sample_size=nrow(fam)/4
 
 # Make ADMIXTURE plots for Ks 2-5
-for (K in 2:5) {
+for (K in 5:2) {
   Q.dat <- read.table(paste0(outfile, ".", K, ".Q"))
   rownames(Q.dat) <- fam[,2]
   barplot(height=as.matrix(t(Q.dat)), beside=F, col=c("#EE6677", "#CCBB44", "#4477AA", "#228833", "#BBBBBB"), border=NA, space=0.0001, xaxt="n")
@@ -19,6 +19,7 @@ for (K in 2:5) {
 K = 3
 Q.dat <- read.table(paste0(outfile, ".", K, ".Q"))
 rownames(Q.dat) <- fam[,2]
+pops <- fam$V1
 for (i in 1:K) {
   pop <- fam[fam$V2==rownames(Q.dat)[which.max(Q.dat[,i])],1]
   avg.anc <- mean(Q.dat[pops=="AP",i])
@@ -33,3 +34,6 @@ for (i in 1:K) {
 stats <- read.table(paste0(outfile, ".run_stats.txt"))
 plot(stats$V1, stats$V3, xlab="K", ylab="cross-validation error", xaxt="n", pch=16)
 axis(1, at=stats$V1, labels=stats$V1)
+
+# Report your result!
+# https://forms.gle/h1R28Cw71MYTEA7m9
