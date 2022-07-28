@@ -14,7 +14,7 @@ def main(args):
 	demography.add_population(name="B", initial_size=args.Ne)
 	demography.add_population(name="C", initial_size=1e4)
 	demography.add_population_split(time=args.t_split, derived=["A", "B"], ancestral="C")
-	ts = msprime.sim_ancestry(samples={"A": 100, "B": 100}, sequence_length=1e6, recombination_rate=1e-4, demography=demography)
+	ts = msprime.sim_ancestry(samples={"A": 100, "B": 100}, sequence_length=1e6, recombination_rate=1e-7, demography=demography)
 	mts = msprime.sim_mutations(ts, rate=1e-8)
 
 	fst = mts.Fst(sample_sets=[range(0, 200), range(200, 400)])
