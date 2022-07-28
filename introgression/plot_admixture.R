@@ -19,6 +19,7 @@ for (K in 2:5) {
 K = 3
 Q.dat <- read.table(paste0(outfile, ".", K, ".Q"))
 rownames(Q.dat) <- fam[,2]
+pops <- fam$V1
 for (i in 1:K) {
   pop <- fam[fam$V2==rownames(Q.dat)[which.max(Q.dat[,i])],1]
   avg.anc <- mean(Q.dat[pops=="AP",i])
