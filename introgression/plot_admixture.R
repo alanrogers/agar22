@@ -34,3 +34,6 @@ for (i in 1:K) {
 stats <- read.table(paste0(outfile, ".run_stats.txt"))
 plot(stats$V1, stats$V3, xlab="K", ylab="cross-validation error", xaxt="n", pch=16)
 axis(1, at=stats$V1, labels=stats$V1)
+
+# Report your result!
+# https://forms.gle/h1R28Cw71MYTEA7m9
