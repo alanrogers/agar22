@@ -26,8 +26,8 @@ for i in range(nitr):
         #print("%2d %7.2f %7.2f     REMOVE ME" % (K, t, brlen))
         K -= 1
 
-    # 0 term of Poisson distribution give probability
-    # of zero mutations in this particular gene genealogy
+    # 0 term of Poisson distribution gives probability
+    # of zero mutations in this particular gene genealogy.
     pr_mono += exp(-u*brlen)
 
 # Average estimates probability that sample is monomorphic.
