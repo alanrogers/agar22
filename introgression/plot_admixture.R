@@ -7,7 +7,7 @@ fam <- read.table(paste0(outfile, "_maf0.05.fam"))
 sample_size=nrow(fam)/4
 
 # Make ADMIXTURE plots for Ks 2-5
-for (K in 2:5) {
+for (K in 5:2) {
   Q.dat <- read.table(paste0(outfile, ".", K, ".Q"))
   rownames(Q.dat) <- fam[,2]
   barplot(height=as.matrix(t(Q.dat)), beside=F, col=c("#EE6677", "#CCBB44", "#4477AA", "#228833", "#BBBBBB"), border=NA, space=0.0001, xaxt="n")
