@@ -34,6 +34,12 @@ This current directory contains:
 
 * bougainville: as above, but with Bougainville instead of Europe.
 
+* coal_polymorph.py: students in the Msprime module asked how
+  coalescent simulations without mutations could be useful. This
+  Python script implements a coalescent simulation that calculates the
+  probability that a sample has genetic variation, given its size and
+  that of the population.
+
 Further information is available in the Legofit
 [documentation](https://alanrogers.github.io/legofit/html/index.html).
 

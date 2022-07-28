@@ -16,7 +16,7 @@ for i in range(nitr):
     # Each pass through loop deals with one coalescent interval.
     while K > 1:
         h = K*(K-1)/(2.0*twoN) # hazard of a coalescent event
-        t = expovariate(h)       # time until next coalescent event
+        t = expovariate(h)     # time until next coalescent event
         brlen += K*t
         #print("%2d %7.2f %7.2f     REMOVE ME" % (K, t, brlen))
         K -= 1
