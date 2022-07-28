@@ -3,7 +3,7 @@ outfile <- "test"
 options(stringsAsFactors=F)
 
 # Load in the .fam file for sample names
-fam <- read.table(paste0(outfile, "_maf0.02.fam"))
+fam <- read.table(paste0(outfile, "_maf0.05.fam"))
 sample_size=nrow(fam)/4
 
 # Make ADMIXTURE plots for Ks 2-5
