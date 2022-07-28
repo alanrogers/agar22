@@ -17,7 +17,12 @@ for i in range(nitr):
     while K > 1:
         h = K*(K-1)/(2.0*twoN) # hazard of a coalescent event
         t = expovariate(h)     # time until next coalescent event
+
+        # The current interval has K lines of descent, each t
+        # generations long. It therefore adds K*t to the total
+        # length of the gene genealogy.
         brlen += K*t
+
         #print("%2d %7.2f %7.2f     REMOVE ME" % (K, t, brlen))
         K -= 1
 
