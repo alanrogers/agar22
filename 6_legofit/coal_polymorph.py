@@ -23,7 +23,6 @@ for i in range(nitr):
         # length of the gene genealogy.
         brlen += K*t
 
-        #print("%2d %7.2f %7.2f     REMOVE ME" % (K, t, brlen))
         K -= 1
 
     # 0 term of Poisson distribution gives probability
