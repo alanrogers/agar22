@@ -11,7 +11,7 @@ pr_mono = 0.0
 
 for i in range(nitr):
     K = 30       # sample size (number of gene copies)
-    brlen = 0.0 # age of last common ancestor in generations
+    brlen = 0.0  # total branch length in generations
 
     # Each pass through loop deals with one coalescent interval.
     while K > 1:
