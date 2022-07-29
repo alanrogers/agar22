@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{tikz-network}
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}[xscale=2,yscale=1.5]
+  \Vertex[shape=rectangle, x=0, y=0, IdAsLabel, color=white]{x}
+  \Vertex[shape=rectangle, x=1, y=0, IdAsLabel, color=white]{y}
+  \Vertex[x=1, y=0.75, IdAsLabel, color=white]{y2}
+  \Vertex[x=2, y=0.75, IdAsLabel, color=white]{n}
+  \Vertex[x=2, y=2.85, IdAsLabel, color=white]{av}
+  \Vertex[shape=rectangle, x=2, y=2.15, IdAsLabel, color=white]{a}
+  \Vertex[shape=rectangle, x=2, y=1.45, IdAsLabel, color=white]{v}
+  \Vertex[shape=rectangle, x=3, y=1, IdAsLabel, color=white]{d}
+  \Vertex[x=2.5, y=3.5, IdAsLabel, color=white]{nd}
+  \Vertex[x=0.5, y=3, IdAsLabel, color=white]{xy}
+  \Vertex[x=1.5, y=4, IdAsLabel,
+    shape=ellipse, style={minimum width=1cm},
+    color=white]{xynd}
+  \Edge[Direct, lw=1pt](xynd)(xy)
+  \Edge[Direct, lw=1pt](xynd)(nd)
+  \Edge[Direct, lw=1pt](xy)(x)
+  \Edge[Direct, lw=1pt](xy)(y2)
+  \Edge[Direct, lw=1pt](y2)(y)
+  \Edge[Direct, lw=1pt](nd)(av)
+  \Edge[Direct, lw=1pt](av)(a)
+  \Edge[Direct, lw=1pt](a)(v)
+  \Edge[Direct, lw=1pt](v)(n)
+  \Edge[Direct, lw=1pt](nd)(d)
+  \Edge[Direct, lw=1pt, style={dashed}](n)(y2)
+\end{tikzpicture}
+\end{document}
