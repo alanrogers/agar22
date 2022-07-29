@@ -367,7 +367,7 @@ even on a compute cluster. That is why we aren't doing this step
 during the workshop.
 
 Have a look at file
-\href{https://github.com/alanrogers/agar22/blob/main/6_legofit/europe/data.opf}{data.opf}. After
+\href{https://github.com/alanrogers/agar22/blob/main/legofit/europe/data.opf}{data.opf}. After
 the header, the first few lines look like
 \begin{verbatim}
 #       SitePat             E[count]           loBnd           hiBnd
@@ -388,7 +388,7 @@ of ``E[count]'' divided by the sum of all the values under ``E[count].''
 
 It's best to run sitepat within a script, both because it takes awhile
 to run, and also because the script will document what you did.
-\href{https://github.com/alanrogers/agar22/blob/main/6_legofit/europe/sitepat.slr}{Here}
+\href{https://github.com/alanrogers/agar22/blob/main/legofit/europe/sitepat.slr}{Here}
 is the slurm script that generated the output above.
 
 \section{Fitting models of history}
@@ -396,7 +396,7 @@ is the slurm script that generated the output above.
 \subsection{Organizing the data directory}
 For each set of site pattern data, I create a directory tree with the
 same format, which is illustrated in the github repository at
-\href{\verb|https://github.com/alanrogers/agar22/blob/main/6_legofit/europe|}{6_legofit/europe}. Within
+\href{https://github.com/alanrogers/agar22/blob/main/legofit/europe}{legofit/europe}. Within
 this directory, you'll find (1)~a README.md file, which describes all
 the others, (2)~a file called ``data.opf,'' which contains observed
 site pattern frequencies, (3)~\href{sitepat.slr.html}{sitepat.slr}, a
@@ -418,7 +418,7 @@ history are described in file ``a.lgo.''  These assumptions are
 described using syntax that you can read about
 \href{http://alanrogers.github.io/legofit/html/index.html#lgo}{here}.
 Use \texttt{cd} to move into directory ``a,'' and have a look at
-\href{\verb|https://github.com/alanrogers/blob/main/agar22/6_legofit/europe/a/a.lgo|}{a.lgo},
+\href{https://github.com/alanrogers/blob/main/agar22/legofit/europe/a/a.lgo}{a.lgo},
 which describes the model illustrated in Fig.~\ref{fig.network}
 
 \begin{figure}
@@ -436,7 +436,7 @@ patter. Type:
 legosim a.lgo
 \end{verbatim}
 This runs the program ``legosim,'' which reads file
-\href{\verb|https://github.com/alanrogers/agar22/blob/main/6_legofit/europe/a/a.lgo|}{a.lgo},
+\href{https://github.com/alanrogers/agar22/blob/main/legofit/europe/a/a.lgo}{a.lgo},
 estimates the probability of each site pattern, and prints out the
 result. By default, legosim doesn't calculate probabilities for
 singleton site patterns (those in which the derived allele is present
@@ -487,7 +487,7 @@ default values of parameters that we didn't set on the command line.
 # Program was run: Thu Jul  7 20:38:55 2022
 #
 # cmd: legofit -1 -d 0 --tol 1e-3 a.lgo ../data.opf
-# curr dir: /Users/rogers/txt/agar22/6_legofit/europe/a
+# curr dir: /Users/rogers/txt/agar22/legofit/europe/a
 # Stage nOptItr nSimReps
 #     0    1000        1
 # algorithm          : deterministic
@@ -686,7 +686,7 @@ written entirely in bash.
 \subsubsection{Bash version of pipeline}
 \label{sec.bashpipe}
 Within the agar22 directory tree, \texttt{cd} into directory
-\verb|6_legofit/europe/a|. You'll find several bash scripts there,
+\texttt{legofit/europe/a}. You'll find several bash scripts there,
 whose names all end with \texttt{.sh}. All but one of these scripts is
 involved in the bash version of the pipeline. The bash pipeline is a
 scaled-down version of the one described below in
@@ -788,7 +788,7 @@ workshop, skip ahead to section~\ref{sec.graph}.
 \label{sec.slurmpipe}
 Use ssh as described above to log into one of the CHPC clusters, and
 then \texttt{cd} into directory
-\verb|agar22/6_legofit/europe/a|. You'll find several slurm scripts
+\texttt{agar22/legofit/europe/a}. You'll find several slurm scripts
 there, whose names all end with \texttt{.slr}. There is also a shell
 script called ``pipeline.sh,'' which runs the entire pipeline. The
 pipeline comprises the following files:
@@ -882,7 +882,7 @@ lines of output look like this
 #
 # Program was compiled: Mar 22 2022 17:40:38
 # Program was run: Sat Jul  9 13:41:24 2022
-# curr dir: /Users/rogers/txt/agar22/6_legofit/europe/a
+# curr dir: /Users/rogers/txt/agar22/legofit/europe/a
 #
 #          bepe        DataFile     LegofitFile
 1.130271806e-06        data.opf      b2.legofit
@@ -906,22 +906,14 @@ $i$th model is the fraction of data sets (including the real data and
 lowest value of bepe.
 
 In the agar22 repository, there are several subdirectories just below
-\verb|6_legofit/europe|, each of which contains the analysis of a
+\texttt{legofit/europe}, each of which contains the analysis of a
 single model. Each of these contains a file names \texttt{b2.bepe},
 which was calculated as described above. Each directory also contains
 a file named \texttt{b2.flat}, which was calculated like this:
 \begin{verbatim}
 flatfile.py b2.legofit b2boot*.legofit > b2.flat
 \end{verbatim}
-The \verb|6_legofit/europe| directory may also contain a subdirectory
-called \texttt{tmp}, which you created for the exercises above. If so,
-delete that directory or move it out of the way. For example, to move
-it to your home directory, you could \texttt{cd} into the
-\verb|6_legofit/europe| directory and type
-\begin{verbatim}
-mv tmp ~
-\end{verbatim}
-Then, from the \verb|6_legofit/europe| directory, type
+From the \texttt{legofit/europe} directory, type
 \begin{verbatim}
 booma */b2.bepe -F */b2.flat > all.bma
 \end{verbatim}
@@ -937,7 +929,7 @@ first few lines look like this
 # Program was compiled: Jul  9 2022 14:41:56
 # Program was run: Sat Jul  9 14:50:30 2022
 # cmd: booma a/b2.bepe ab/b2.bepe abc/b2.bepe abcd/b2.bepe abd/b2.bepe ac/b2.be>
-# curr dir: /Users/rogers/txt/agar22/6_legofit/europe
+# curr dir: /Users/rogers/txt/agar22/legofit/europe
 #         Weight        MSC_file       Flat_file
 #              0       a/b2.bepe       a/b2.flat
 #              0      ab/b2.bepe      ab/b2.flat
@@ -965,7 +957,7 @@ under a given model.
 \section{Graphing results}
 \label{sec.graph}
 There are several R scripts in the legofit section of the agar22
-repository. Two of them are in \verb|6_legofit/europe|:
+repository. Two of them are in \texttt{legofit/europe}:
 \begin{leftindent}
 \begin{tabbing}
   dotplot.rXX\=\kill
@@ -976,7 +968,7 @@ bmadot.r \> plots confidence intervals as
 \end{tabbing}
 \end{leftindent}
 You can experiment with those on your own. During the workshop, we'll
-be working with the three R scripts in \verb|6_legofit/europe/a|:
+be working with the three R scripts in \texttt{legofit/europe/a}:
 \begin{leftindent}
 \begin{tabbing}
   dotplot.rXX\=\kill
