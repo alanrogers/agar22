@@ -2,6 +2,8 @@
 
 * [Tutorial](https://uqrmaie1.github.io/admixtools/articles/admixtools.html)
 
+* [Exercises and slides](https://www.dropbox.com/sh/htfdlqpvlgilbqy/AAC2Y2-eMNQ2vZKXIWXlXkwra?dl=0)
+
 ## Installing AdmixTools under the R command line
 
     install.packages("devtools")
