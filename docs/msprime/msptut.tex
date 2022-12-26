@@ -3,8 +3,13 @@
 \usepackage{hyperref}
 \usepackage[backend=biber,
   natbib=true,
-  style=numeric,
+  style=ext-numeric-comp,
   sorting=nyt]{biblatex}
+\DeclareFieldFormat % Titles in sentence case
+  [article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+  {titlecase:title}{\MakeSentenceCase*{#1}}
+\renewbibmacro{in:}{ % Don't use "In:" before journal names.  
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}  
 \addbibresource{defs.bib}
 \addbibresource{arrpubs.bib}
 \addbibresource{molrec.bib}
@@ -43,22 +48,22 @@ simple:
 python3 -m pip install msprime
 \end{verbatim}
 
-\begin{verbatim}
-1012  module load python/3.9.7
- 1013  python
- 1014  python -m pip install numpy
- 1015  python -m pip install --upgrade pip --user
- 1016  python -m pip install msprime --user
- 1017  python
-\end{verbatim}
+%\begin{verbatim}
+%1012  module load python/3.9.7
+%1013  python
+%1014  python -m pip install numpy
+%1015  python -m pip install --upgrade pip --user
+%1016  python -m pip install msprime --user
+%1017  python
+%\end{verbatim}
 
 \section{A Python script to run msprime}
 
 On the class website, you will find a Python script called
 \href{./msp.py}{msp.py}. This script describes a simple model of
-history, involving 2 modern populations and 1 archaic. You will modify
-this code to describe your own model of history. Before explaining how
-it works, I will show you what it does.
+history, involving 3 populations: 2 modern and 1 archaic. You will
+modify this code to describe your own model of history. Before
+explaining how it works, I will show you what it does.
 
 By default, the script does not run a simulation. Instead, in invokes
 the msprime ``demography debugger.'' To use it in this mode, type
@@ -120,9 +125,9 @@ it to \texttt{2e6}, because there isn't much linkage disequilibrium
 between sites that are farther apart than that. Using a large number
 of relatively short chromosomes makes the simulations faster.
 
-Line~45 defines a variable called \texttt{dem}, which will hold our
+Line~44 defines a variable called \texttt{dem}, which will hold our
 model of demographic history. It is in instance of the
-\texttt{Demography} class, which is defined by msprime. Lines 48--77
+\texttt{Demography} class, which is defined by msprime. Lines 47--76
 define the populations used in the model. Each population has a short
 name, a description, and an initial size. This size represents the
 diploid size of the population at the recent end of its temporal
@@ -130,7 +135,7 @@ extent. My model of history does not include growth within
 populations, so the initial size of a population is its size
 throughout its history.
 
-Lines~79--85 define an episode of admixture, giving the time at which
+Lines~78--84 define an episode of admixture, giving the time at which
 it occurs, the name of the derived population, those of the two
 ancestral populations, and the proportions of the derived population
 that came from each of the two parents. Msprime does not allow you to
@@ -138,31 +143,31 @@ specify the same population as both derived and ancestral within the
 same episode of admixture. That is why I define \texttt{Y1} to
 represent the pre-admixture portion of population \texttt{Y}.
 
-Lines~87--99 define two population splits, one separating \texttt{XY}
+Lines~86--98 define two population splits, one separating \texttt{XY}
 into \texttt{X} and \texttt{Y}, and the other separating \texttt{XYN}
 into \texttt{XY} and \texttt{N}. A population split is similar to
 admixture, except that there are two derived populations and only one
 derived one.
 
-Lines~103--107 define a list called \texttt{samples}, each element of
+Lines~105--111 define a list called \texttt{samples}, each element of
 which is an object of class \texttt{SampleSet}. The arguments are self
 explanatory. I set \texttt{ploidy=1} for consistency with Legofit.
 
-Lines~109--147 execute only if we are doing a simulation. The only
-line you will need to change is 128, which defines the labels of the
+Lines~114--151 execute only if we are doing a simulation. The only
+line you will need to change is 132, which defines the labels of the
 populations. These should be consistent with the \texttt{population}
 parameters specified in lines 103--107. There is presumably a way to
 read these labels directly from the \texttt{samples} array, but I
 haven't yet figured out how to do that. This is why I define a
-separate \texttt{lbl} array on line 128.
+separate \texttt{lbl} array.
 
 Even though you won't need to change the other lines, let me explain
-what is going on in lines~109--147. The variable \texttt{seed} is set
-using random data provided by the operating system. This value is used
-to initialize the random number generator so that each run of the
-program will use a different sequence of pseudo-random numbers.
+what is going on. The variable \texttt{seed} is set using random data
+provided by the operating system. This value is used to initialize the
+random number generator so that each run of the program will use a
+different sequence of pseudo-random numbers.
 
-Lines~119--125 simulate the population history, using msprime's
+Lines~123--129 simulate the population history, using msprime's
 \verb|sim_ancestry| function. The type of the value returned by this
 function depends on whether the \verb|num_replicates| parameter is
 used. Without \verb|num_replicates|, \verb|sim_ancestry| returns an
@@ -171,21 +176,19 @@ msprime. With \verb|num_replicates|, it returns a Python
 ``generator,'' which can be used to iterate over the
 \texttt{TreeSequence} objects of the replicates.
 
-That is the purpose of the loop beginning at line~135. Each pass
+That is the purpose of the loop beginning at line~139. Each pass
 through that loop handles a different replicate, which I think of as a
 different chromosome. Within the loop \texttt{i} is the number of the
-current chromosome, and \texttt{chr} is an object (defined by msprime)
-that describes the current chromosome. Line~136 creates \texttt{sim},
-which holds all the data about genetic variation on the current
-chromosome. This variable can be thought of as a list of polymorphic
-loci, or ``variants.'' We loop across these variants beginning at
-line~138, ignoring those that aren't biallelic (lines~141--142).
-Each variant includes a list of genotypes, which we loop over in
-lines~146--147.
+current chromosome, and \texttt{chr} is an object that describes the
+current chromosome. Line~140 creates \texttt{sim}, which holds all the
+data about genetic variation on the current chromosome. This variable
+can be thought of as a list of polymorphic loci, or ``variants.'' We
+loop across these variants beginning at line~142, ignoring those that
+aren't biallelic.  Each variant includes a list of genotypes, which we
+loop over in lines~149--150.
 
 \section{Generate site pattern frequencies}
-
-The output of ``msp.py'' is designed for use with the ``sitepat''
+The output of ``msp.py'' is designed for use with the ``simpat''
 program, which is part of Legofit. To run a simulation and tabulate
 site pattern frequencies, type
 \begin{verbatim}

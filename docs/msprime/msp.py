@@ -38,9 +38,8 @@ nchromosomes = 10   # number of chromosomes: increase to 1000
 basepairs = 2e6     # number of nucleotides per chromosome
 u_per_site = 1.4e-8 # mutation
 
-# Recombination rate.  recomb is the probability of recombination
-# between sites at opposite ends of the simulated sequence.
-c = 1e-8 # rate per base pair per generation
+# Recombination rate per base pair per generation
+c = 1e-8
 
 dem = msp.Demography()
 

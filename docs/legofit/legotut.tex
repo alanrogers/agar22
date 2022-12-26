@@ -2,8 +2,13 @@
 \usepackage{hyperref}
 \usepackage[backend=biber,
   natbib=true,
-  style=numeric,
+  style=ext-numeric-comp,
   sorting=nyt]{biblatex}
+\DeclareFieldFormat % Titles in sentence case
+  [article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+  {titlecase:title}{\MakeSentenceCase*{#1}}
+\renewbibmacro{in:}{ % Don't use "In:" before journal names.  
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}  
 \usepackage[letterpaper,margin=1in]{geometry}
 \usepackage{verbatim,moreverb}
 \usepackage{graphicx}
@@ -49,7 +54,7 @@ getting accounts for everyone enrolled in the workshop.) These
 sections involve using the SLURM Workload Manager to submit jobs to
 the compute cluster. However, our focus during the workshop will be on
 the last step, which can be done in two ways: either on the CHPC
-(using slurm), or on your own computer (using the bash shell). This
+(using SLURM), or on your own computer (using the bash shell). This
 tutorial will cover both environments.
 
 Try to install Legofit (sec.~\ref{sec.install}) on your own before the
@@ -193,7 +198,7 @@ set up.
 
 Utah's CHPC has several ``clusters,'' each with many ``nodes.''  Each
 node is a powerful computer in its own right. The
-\href{https://slurm.schedmd.com/documentation.html}{slurm} version of
+\href{https://slurm.schedmd.com/documentation.html}{SLURM} version of
 the pipeline submits legofit jobs to multiple nodes so that they can
 run in parallel. Within each node, legofit parallelizes across all
 available cores. This greatly reduces the time required for an
@@ -300,7 +305,7 @@ Western Europeans (SGDP)\>\verb|~/grp1/rogers/data/simons/raf/weur.raf.gz|
 \end{leftindent}
 If you'd like to make a data set for another modern human population,
 copy the following
-\href{https://alanrogers.github.io/agar22/legofit/weur.slr.html}{slurm
+\href{https://alanrogers.github.io/agar22/legofit/weur.slr.html}{SLURM
   script} into a directory of your own:
 \begin{verbatim}
 ~/grp1/rogers/data/simons/raf/weur.slr
@@ -412,7 +417,7 @@ of ``E[count]'' divided by the sum of all the values under ``E[count].''
 It's best to run sitepat within a script, both because it takes awhile
 to run, and also because the script will document what you did.
 \href{https://github.com/alanrogers/agar22/blob/main/legofit/europe/sitepat.slr}{Here}
-is the slurm script that generated the output above.
+is the SLURM script that generated the output above.
 
 \section{Fitting models of history}
 \label{sec.fit}
@@ -423,7 +428,7 @@ same format, which is illustrated in the github repository at
 this directory, you'll find (1)~a README.md file, which describes all
 the others, (2)~a file called ``data.opf,'' which contains observed
 site pattern frequencies, (3)~\href{sitepat.slr.html}{sitepat.slr}, a
-slurm script that runs ``sitepat'' and generates ``data.opf,'' and
+SLURM script that runs ``sitepat'' and generates ``data.opf,'' and
 ``boot,'' a directory containing bootstrap replicates.  There will
 eventually be other files with names like ``all.bootci'' and
 ``all.bma,'' which contain the results of analyses.  Within this
@@ -690,7 +695,7 @@ stages of analysis are just like the first and second, except that they
 use b.lgo instead of a.lgo.
 
 There are several ways to organize this four-stage analysis into a
-pipeline. On the CHPC cluster, I use slurm scripts, which are
+pipeline. On the CHPC cluster, I use SLURM scripts, which are
 discussed below. First, however, I introduce a version of the pipeline
 written entirely in bash.
 
@@ -804,13 +809,13 @@ however, because legofit is multithreaded and each run uses all the
 cores available on your computer. To run multiple legofit jobs in
 parallel, you need to run each one on a different node within a
 high-performance computing cluster. This is the rationale for the
-slurm version of the pipeline.
+SLURM version of the pipeline.
 
-\subsubsection{Slurm version of pipeline}
+\subsubsection{SLURM version of pipeline}
 \label{sec.slurmpipe}
 Use ssh as described above to log into one of the CHPC clusters, and
 then \texttt{cd} into directory
-\texttt{agar22/legofit/europe/a}. You'll find several slurm scripts
+\texttt{agar22/legofit/europe/a}. You'll find several SLURM scripts
 there, whose names all end with \texttt{.slr}. There is also a shell
 script called ``pipeline.sh,'' which runs the entire pipeline.  To
 experiment with this pipeline, let's copy these scripts into a
@@ -818,7 +823,7 @@ temporary directory. From within this directory, type
 \begin{verbatim}
 mkdir ../tmp          # make a temporary directory
 cp a.lgo ../tmp       # copy .lgo file into tmp
-cp *.slr ../tmp       # copy slurm scripts into tmp
+cp *.slr ../tmp       # copy SLURM scripts into tmp
 cp pipeline.sh ../tmp # copy pipeline script
 cd ../tmp             # move into that directory
 \end{verbatim}
@@ -836,7 +841,7 @@ Your \texttt{tmp} directory should now contain the following files:
 \texttt{b1boot.slr} \> stage~3 on a bootstrap replicate\\
 \texttt{b2.slr} \> stage~4 on real data\\
 \texttt{b2boot.slr} \> stage~4 on a bootstrap replicate\\
-\verb|pipeline.sh| \> runs all the slurm scripts
+\verb|pipeline.sh| \> runs all the SLURM scripts
 \end{tabbing}
 \end{leftindent}
 To speed things up, we can reduce the number of iterations (as
@@ -859,7 +864,7 @@ on the status of this job, type
 squeue -u <your unid>
 \end{verbatim}
 The output will summarize the status of all jobs you've submitted to
-slurm.
+SLURM.
 
 To run the first stage of analysis on all bootstrap replicates, the
 command is
@@ -888,7 +893,7 @@ typing
 \begin{verbatim}
 brew install rsync
 \end{verbatim}
-Then, to get the results of the slurm pipeline, type this from your
+Then, to get the results of the SLURM pipeline, type this from your
 own computer:
 \begin{verbatim}
 rsync -Cavzbu <your_unid>@notchpeak.chpc.utah.edu:agar22/legofit/europe/tmp .
@@ -897,7 +902,7 @@ This assumes that the results you want are on the CHPC server in a
 directory called \url{~/agar22/legofit/europe/tmp}. It will create on
 your own machine a directory called ``tmp'' in the directory from
 which you issued the rsync command. That directory should now contain
-all the results from the slurm pipeline.
+all the results from the SLURM pipeline.
 
 Incidentally, rsync is a fairly awkward tool for copying things back
 and forth between the CHPC server and your own machine. I usually do
